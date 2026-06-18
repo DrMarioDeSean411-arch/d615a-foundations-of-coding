@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D615A – Full Practice Exam</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;color:#1a1a1a;min-height:100vh;font-size:15px}
+.shell{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+
+/* top bar */
+.top-bar{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px 24px;margin-bottom:18px}
+.top-title{font-size:19px;font-weight:500}
+.top-sub{font-size:13px;color:#6b6b67;margin-top:3px}
+.top-pills{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pill{display:inline-block;font-size:11px;padding:3px 10px;border-radius:999px;font-weight:500;border:0.5px solid}
+.p-c1{background:#E1F5EE;color:#0F6E56;border-color:#9FE1CB}
+.p-c2{background:#FFF3E0;color:#B45309;border-color:#FCD48C}
+.p-c3{background:#EEEDFE;color:#534AB7;border-color:#CECBF6}
+.p-gen{background:#f0eeea;color:#444;border-color:#ccc}
+.p-cod{background:#FEE2E2;color:#991B1B;border-color:#FECACA}
+
+/* scoreboard */
+.scr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px;margin-bottom:14px}
+.scr-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:10px;padding:12px;text-align:center}
+.scr-num{font-size:22px;font-weight:500}
+.scr-lbl{font-size:11px;color:#6b6b67;margin-top:2px}
+.prog-wrap{background:#e8e6e0;border-radius:999px;height:5px;margin-bottom:4px;overflow:hidden}
+.prog-bar{height:5px;border-radius:999px;transition:width .3s;background:#1D9E75}
+.prog-lbl{font-size:11px;color:#9b9b97;display:flex;justify-content:space-between;margin-bottom:16px}
+
+/* section nav */
+.sec-label{font-size:11px;font-weight:500;color:#9b9b97;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.sec-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.sec-btn{padding:8px 16px;border:0.5px solid #ccc;border-radius:8px;font-size:13px;background:#fff;cursor:pointer;color:#555;transition:all .12s;font-family:inherit}
+.sec-btn:hover{background:#f0eeea}
+.sec-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;font-weight:500}
+.sec-btn .sec-count{font-size:11px;opacity:.7;margin-left:4px}
+
+/* question tabs */
+.tab-row{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:14px}
+.t-btn{padding:5px 9px;border:0.5px solid #ccc;border-radius:7px;font-size:12px;background:#fff;cursor:pointer;color:#666;transition:all .12s;font-family:inherit}
+.t-btn.active{background:#f0eeea;color:#1a1a1a;border-color:#777;font-weight:500}
+.t-btn.correct{border-color:#1D9E75;color:#0F6E56;background:#f0fbf6}
+.t-btn.wrong{border-color:#A32D2D;color:#A32D2D;background:#fdf2f2}
+
+/* question card */
+.q-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px;margin-bottom:12px}
+.q-meta{display:flex;align-items:center;gap:7px;margin-bottom:10px;flex-wrap:wrap}
+.q-num{font-size:11px;color:#9b9b97}
+.diff-badge{font-size:10px;padding:2px 8px;border-radius:999px;font-weight:500;border:0.5px solid}
+.d-found{background:#EAF3DE;color:#27500A;border-color:#C0DD97}
+.d-inter{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.d-adv{background:#FCEBEB;color:#A32D2D;border-color:#F7C1C1}
+.q-stem{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:10px;line-height:1.65}
+.q-stem code{font-family:'Courier New',monospace;font-size:12.5px;background:#f0eeea;padding:1px 5px;border-radius:4px}
+.code-block{font-family:'Courier New',monospace;font-size:12.5px;background:#f5f5f3;border:0.5px solid #e0ddd6;border-radius:8px;padding:12px;white-space:pre;overflow-x:auto;color:#1a1a1a;line-height:1.65;margin-bottom:12px}
+.opt-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.opt-btn{text-align:left;padding:10px 14px;border:0.5px solid #ccc;border-radius:8px;font-size:13.5px;background:#fff;cursor:pointer;color:#1a1a1a;line-height:1.5;transition:all .12s;font-family:inherit}
+.opt-btn:hover:not(:disabled){background:#f5f5f3;border-color:#888}
+.opt-btn.reveal-correct{border-color:#1D9E75;background:#EAF3DE;color:#27500A;font-weight:500}
+.opt-btn.selected-wrong{border-color:#A32D2D;background:#FCEBEB;color:#791F1F}
+.opt-btn:disabled{cursor:default}
+.opt-btn code{font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.06);padding:1px 4px;border-radius:3px}
+
+/* feedback */
+.feedback{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:13px;line-height:1.7}
+.fb-c{background:#EAF3DE;border:0.5px solid #C0DD97;color:#27500A}
+.fb-w{background:#FCEBEB;border:0.5px solid #F7C1C1;color:#791F1F}
+.misconception{margin-top:6px;font-size:12px;color:#666;font-style:italic;border-top:0.5px solid rgba(0,0,0,.08);padding-top:6px}
+
+/* nav */
+.nav-row{display:flex;gap:8px;margin-top:6px}
+.nav-btn{padding:8px 18px;background:#fff;border:0.5px solid #ccc;border-radius:8px;font-size:13px;cursor:pointer;color:#1a1a1a;transition:all .12s;font-family:inherit}
+.nav-btn:hover{background:#f0eeea}
+
+/* breakdown */
+.breakdown{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px;margin-top:20px}
+.bd-title{font-size:14px;font-weight:500;margin-bottom:14px}
+.bd-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px}
+.bd-label{min-width:160px;color:#555}
+.bd-bar-wrap{flex:1;background:#e8e6e0;border-radius:999px;height:8px;overflow:hidden}
+.bd-bar{height:8px;border-radius:999px;transition:width .4s}
+.bd-pct{min-width:42px;text-align:right;color:#6b6b67;font-size:12px}
+.bd-score{min-width:55px;text-align:right;color:#9b9b97;font-size:12px}
+
+/* section summary */
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:18px}
+.sum-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:10px;padding:14px;text-align:center;cursor:pointer}
+.sum-title{font-size:11px;color:#9b9b97;margin-bottom:6px}
+.sum-num{font-size:20px;font-weight:500}
+.sum-sub{font-size:11px;color:#9b9b97;margin-top:2px}
+
+/* coding section */
+.cod-prompt{background:#f5f5f3;border:0.5px solid #e0ddd6;border-radius:8px;padding:14px 16px;margin-bottom:12px;font-size:13.5px;line-height:1.8;color:#1a1a1a;white-space:pre-wrap}
+.cod-example{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.cod-box{border-radius:8px;padding:12px}
+.cod-inp{background:#EAF3DE;border:0.5px solid #C0DD97}
+.cod-out{background:#E6F1FB;border:0.5px solid #B5D4F4}
+.cod-box-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.cod-box-label.inp{color:#27500A}
+.cod-box-label.out{color:#0C447C}
+.cod-box pre{font-family:'Courier New',monospace;font-size:12px;line-height:1.65;white-space:pre-wrap}
+.concept-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.concept-pill{font-size:11px;padding:3px 9px;border-radius:999px;background:#EEEDFE;color:#534AB7;border:0.5px solid #CECBF6;font-weight:500}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<div class="top-bar">
+  <div class="top-title">D615A — Foundations of Coding</div>
+  <div class="top-sub">Full diagnostic practice exam · 40 questions + coding assessment · all auto-graded</div>
+  <div class="top-pills">
+    <span class="pill p-c1">C1 Algorithmic Thinking</span>
+    <span class="pill p-c2">C2 Troubleshooting &amp; Debugging</span>
+    <span class="pill p-c3">C3 Relational Databases &amp; SQL</span>
+    <span class="pill p-cod">Coding Assessment</span>
+  </div>
+</div>
+
+<!-- scoreboard -->
+<div class="scr-grid">
+  <div class="scr-card"><div class="scr-num" id="sc-tot">0<span style="font-size:13px;color:#9b9b97">/40</span></div><div class="scr-lbl">Answered</div></div>
+  <div class="scr-card"><div class="scr-num" id="sc-right" style="color:#1D9E75">0</div><div class="scr-lbl">Correct</div></div>
+  <div class="scr-card"><div class="scr-num" id="sc-wrong" style="color:#A32D2D">0</div><div class="scr-lbl">Incorrect</div></div>
+  <div class="scr-card"><div class="scr-num" id="sc-pct">—</div><div class="scr-lbl">Overall score</div></div>
+  <div class="scr-card"><div class="scr-num" id="sc-pass" style="color:#9b9b97">—</div><div class="scr-lbl">Exam ready?</div></div>
+</div>
+<div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
+<div class="prog-lbl"><span id="prog-txt">0 of 40 answered</span><span id="pass-note" style="color:#1D9E75;font-weight:500"></span></div>
+
+<!-- section nav -->
+<div class="sec-label">Select section</div>
+<div class="sec-row" id="sec-row"></div>
+<div class="sum-grid" id="sum-grid"></div>
+
+<!-- tabs + question -->
+<div class="sec-label" id="q-label">Questions</div>
+<div class="tab-row" id="tabs"></div>
+<div id="qview"></div>
+<div class="nav-row">
+  <button class="nav-btn" onclick="go(-1)">&#8592; Prev</button>
+  <button class="nav-btn" onclick="go(1)">Next &#8594;</button>
+</div>
+
+<!-- breakdown -->
+<div class="breakdown">
+  <div class="bd-title">Competency breakdown</div>
+  <div id="bd-rows"></div>
+</div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// SECTION DEFINITIONS
+// ═══════════════════════════════════════════════════════════════
+const SECTIONS = [
+  {key:'c1', label:'C1 — Algorithmic Thinking', color:'#1D9E75', short:'C1'},
+  {key:'c2', label:'C2 — Troubleshooting &amp; Debugging', color:'#B45309', short:'C2'},
+  {key:'c3', label:'C3 — Databases &amp; SQL', color:'#534AB7', short:'C3'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// C1 — ALGORITHMIC THINKING AND PROGRAMMING (40 questions)
+// Source: D615A_C1_Diagnostic_Test_1.pdf + Practice_test.pdf
+// ═══════════════════════════════════════════════════════════════
+const C1 = [
+
+// ── Diagnostic Test 1 (10 questions) ──────────────────────────
+{sec:'c1',comp:'C1',topic:'Basics of Programming',diff:'found',type:'mc',
+stem:'Which most accurately describes a program in the context of computing?',
+opts:['A physical device that stores data on a hard drive',
+      'A sequence of instructions written in a programming language that a computer executes to accomplish a task',
+      'A wireless network protocol used to connect devices',
+      'A graphical interface that allows users to interact with an operating system'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A program is a set of executable instructions that directs a computer to perform specific operations. It exists as code, not hardware or a network protocol.',
+misconception:'Students picking A or C confuse software with hardware/networking concepts.'},
+
+{sec:'c1',comp:'C1',topic:'IPO Model',diff:'found',type:'mc',
+stem:'A payroll application reads hours worked and hourly rate, multiplies them for gross pay, then prints the paycheck. In the IPO model, what is the Output?',
+opts:['The employee\'s hours worked','The multiplication operation','The printed paycheck amount','The hourly rate stored in memory'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Output is the result delivered to the user after processing. Hours and rate are inputs; multiplication is the process; the printed paycheck is the output.',
+misconception:'Students pick B — computation is the process, not the output.'},
+
+{sec:'c1',comp:'C1',topic:'Data Types',diff:'found',type:'mc',
+stem:'In Python, what data type does the expression <code>type(3.14)</code> return?',
+opts:['int','str','bool','float'],
+ans:3,
+rationale:'<strong>D is correct.</strong> 3.14 is a decimal value. Python classifies decimal numbers as the <code>float</code> (floating-point) data type.',
+misconception:'Students who pick int may confuse the number\'s appearance with its type. Any decimal point signals float.'},
+
+{sec:'c1',comp:'C1',topic:'Conditionals',diff:'inter',type:'mc',
+stem:'What is the output of the following code?\n\ntemperature = 95\nif temperature > 100:\n    print("Extreme")\nelif temperature > 85:\n    print("Hot")\nelse:\n    print("Comfortable")',code:true,
+opts:['"Extreme"','"Hot"','"Comfortable"','No output — syntax error'],
+ans:1,
+rationale:'<strong>B is correct.</strong> 95 is not > 100, so the first branch is skipped. 95 IS > 85, so the elif branch executes and prints "Hot".',
+misconception:'Students picking C apply the else. Python exits after the first true branch, not after all conditions are tested.'},
+
+{sec:'c1',comp:'C1',topic:'For Loops',diff:'inter',type:'mc',
+stem:'What will the following code print?\n\ntotal = 0\nfor num in [2, 4, 6]:\n    total += num\nprint(total)',code:true,
+opts:['2','6','12','246'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The loop adds 2, then 4, then 6. 0 + 2 + 4 + 6 = 12.',
+misconception:'Students picking 6 stop at the last added value rather than the running total.'},
+
+{sec:'c1',comp:'C1',topic:'Functions',diff:'inter',type:'mc',
+stem:'What value does result hold after this function call?\n\ndef multiply(a, b):\n    return a * b\nresult = multiply(6, 7)',code:true,
+opts:['0','13','42','67'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The function returns a * b. With a=6 and b=7, the return value is 42.',
+misconception:'Students picking 13 add instead of multiply. Students picking 67 concatenate the digits.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Design',diff:'inter',type:'mc',
+stem:'A student needs to find the largest number in a list without using built-in functions. Which algorithm strategy is most appropriate?',
+opts:['Set a variable to the first element; loop through the list and replace it whenever a larger value is found',
+      'Sort the list using a sorting algorithm, then select index 0',
+      'Add all numbers together and divide by the count of elements',
+      'Remove elements one by one until only one remains'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Tracking a running maximum and updating it on each comparison is the standard O(n) linear scan for finding a maximum — correct, efficient, and does not rely on built-ins.',
+misconception:'B uses sorting, which adds O(n log n) overhead and changes the list structure. C computes the average, not the max.'},
+
+{sec:'c1',comp:'C1',topic:'String Operations',diff:'inter',type:'mc',
+stem:'What does the following code print?\n\nname = "Python"\nprint(name[0] + name[-1])',code:true,
+opts:['"Pn"','"Py"','"on"','"PP"'],
+ans:0,
+rationale:'<strong>A is correct.</strong> <code>name[0]</code> accesses "P". <code>name[-1]</code> accesses the last character "n". Concatenation produces "Pn".',
+misconception:'Students picking "Py" think index 0 and 1 are selected. Negative indexing from the end is a common source of confusion.'},
+
+{sec:'c1',comp:'C1',topic:'Programming Languages',diff:'found',type:'mc',
+stem:'Which characteristic makes Python particularly well-suited for beginners compared to C or Java?',
+opts:['Python requires explicit memory management, teaching foundational skills',
+      'Python uses English-like syntax and does not require declaring variable types explicitly',
+      'Python compiles to faster machine code than any other language',
+      'Python only runs on Linux-based operating systems'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Python\'s clean, readable syntax and dynamic typing reduce cognitive load for beginners. C and Java require more boilerplate and explicit type declarations.',
+misconception:'A is backwards — Python abstracts memory management away, which is beginner-friendly, not a teaching burden.'},
+
+{sec:'c1',comp:'C1',topic:'Nested Logic',diff:'adv',type:'mc',
+stem:'What is printed when this code runs?\n\nx = 8\nif x > 5:\n    if x > 10:\n        print("Large")\n    else:\n        print("Medium")\nelse:\n    print("Small")',code:true,
+opts:['"Large"','"Medium"','"Small"','Nothing is printed'],
+ans:1,
+rationale:'<strong>B is correct.</strong> x=8 satisfies x > 5, entering the outer if. Inside, x=8 does NOT satisfy x > 10, so the inner else executes: "Medium".',
+misconception:'Students who pick "Large" misread the nested condition. Students who pick "Small" stop at the outer branch without tracing the nested logic.'},
+
+// ── Practice Test Q1–Q30 (algorithmic thinking + Python basics) ─
+{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
+stem:'A sequence of instructions that solves a problem is called a:',
+opts:['Instruction','Process','Algorithm','Variable'],
+ans:2,
+rationale:'<strong>C is correct.</strong> An algorithm is a precise, ordered sequence of steps designed to solve a specific problem or accomplish a task.',
+misconception:'Students confuse algorithm with program. A program is an implementation; an algorithm is the abstract plan.'},
+
+{sec:'c1',comp:'C1',topic:'Variables',diff:'found',type:'mc',
+stem:'In the instruction <code>z = x + y</code>, the symbols x, y, and z are examples of:',
+opts:['Expressions','Processes','Variables','Functions'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Variables are named storage locations in memory that hold values. x, y, and z are containers for data.',
+misconception:'Students picking "Expressions" identify the right-hand side only. All three — x, y, z — serve as variable containers.'},
+
+{sec:'c1',comp:'C1',topic:'IPO Model',diff:'found',type:'mc',
+stem:'Which is an example of a process in the IPO model?',
+opts:['int','15','x + y','y, 10'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A process is a computation or transformation. <code>x + y</code> is an arithmetic operation — a process applied to the inputs x and y.',
+misconception:'Students pick 15 thinking it is the result. 15 is a value (output or literal), not a process.'},
+
+{sec:'c1',comp:'C1',topic:'Problem Decomposition',diff:'inter',type:'mc',
+stem:'For the problem "find the longest word in a list," which correctly identifies input and output?',
+opts:['Input: Number of words / Output: Longest word',
+      'Input: Longest word / Output: Number of words',
+      'Input: Array of all words / Output: String value for the longest word',
+      'Input: List size / Output: Word count'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The input is the full collection of words (the array). The output is the single string representing the longest word found.',
+misconception:'Students picking A confuse count (a derived property) with the actual input data structure.'},
+
+{sec:'c1',comp:'C1',topic:'Search Algorithms',diff:'inter',type:'mc',
+stem:'Which algorithm should be used to quickly find "Pizza Hut" in a phone book (sorted alphabetically)?',
+opts:['Binary search','Linear search','Longest common substring','Shortest path'],
+ans:0,
+rationale:'<strong>A is correct.</strong> A phone book is sorted. Binary search exploits sorted order by halving the search space each step, achieving O(log n) rather than O(n) for linear search.',
+misconception:'Students pick linear search thinking any search works. Binary search is dramatically faster on sorted data.'},
+
+{sec:'c1',comp:'C1',topic:'Computational Complexity',diff:'adv',type:'mc',
+stem:'Which is true if an efficient solution for one NP-complete problem is found?',
+opts:['The solution would run in exponential time',
+      'There is an efficient algorithm for all other NP-complete problems',
+      'The solution would be incorrect',
+      'Only that one problem has been solved'],
+ans:1,
+rationale:'<strong>B is correct.</strong> NP-complete problems are all reducible to each other. An efficient (polynomial-time) solution to any one of them would imply P=NP, unlocking efficient solutions for all.',
+misconception:'Students picking D miss the theoretical equivalence. NP-completeness means the problems share computational structure.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Steps',diff:'found',type:'mc',
+stem:'What is the correct step order to count occurrences of 2 in an array?',
+opts:['(1) increment counter (2) loop through array (3) inspect each element',
+      '(1) loop through array (2) inspect each array element (3) increment counter if 2 is found',
+      '(1) inspect each element (2) loop through array (3) increment counter',
+      '(1) initialize counter (2) increment counter (3) loop through array'],
+ans:1,
+rationale:'<strong>B is correct.</strong> The loop must be established first, then each element is examined, and then — conditionally — the counter increments. Sequence matters in algorithms.',
+misconception:'D is tempting but you cannot increment before you have looped and inspected.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Design',diff:'inter',type:'mc',
+stem:'Which algorithm correctly finds the minimum of 5 values?',
+opts:['min = first value / for each value / if value < min / min = value',
+      'min = first value / for each value / if value > min / min = value',
+      'min = first value / for each value / if value = min / min = value',
+      'min = first value / for each value / if value < 0 / min = value'],
+ans:0,
+rationale:'<strong>A is correct.</strong> To find the minimum, replace the running minimum whenever a smaller value is found (<). Option B finds the maximum. Option D only catches negative values.',
+misconception:'Students confuse < (minimum) with > (maximum) — a common inversion error.'},
+
+{sec:'c1',comp:'C1',topic:'Binary Search',diff:'inter',type:'mc',
+stem:'Which real-life activity is analogous to binary search?',
+opts:['Finding a matching sock in a drawer',
+      'Looking up Pizza Hut in the phone book',
+      'Looking for a house on a street sequentially',
+      'Finding the largest number in an unsorted array'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A phone book is sorted alphabetically. You open to the middle, determine which half "P" falls in, and repeat — exactly the binary search pattern.',
+misconception:'C describes linear search (sequential scan). A is unordered exhaustive search.'},
+
+{sec:'c1',comp:'C1',topic:'Logic Puzzle',diff:'inter',type:'mc',
+stem:'Three sock types A, B, C exist in a drawer. If the first three pulls are all different, how many additional pulls are needed to guarantee a matching pair?',
+opts:['Two more pulls','Only one more pull','Three more pulls','No more pulls needed'],
+ans:1,
+rationale:'<strong>B is correct.</strong> With A, B, and C already in hand, any fourth pull must match one of the three types already held. One more pull guarantees a pair by the pigeonhole principle.',
+misconception:'Students who pick "two more" overthink it. The fourth pull is deterministic.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
+stem:'Describing the steps necessary for finding a solution to a problem in programming is called:',
+opts:['Algorithm','Compile','Interpret','Code'],
+ans:0,
+rationale:'<strong>A is correct.</strong> An algorithm is the problem-solving description — the abstract plan — before it is written in any specific language.',
+misconception:'Students confuse algorithm (the plan) with code (the implementation). Algorithm precedes code.'},
+
+{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
+stem:'What is the missing last line of a pseudocode block that calculates total purchase price (item cost + tax)?',
+opts:['Set the tax to the item cost plus the rate',
+      'Set the item cost to the tax plus the rate',
+      'Set the total cost to the item cost plus the tax',
+      'Set the rate to the item cost plus the tax'],
+ans:2,
+rationale:'<strong>C is correct.</strong> After computing the tax separately, the total cost is the sum of item cost and tax. This is the output step of the algorithm.',
+misconception:'Students pick A, confusing computation of tax with use of tax in the final total.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'inter',type:'mc',
+stem:'What is the purpose of: <code>num=0, repeat 15 times, ask for number, if userNum > num then num=userNum</code>?',
+opts:['To find the lowest among 15 numbers',
+      'To find the average of 15 numbers',
+      'To find a specific number',
+      'To find the highest among 15 numbers'],
+ans:3,
+rationale:'<strong>D is correct.</strong> This is the running maximum algorithm. num is initialized to 0 and replaced whenever a larger value appears. After 15 iterations, num holds the highest.',
+misconception:'Students picking A reverse the comparison. The condition > means we update on larger values, not smaller.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
+stem:'Which of the following is NOT an algorithm?',
+opts:['A recipe for baking cookies','A grocery list','Tire-changing instructions','Paint calculation steps'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A grocery list is an unordered collection of items, not a sequence of steps that transforms inputs to outputs. Algorithms must be executable and ordered.',
+misconception:'Students overlook that a list without step-order and transformation is not an algorithm.'},
+
+{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
+stem:'Which pseudocode statement represents a decision (selection)?',
+opts:['while total cost > 15','for each item in list','if total cost > 15','total cost = unit cost + tax'],
+ans:2,
+rationale:'<strong>C is correct.</strong> An <code>if</code> statement is a decision/selection construct. It branches execution based on a Boolean condition.',
+misconception:'A uses while (repetition). D is an assignment (sequence). Only C is a decision.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Definition',diff:'found',type:'mc',
+stem:'A sequence of steps that is unambiguous, executable, and terminating is called:',
+opts:['Pseudocode','A program','An algorithm','A function'],
+ans:2,
+rationale:'<strong>C is correct.</strong> These three properties — unambiguous, executable, terminating — are the formal definition criteria for an algorithm.',
+misconception:'Students pick program. A program is an algorithm expressed in a specific language; the algorithm is the abstract concept.'},
+
+{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
+stem:'Which pseudocode statement represents a repetition (loop) statement?',
+opts:['set i equal to 3','total cost = unit cost + tax','if balance > 0','while the balance is > 0'],
+ans:3,
+rationale:'<strong>D is correct.</strong> A <code>while</code> statement repeats a block of instructions as long as its condition remains true — the defining feature of a repetition construct.',
+misconception:'C uses if (decision). A is an assignment. Only D is a loop.'},
+
+{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'inter',type:'mc',
+stem:'Which statement about pseudocode is NOT correct?',
+opts:['Pseudocode must be unambiguous',
+      'Pseudocode must be terminating',
+      'Pseudocode should be properly formatted',
+      'Pseudocode must be executable'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Pseudocode is a planning tool written in natural language — it is not required to be directly executable by a computer. Only real code must be executable.',
+misconception:'Students confuse pseudocode with actual programming languages. Pseudocode communicates the algorithm, not a runnable implementation.'},
+
+{sec:'c1',comp:'C1',topic:'Problem Analysis',diff:'inter',type:'mc',
+stem:'What inputs are needed to calculate the total cost of purchasing and using each cell phone plan?',
+opts:['Cost of phone and rate per minute',
+      'Cost of phone and minutes provided by plan',
+      'Rate per minute and total usage allowed',
+      'Cost of each phone, rate per minute for each phone, and number of minutes you would use'],
+ans:3,
+rationale:'<strong>D is correct.</strong> To compare plans completely, you need the purchase cost, the rate, and your actual usage pattern. Missing any one of these leaves the calculation incomplete.',
+misconception:'A and B are partial inputs that would not produce a complete cost comparison.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'adv',type:'mc',
+stem:'The Sieve of Eratosthenes pseudocode removes multiples of p from a list. What does it produce?',
+opts:['All even numbers up to n','All prime numbers up to n','All factorials up to n','All odd numbers up to n'],
+ans:1,
+rationale:'<strong>B is correct.</strong> The Sieve systematically removes composite numbers by eliminating multiples of each prime. What remains after all passes are the prime numbers.',
+misconception:'Students picking D confuse "not even" with "prime." Removing multiples of 2 gives odds, but removing all composites gives primes.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'adv',type:'mc',
+stem:'What sequence does the pseudocode <code>a=0, b=0, c=1, d=1</code> produce when <code>d = b + c</code> is repeated 10 times?',
+opts:['1 1 2 3 5 8 13 21 34 55 89','1 2 3 4 5 6 7 8 9 10','2 4 6 8 10 12 14 16 18 20','1 3 5 7 9 11 13 15 17 19'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Each term is the sum of the two preceding terms. This is the Fibonacci sequence. Starting values of 0 and 1 generate 1,1,2,3,5,8,13,21,34,55,89.',
+misconception:'Students unfamiliar with the Fibonacci pattern may pick arithmetic sequences (B, C, D).'},
+
+{sec:'c1',comp:'C1',topic:'Python Runtime',diff:'found',type:'mc',
+stem:'In order to run Python programs, the computer needs software called a(n):',
+opts:['Compiler','Interpreter','Assembler','Debugger'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Python is an interpreted language. The Python interpreter reads and executes source code line by line at runtime, without a separate compilation step.',
+misconception:'Students picking Compiler confuse Python with C/C++ which require compilation to machine code before running.'},
+
+{sec:'c1',comp:'C1',topic:'Programming Languages',diff:'found',type:'mc',
+stem:'High-level programming languages were created primarily to:',
+opts:['Increase execution speed',
+      'Make programming less error-prone and less tedious',
+      'Replace machine code entirely',
+      'Simplify hardware requirements'],
+ans:1,
+rationale:'<strong>B is correct.</strong> High-level languages abstract away hardware details, letting programmers express logic in human-readable syntax, reducing both errors and development time.',
+misconception:'A is wrong — high-level code typically runs slower than low-level. The tradeoff is productivity vs. raw speed.'},
+
+{sec:'c1',comp:'C1',topic:'Python Benefits',diff:'found',type:'mc',
+stem:'What are two of the most important benefits of the Python language?',
+opts:['Speed and power','Efficiency and complexity','Ease of use and portability','Graphics and gaming'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Python is valued for its beginner-friendly syntax (ease of use) and the fact that Python programs run on any platform with a Python interpreter (portability).',
+misconception:'Students may pick A, but Python is not known for raw speed — it trades performance for readability and portability.'},
+
+{sec:'c1',comp:'C1',topic:'Python Benefits',diff:'inter',type:'mc',
+stem:'Which is NOT a benefit of Python compared to Java, C, and C++?',
+opts:['Cleaner syntax','Easier to use','Python programs run more quickly','Rapid development'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Python programs generally execute more slowly than compiled languages like C, C++, or Java. Its advantages are readability, ease, and development speed — not runtime performance.',
+misconception:'Students unfamiliar with performance tradeoffs may assume Python is universally superior. Speed is where it falls short.'},
+
+{sec:'c1',comp:'C1',topic:'Functions',diff:'found',type:'mc',
+stem:'A collection of programming instructions that carries out a particular task is called a:',
+opts:['Program','Compiler','Function','Comment'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A function is a named, reusable block of instructions that performs a defined task. It can be called by name from elsewhere in the program.',
+misconception:'Students confuse function with program. A program is the full application; a function is a named sub-component.'},
+
+{sec:'c1',comp:'C1',topic:'Functions',diff:'found',type:'mc',
+stem:'To call a function in Python, you need to specify:',
+opts:['The function name and its arguments','At least one argument','Only the function name','The function\'s address in memory'],
+ans:0,
+rationale:'<strong>A is correct.</strong> A function call requires the function name plus any required arguments inside parentheses. Functions with no parameters use empty parentheses.',
+misconception:'B is wrong — many functions take zero arguments. C is incomplete for functions requiring inputs.'},
+
+{sec:'c1',comp:'C1',topic:'Strings',diff:'found',type:'mc',
+stem:'A sequence of characters enclosed in quotes is called:',
+opts:['A string','A list','A function','An argument'],
+ans:0,
+rationale:'<strong>A is correct.</strong> A string is a data type representing a sequence of characters, delimited by single or double quotes in Python.',
+misconception:'Students may pick list thinking a sequence implies a list. A list uses brackets; a string uses quotes.'},
+
+{sec:'c1',comp:'C1',topic:'Strings',diff:'found',type:'mc',
+stem:'Which of the following is considered a string in Python?',
+opts:['Today is Wednesday','"Today is Wednesday"','# Today is Wednesday','Today_is_Wednesday'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Quotes delimit string literals in Python. Without quotes, Python treats the words as variable names. # begins a comment, not a value.',
+misconception:'Students pick A thinking the text content makes it a string. In Python, the quotes are what classify it as a string.'},
+
+{sec:'c1',comp:'C1',topic:'Indentation',diff:'inter',type:'mc',
+stem:'What is wrong with two print() calls where the second is unexpectedly indented at the top level?',
+opts:['The first print() call is incorrect',
+      'There is no error; indentation is required',
+      'Nothing is wrong; the second line should not be indented at the top level',
+      'Both statements must be on the same line'],
+ans:2,
+rationale:'<strong>C is correct.</strong> In Python, top-level statements must not be indented. Unexpected indentation outside a block causes an IndentationError. Only block contents (inside if, for, def, etc.) should be indented.',
+misconception:'Students from Java/C++ backgrounds think indentation is always style. In Python, indentation is syntax.'},
+
+{sec:'c1',comp:'C1',topic:'Arithmetic in print()',diff:'found',type:'mc',
+stem:'What is printed by <code>print(25 + 84)</code>?',
+opts:['25 84','109','25 + 84','Error'],
+ans:1,
+rationale:'<strong>B is correct.</strong> When Python evaluates 25 + 84 outside of quotes, it performs the arithmetic and passes the integer result (109) to print().',
+misconception:'Students picking "25 + 84" think print() shows the expression literally. That only happens when the expression is inside quotes.'},
+
+{sec:'c1',comp:'C1',topic:'Arithmetic in print()',diff:'found',type:'mc',
+stem:'What is printed by <code>print("The answer is", 25 + 84)</code>?',
+opts:['The answer is25 + 84','The answer is 109','The answer is (109)','Error'],
+ans:1,
+rationale:'<strong>B is correct.</strong> print() with multiple comma-separated arguments inserts a space between them. The string literal prints as-is; 25+84 evaluates to 109. Output: "The answer is 109".',
+misconception:'Students who pick A expect no space. Python\'s print() default separator is a single space.'},
+
+{sec:'c1',comp:'C1',topic:'Operator Precedence',diff:'inter',type:'mc',
+stem:'What is printed by <code>print("The answers are:", 4 + 3 * 2, 7 * 5 - 24)</code>?',
+opts:['The answers are: 10 11','The answers are: 14 11','The answers are: 7 35','The answers are: 10 35'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Multiplication before addition: 3*2=6, 4+6=10. Then 7*5=35, 35-24=11. Output: "The answers are: 10 11".',
+misconception:'Students picking B apply left-to-right without respecting operator precedence (PEMDAS). * before +.'},
+
+{sec:'c1',comp:'C1',topic:'Strings vs Arithmetic',diff:'found',type:'mc',
+stem:'What is printed by <code>print("25 + 84")</code>?',
+opts:['109','25 84','25 + 84','Error'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The expression is inside quotes — Python treats it as a string literal, not arithmetic. The text "25 + 84" prints exactly as written.',
+misconception:'Students picking 109 forget that quotes suppress evaluation. Arithmetic only runs on unquoted expressions.'},
+
+{sec:'c1',comp:'C1',topic:'NameError',diff:'inter',type:'mc',
+stem:'What is printed by <code>print(Hello)</code> (no quotes around Hello)?',
+opts:['Nothing — an error is produced indicating Hello is not defined','Hello','"Hello"','HELLO'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Without quotes, Python treats Hello as a variable name. Since no variable named Hello has been assigned, Python raises a NameError.',
+misconception:'Students expecting Python to guess intent will pick B. Python cannot infer that unquoted text is meant as a string.'},
+
+{sec:'c1',comp:'C1',topic:'Comments',diff:'found',type:'mc',
+stem:'What is the purpose of a comment in Python code?',
+opts:['To execute a program instruction','To provide information to the programmer','To create a variable','To call a function'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Comments (lines beginning with #) are annotations for human readers. Python ignores them entirely at runtime.',
+misconception:'Students new to programming sometimes think comments are executed. They are documentation only.'},
+
+{sec:'c1',comp:'C1',topic:'Function Arguments',diff:'found',type:'mc',
+stem:'When a function is called, the values placed in parentheses are referred to as:',
+opts:['Arguments','Keywords','Operators','Statements'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Arguments (also called actual parameters) are the values passed to a function at the point of the call. The function\'s parameters receive these values.',
+misconception:'Students may confuse arguments with keywords. Keywords are reserved words like if/for; arguments are data passed to functions.'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// C2 — TROUBLESHOOTING AND DEBUGGING (10 questions)
+// Source: D615A_C2_Diagnostic_Test_1.pdf
+// ═══════════════════════════════════════════════════════════════
+const C2 = [
+
+{sec:'c2',comp:'C2',topic:'Error Classification',diff:'found',type:'mc',
+stem:'A student\'s program runs without error messages but produces an incorrect result. Manual tracing reveals an incorrect formula. What type of error is this?',
+opts:['Syntax error','Runtime error','Logic error','Import error'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Logic errors produce wrong results without crashing. The code is syntactically valid and executes — it just computes the wrong thing.',
+misconception:'Students picking runtime error expect a crash. Logic errors are silent failures — the hardest type to catch.'},
+
+{sec:'c2',comp:'C2',topic:'Syntax Errors',diff:'found',type:'mc',
+stem:'Which line in the code below contains a syntax error?\n\n1: def calculate(x, y):\n2:     result = x + y\n3:     return result\n4: print(calculate(3, 4)',code:true,
+opts:['Line 1','Line 2','Line 3','Line 4 — missing closing parenthesis'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Line 4 calls print() but the outer closing parenthesis is missing: <code>print(calculate(3, 4)</code> has unbalanced parentheses, causing a SyntaxError.',
+misconception:'Students scan the function definition for errors but miss the unclosed parenthesis at the call site.'},
+
+{sec:'c2',comp:'C2',topic:'Hypothesis Testing',diff:'inter',type:'mc',
+stem:'A student suspects the variable <code>counter</code> is not incrementing inside a loop. Which test directly validates or refutes this?',
+opts:['Delete the loop and run the code again',
+      'Add print(counter) at the start and end of each loop iteration to observe the value change',
+      'Change the variable name from counter to count and rerun',
+      'Rewrite the entire function from scratch'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A targeted <code>print()</code> at the hypothesis location provides direct evidence. If the value doesn\'t change between start and end, the hypothesis is confirmed.',
+misconception:'A destroys the context. C and D make changes that obscure rather than test the specific hypothesis.'},
+
+{sec:'c2',comp:'C2',topic:'Runtime Errors',diff:'inter',type:'mc',
+stem:'What error will this code produce, and at what stage?\n\nx = int(input("Enter a number: "))\nresult = 10 / x\nprint(result)',code:true,
+opts:['SyntaxError before the program runs',
+      'NameError when x is referenced',
+      'ZeroDivisionError at runtime if the user enters 0',
+      'TypeError when print() is called'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The code is syntactically valid and runs normally. Only when x=0 does <code>10 / 0</code> trigger a ZeroDivisionError at runtime.',
+misconception:'Students picking A expect static analysis to catch division by zero. Python cannot know the user\'s input at parse time.'},
+
+{sec:'c2',comp:'C2',topic:'IDE Features',diff:'found',type:'mc',
+stem:'A developer uses VS Code and notices a variable name highlighted in red with a squiggly underline before the program runs. What IDE feature is responsible?',
+opts:['The terminal / integrated console','Static analysis / linting','The version control panel','The run configuration'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Linters perform static analysis — examining code without running it. They flag potential errors, undefined names, and style violations in real time.',
+misconception:'Students pick terminal thinking errors only appear at runtime. Linting catches issues before execution.'},
+
+{sec:'c2',comp:'C2',topic:'Troubleshooting Strategy',diff:'inter',type:'mc',
+stem:'A developer\'s program crashes with a long error traceback. What is the most efficient first action?',
+opts:['Read the entire traceback from top to bottom and fix every warning first',
+      'Read the last line of the traceback — it contains the actual error type and message',
+      'Restart the computer and try again',
+      'Comment out all code and restore it line by line'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Python tracebacks are read from bottom up for the critical information. The final line identifies the specific exception type and message — the diagnostic entry point.',
+misconception:'Students read tracebacks top-down because English reads that way. The actionable error is always at the bottom.'},
+
+{sec:'c2',comp:'C2',topic:'Fix the Code',diff:'inter',type:'mc',
+stem:'The code below raises an IndentationError. What is the issue?\n\ndef square(n):\nreturn n * n\nprint(square(5))',code:true,
+opts:['square is not a valid function name',
+      'return n * n must be indented inside the function body',
+      'print() should be inside the function',
+      'The function needs a parameter type declaration'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Python uses indentation to define code blocks. The <code>return</code> statement must be indented by at least one level inside the <code>def</code> block.',
+misconception:'Students from C/Java expect curly braces. In Python, indentation IS the block delimiter.'},
+
+{sec:'c2',comp:'C2',topic:'AI Debugging',diff:'inter',type:'mc',
+stem:'When describing a bug to an AI debugging tool, which description is most likely to produce a useful response?',
+opts:['"My code is broken, please fix it"',
+      '"Something is wrong with the loop"',
+      '"My function is supposed to return the sum of a list, but it always returns 0. Here is the code: [paste code]"',
+      '"I think there might be an error somewhere in my program"'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Effective AI debugging prompts include: what the code should do, what it actually does, and the relevant code. Vague descriptions cannot be diagnosed.',
+misconception:'A, B, D lack specific behavior descriptions. The AI needs expected vs. actual behavior plus the code to reason about.'},
+
+{sec:'c2',comp:'C2',topic:'Error Identification',diff:'inter',type:'mc',
+stem:'Identify the type of error in the code below.\n\ngrades = [88, 92, 78]\naverage = sum(grades) / len(grades) + 10\nprint("Class average:", average)',code:true,
+opts:['Syntax error — the formula uses too many operators',
+      'Runtime error — sum() does not work on lists',
+      'Logic error — adding 10 inflates the average, but the code runs without crashing',
+      'No error — the code is correct'],
+ans:2,
+rationale:'<strong>C is correct.</strong> The code runs successfully, but the formula is logically wrong if the intent was a pure average. Adding 10 is a logic error — incorrect behavior with no crash.',
+misconception:'Students picking D assume the code is correct because it runs. Correctness and executability are different properties.'},
+
+{sec:'c2',comp:'C2',topic:'Validate the Fix',diff:'adv',type:'mc',
+stem:'After applying a fix to a bug, what is the correct validation approach?',
+opts:['Assume the fix works and submit the code',
+      'Test only the specific case that caused the original error',
+      'Test the original failing case, boundary cases, and several additional inputs to verify no new errors were introduced',
+      'Ask an AI tool to confirm the fix is correct without running the code'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Fixing one bug can introduce others. Comprehensive validation tests the original failure, boundary conditions (empty list, zero, max values), and additional inputs.',
+misconception:'B is insufficient — regression testing catches new failures introduced by the fix.'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// C3 — RELATIONAL DATABASES AND SQL (10 questions)
+// Source: D615A_C3_Diagnostic_Test_1.pdf
+// ═══════════════════════════════════════════════════════════════
+const C3 = [
+
+{sec:'c3',comp:'C3',topic:'Database Fundamentals',diff:'found',type:'mc',
+stem:'Which most accurately describes a relational database?',
+opts:['A database that stores data as a single flat text file with no structure',
+      'A collection of data organized into tables with defined relationships between them, managed by a DBMS',
+      'A database that only stores images and multimedia files',
+      'A spreadsheet application like Microsoft Excel'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A relational database organizes data into structured tables. Relationships between tables are enforced through keys and managed by a DBMS (Database Management System).',
+misconception:'D is a common misconception — Excel spreadsheets superficially resemble tables but lack referential integrity, ACID guarantees, and relational constraints.'},
+
+{sec:'c3',comp:'C3',topic:'Primary Keys',diff:'found',type:'mc',
+stem:'A table called <code>employees</code> has columns: employee_id, first_name, last_name, department. Which column should serve as the primary key and why?',
+opts:['first_name — it is alphabetically first',
+      'department — it is used most frequently in queries',
+      'employee_id — it is unique to every employee and never null',
+      'last_name — names are always unique'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A primary key must uniquely identify each row and cannot contain NULL values. employee_id satisfies both requirements. Names can repeat; departments are shared by many employees.',
+misconception:'Students pick last_name assuming names are unique. In practice, multiple employees can share the same last name.'},
+
+{sec:'c3',comp:'C3',topic:'SQL SELECT',diff:'found',type:'mc',
+stem:'Which query returns all columns and all rows from a table named <code>inventory</code>?',
+opts:['SELECT inventory;',
+      'GET ALL FROM inventory;',
+      'SELECT * FROM inventory;',
+      'SHOW TABLE inventory;'],
+ans:2,
+rationale:'<strong>C is correct.</strong> <code>SELECT * FROM table_name</code> retrieves all columns (*) from every row in the specified table. The other options use invalid SQL syntax.',
+misconception:'GET and SHOW are not standard SQL keywords. SELECT is the only retrieval keyword in SQL.'},
+
+{sec:'c3',comp:'C3',topic:'SQL WHERE',diff:'found',type:'mc',
+stem:'A <code>customers</code> table has a column <code>city</code>. Which query returns only customers from "Chicago"?',
+opts:['SELECT * FROM customers IF city = "Chicago";',
+      'SELECT * FROM customers WHERE city = \'Chicago\';',
+      'FILTER customers WHERE city = Chicago;',
+      'SELECT city FROM customers EQUALS \'Chicago\';'],
+ans:1,
+rationale:'<strong>B is correct.</strong> WHERE is the correct SQL clause for filtering rows by condition. String values must be enclosed in single quotes in standard SQL.',
+misconception:'IF is not a SQL filtering clause. FILTER and EQUALS are not valid SQL keywords.'},
+
+{sec:'c3',comp:'C3',topic:'Foreign Keys',diff:'inter',type:'mc',
+stem:'The <code>orders</code> table has a column <code>customer_id</code> that references the <code>customer_id</code> column in the <code>customers</code> table. What is this design mechanism called?',
+opts:['A compound key','A foreign key','A check constraint','An index'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A foreign key is a column in one table that creates a referential link to the primary key of another table, enforcing referential integrity.',
+misconception:'An index speeds up queries but does not enforce relationships. A compound key combines multiple columns into a single key — not applicable here.'},
+
+{sec:'c3',comp:'C3',topic:'Normalization — 1NF',diff:'inter',type:'mc',
+stem:'A table stores product colors in a single column as "Red, Blue, Green". Which normalization rule does this violate?',
+opts:['Second Normal Form (2NF)',
+      'Third Normal Form (3NF)',
+      'First Normal Form (1NF) — each column must store atomic (indivisible) values',
+      'No rule is violated — this is efficient storage'],
+ans:2,
+rationale:'<strong>C is correct.</strong> 1NF requires that every cell contain a single, atomic value. Storing multiple values ("Red, Blue, Green") in one cell violates atomicity.',
+misconception:'Students picking D justify the design as storage-efficient. Efficiency is not a normalization criterion; atomicity is.'},
+
+{sec:'c3',comp:'C3',topic:'SQL INSERT',diff:'found',type:'mc',
+stem:'Which statement correctly adds a new record to a <code>students</code> table with columns (student_id, name, grade)?',
+opts:['ADD TO students (101, \'Jordan\', \'B\');',
+      'INSERT INTO students VALUES (101, \'Jordan\', \'B\');',
+      'PUT students (101, \'Jordan\', \'B\');',
+      'NEW RECORD students (101, \'Jordan\', \'B\');'],
+ans:1,
+rationale:'<strong>B is correct.</strong> <code>INSERT INTO table_name VALUES (...)</code> is the standard SQL syntax for adding a new row. ADD, PUT, and NEW RECORD are not SQL keywords.',
+misconception:'Students with Python backgrounds may try write-like syntax. SQL has strict keyword structures that must be memorized.'},
+
+{sec:'c3',comp:'C3',topic:'Relationships',diff:'inter',type:'mc',
+stem:'In a hospital database, one doctor can treat many patients, but each patient has only one primary doctor. What type of relationship is this?',
+opts:['One-to-one','Many-to-many','One-to-many','Self-referencing'],
+ans:2,
+rationale:'<strong>C is correct.</strong> One-to-many: one doctor maps to multiple patients; each patient maps to exactly one doctor. This is the most common relationship type in relational databases.',
+misconception:'Students pick many-to-many thinking doctors and patients both have multiple associations. The constraint is that each patient has only ONE doctor.'},
+
+{sec:'c3',comp:'C3',topic:'SQL UPDATE',diff:'inter',type:'mc',
+stem:'Which statement correctly changes the grade of the student with student_id = 5 to "A" in the students table?',
+opts:['MODIFY students SET grade = \'A\' WHERE student_id = 5;',
+      'CHANGE students grade = \'A\' WHERE student_id = 5;',
+      'UPDATE students SET grade = \'A\' WHERE student_id = 5;',
+      'UPDATE students WHERE student_id = 5 THEN grade = \'A\';'],
+ans:2,
+rationale:'<strong>C is correct.</strong> <code>UPDATE table SET column = value WHERE condition</code> is the correct syntax. Always include WHERE when updating; omitting it modifies every row in the table.',
+misconception:'D swaps the clause order. SET must come before WHERE. MODIFY and CHANGE are not SQL keywords.'},
+
+{sec:'c3',comp:'C3',topic:'Database Security',diff:'adv',type:'mc',
+stem:'A developer builds a login form that constructs: <code>query = "SELECT * FROM users WHERE username = \'" + username + "\';"</code>. A user enters <code>admin\'--</code> and bypasses authentication. What is this attack called?',
+opts:['Cross-site scripting (XSS)','SQL injection','Phishing','Buffer overflow'],
+ans:1,
+rationale:'<strong>B is correct.</strong> SQL injection occurs when user-supplied input is directly embedded into an SQL query, allowing an attacker to alter query logic. <code>admin\'--</code> closes the string and comments out the rest of the query.',
+misconception:'XSS targets client-side script injection. SQL injection targets the database query layer. Both are injection attacks but at different levels.'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+const ALL   = {c1:C1, c2:C2, c3:C3};
+const STATE = {c1:{}, c2:{}, c3:{}};
+const SELS  = {c1:{}, c2:{}, c3:{}};
+let curSec='c1', curQ=0;
+
+// ═══════════════════════════════════════════════════════════════
+// SCORE
+// ═══════════════════════════════════════════════════════════════
+function calcSection(key){
+  const qs=ALL[key], st=STATE[key];
+  let done=0,right=0;
+  qs.forEach((_,i)=>{if(st[i]!==undefined){done++;if(st[i])right++;}});
+  return{done,right,total:qs.length};
+}
+
+function updateScore(){
+  let tot=0,right=0,done=0;
+  Object.keys(ALL).forEach(k=>{const r=calcSection(k);tot+=r.total;done+=r.done;right+=r.right;});
+  const pct=done>0?Math.round(right/tot*100):null;
+  document.getElementById('sc-tot').innerHTML=done+'<span style="font-size:13px;color:#9b9b97">/'+tot+'</span>';
+  document.getElementById('sc-right').textContent=right;
+  document.getElementById('sc-wrong').textContent=done-right;
+  document.getElementById('sc-pct').textContent=pct!==null?pct+'%':'—';
+  const passing=pct!==null&&pct>=80;
+  document.getElementById('sc-pass').textContent=pct===null?'—':passing?'Yes ✓':'Not yet';
+  document.getElementById('sc-pass').style.color=pct===null?'#9b9b97':passing?'#1D9E75':'#A32D2D';
+  document.getElementById('prog').style.width=(done/tot*100)+'%';
+  document.getElementById('prog-txt').textContent=done+' of '+tot+' answered';
+  document.getElementById('pass-note').textContent=passing?'On track to pass':'';
+  updateSumCards();
+  updateBreakdown();
+  buildTabs();
+}
+
+function updateSumCards(){
+  const grid=document.getElementById('sum-grid');
+  grid.innerHTML='';
+  SECTIONS.forEach(sec=>{
+    if(!ALL[sec.key]) return;
+    const r=calcSection(sec.key);
+    const pct=r.done>0?Math.round(r.right/r.total*100):null;
+    const passing=pct!==null&&pct>=80;
+    const card=document.createElement('div');
+    card.className='sum-card';
+    card.onclick=()=>switchSection(sec.key);
+    card.innerHTML=`<div class="sum-title">${sec.label.replace(/&amp;/g,'&')}</div>
+      <div class="sum-num" style="color:${pct===null?'#1a1a1a':passing?'#1D9E75':'#A32D2D'}">${pct!==null?pct+'%':'—'}</div>
+      <div class="sum-sub">${r.done}/${r.total} answered</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function updateBreakdown(){
+  const rows=document.getElementById('bd-rows');
+  rows.innerHTML='';
+  const cats=[
+    {label:'C1 — Algorithmic Thinking',filter:q=>q.comp==='C1',color:'#1D9E75'},
+    {label:'C2 — Troubleshooting',filter:q=>q.comp==='C2',color:'#B45309'},
+    {label:'C3 — Databases &amp; SQL',filter:q=>q.comp==='C3',color:'#534AB7'},
+    {label:'Foundational',filter:q=>q.diff==='found',color:'#3B6D11'},
+    {label:'Intermediate',filter:q=>q.diff==='inter',color:'#854F0B'},
+    {label:'Advanced',filter:q=>q.diff==='adv',color:'#A32D2D'},
+  ];
+  cats.forEach(cat=>{
+    let right=0,done=0,total=0;
+    ['c1','c2','c3'].forEach(key=>{
+      (ALL[key]||[]).forEach((q,i)=>{
+        if(cat.filter(q)){total++;if(STATE[key][i]!==undefined){done++;if(STATE[key][i])right++;}}
+      });
+    });
+    const pct=done>0?Math.round(right/total*100):0;
+    rows.innerHTML+=`<div class="bd-row">
+      <span class="bd-label">${cat.label}</span>
+      <div class="bd-bar-wrap"><div class="bd-bar" style="width:${pct}%;background:${cat.color}"></div></div>
+      <span class="bd-pct">${done>0?pct+'%':'—'}</span>
+      <span class="bd-score">${right}/${total}</span>
+    </div>`;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════════
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtStem(raw){
+  return raw.split('\n')[0]
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/&lt;code&gt;/g,'<code>').replace(/&lt;\/code&gt;/g,'</code>');
+}
+
+function buildSectionNav(){
+  const row=document.getElementById('sec-row');
+  row.innerHTML='';
+  SECTIONS.forEach(sec=>{
+    if(!ALL[sec.key]) return;
+    const r=calcSection(sec.key);
+    const pct=r.done>0?Math.round(r.right/r.total*100):null;
+    const b=document.createElement('button');
+    b.className='sec-btn'+(curSec===sec.key?' active':'');
+    b.innerHTML=sec.label+'<span class="sec-count">'+(pct!==null?pct+'%':r.total+'q')+'</span>';
+    b.onclick=()=>switchSection(sec.key);
+    row.appendChild(b);
+  });
+}
+
+function switchSection(key){
+  curSec=key; curQ=0;
+  buildSectionNav();
+  render();
+}
+
+function buildTabs(){
+  const row=document.getElementById('tabs');
+  row.innerHTML='';
+  const qs=ALL[curSec]||[];
+  const st=STATE[curSec]||{};
+  qs.forEach((q,i)=>{
+    const b=document.createElement('button');
+    let cls='t-btn'+(i===curQ?' active':'');
+    if(st[i]===true)cls+=' correct';
+    else if(st[i]===false)cls+=' wrong';
+    b.className=cls;
+    b.textContent='Q'+(i+1);
+    b.onclick=()=>{curQ=i;render();};
+    row.appendChild(b);
+  });
+}
+
+function render(){
+  buildSectionNav();
+  buildTabs();
+  const qs=ALL[curSec]||[];
+  const q=qs[curQ];
+  if(!q){document.getElementById('qview').innerHTML='';return;}
+  const st=STATE[curSec], done=st[curQ]!==undefined, correct=st[curQ]===true;
+  const diffMap={found:'Foundational',inter:'Intermediate',adv:'Advanced'};
+  const diffCls={found:'d-found',inter:'d-inter',adv:'d-adv'};
+  const compColor={C1:'p-c1',C2:'p-c2',C3:'p-c3'};
+
+  let h=`<div class="q-card">
+    <div class="q-meta">
+      <span class="pill ${compColor[q.comp]||'p-gen'}">${q.comp}</span>
+      <span class="diff-badge ${diffCls[q.diff]}">${diffMap[q.diff]}</span>
+      <span class="pill p-gen">${q.topic}</span>
+      <span class="q-num">Question ${curQ+1} of ${qs.length}</span>
+    </div>
+    <div class="q-stem">${fmtStem(q.stem)}</div>`;
+
+  if(q.code){
+    const codeLines=q.stem.split('\n').slice(1).join('\n').trim();
+    if(codeLines) h+=`<div class="code-block">${esc(codeLines)}</div>`;
+  }
+
+  const letters=['A','B','C','D'];
+  h+=`<div class="opt-list">`;
+  q.opts.forEach((opt,oi)=>{
+    let cls='opt-btn';
+    if(done){if(oi===q.ans)cls+=' reveal-correct';else if(SELS[curSec][curQ]===oi)cls+=' selected-wrong';}
+    const dispOpt=String(opt).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/`([^`]+)`/g,'<code>$1</code>')
+      .replace(/&lt;code&gt;/g,'<code>').replace(/&lt;\/code&gt;/g,'</code>');
+    h+=`<button class="${cls}" ${done?'disabled':''} onclick="pickMC(${oi})"><strong>${letters[oi]}.</strong> ${dispOpt}</button>`;
+  });
+  h+=`</div>`;
+
+  if(done){
+    h+=`<div class="feedback ${correct?'fb-c':'fb-w'}">
+      <strong>${correct?'&#10003; Correct':'&#10007; Incorrect'}</strong> — ${q.rationale}
+      ${q.misconception?`<div class="misconception">Instructor note: ${q.misconception}</div>`:''}
+    </div>`;
+  }
+  h+=`</div>`;
+  document.getElementById('qview').innerHTML=h;
+  document.getElementById('q-label').textContent='Questions — '+(curSec==='c1'?'C1 Algorithmic Thinking':curSec==='c2'?'C2 Troubleshooting & Debugging':'C3 Databases & SQL');
+  updateScore();
+}
+
+function pickMC(oi){
+  const q=ALL[curSec][curQ];
+  if(STATE[curSec][curQ]!==undefined) return;
+  SELS[curSec][curQ]=oi;
+  STATE[curSec][curQ]=oi===q.ans;
+  render();
+}
+
+function go(d){
+  const max=(ALL[curSec]||[]).length-1;
+  curQ=Math.max(0,Math.min(max,curQ+d));
+  render();
+}
+
+render();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CODING ASSESSMENT — 20 hands-on challenges
+     Source: D615A_Coding_Assessment_20Q_md.pdf
+     Format: prompt + expected output + self-mark, mirrors D335 NYDI
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+var COD_Q = [
+// ── SECTION A: Variables, Data Types, I/O ──────────────────────
+{comp:'C1',topic:'Data Types / I/O',diff:'found',
+title:'Temperature Conversion',
+prompt:'Write a Python program that:\n• Asks the user to enter a temperature in Celsius\n• Converts to Fahrenheit using: F = (C × 9/5) + 32\n• Displays the result with one decimal place',
+example:'0',
+expected:'32.0 degrees Fahrenheit',
+hint:'Use float(input()). f-string with {result:.1f} forces one decimal place.',
+concepts:['float() conversion','arithmetic formula','f-string :.1f'],
+solution:"celsius = float(input('Enter temperature in Celsius: '))\nfahrenheit = (celsius * 9 / 5) + 32\nprint(f'{fahrenheit:.1f} degrees Fahrenheit')"},
+
+{comp:'C1',topic:'Strings',diff:'found',
+title:'String Manipulation',
+prompt:'Write a Python program that:\n• Asks for first name and last name separately\n• Combines them into a full name with a space between\n• Displays the full name in uppercase\n• Displays how many characters are in the full name (including the space)',
+example:'John / Smith',
+expected:'Full name: JOHN SMITH\nCharacter count: 10',
+hint:'Use f-string concatenation. .upper() on the full name string. len() for character count.',
+concepts:['string concatenation','str.upper()','len()','f-strings'],
+solution:"first = input('Enter first name: ')\nlast = input('Enter last name: ')\nfull = first + ' ' + last\nprint(f'Full name: {full.upper()}')\nprint(f'Character count: {len(full)}')"},
+
+{comp:'C1',topic:'Arithmetic / I/O',diff:'found',
+title:'Simple Calculator',
+prompt:'Write a Python program that:\n• Asks the user for two numbers\n• Asks for an operator (+, -, *, /)\n• Performs the calculation\n• Displays the result in the format: 10 + 5 = 15',
+example:'10 / 5 / +',
+expected:'10 + 5 = 15',
+hint:'Use if/elif/else to branch on the operator. Convert inputs with float().',
+concepts:['if/elif/else','float() conversion','operator branching'],
+solution:"a = float(input('Enter first number: '))\nb = float(input('Enter second number: '))\nop = input('Enter operator (+, -, *, /): ')\nif op == '+': result = a + b\nelif op == '-': result = a - b\nelif op == '*': result = a * b\nelif op == '/': result = a / b\nprint(f'{int(a)} {op} {int(b)} = {int(result)}')"},
+
+{comp:'C1',topic:'Lists / Built-ins',diff:'found',
+title:'List Creation and Access',
+prompt:'Write a Python program that:\n• Creates a list of 5 numbers: [12, 45, 23, 67, 34]\n• Displays the first number\n• Displays the last number\n• Displays the sum of all numbers\n• Displays the average of all numbers',
+example:'(no input needed)',
+expected:'First number: 12\nLast number: 34\nSum: 181\nAverage: 36.2',
+hint:'Use list[0] for first, list[-1] for last. sum() and sum()/len() for total and average.',
+concepts:['list indexing','sum()','len()','average calculation'],
+solution:"nums = [12, 45, 23, 67, 34]\nprint(f'First number: {nums[0]}')\nprint(f'Last number: {nums[-1]}')\nprint(f'Sum: {sum(nums)}')\nprint(f'Average: {sum(nums)/len(nums)}')"},
+
+// ── SECTION B: Conditional Statements ─────────────────────────
+{comp:'C1',topic:'Conditionals',diff:'inter',
+title:'Grading System',
+prompt:'Write a Python program that:\n• Asks for a test score (0–100)\n• Assigns a letter grade: 90–100=A, 80–89=B, 70–79=C, 60–69=D, below 60=F\n• Displays the grade\n• Displays whether the score is passing (60 or above)',
+example:'85',
+expected:'Your grade is: B\nStatus: Passing',
+hint:'Use if/elif/else chain. Passing means score >= 60.',
+concepts:['if/elif/else chain','comparison operators','boolean conditions'],
+solution:"score = int(input('Enter test score: '))\nif score >= 90: grade = 'A'\nelif score >= 80: grade = 'B'\nelif score >= 70: grade = 'C'\nelif score >= 60: grade = 'D'\nelse: grade = 'F'\nstatus = 'Passing' if score >= 60 else 'Failing'\nprint(f'Your grade is: {grade}')\nprint(f'Status: {status}')"},
+
+{comp:'C1',topic:'Conditionals',diff:'found',
+title:'Even or Odd Checker',
+prompt:'Write a Python program that:\n• Asks for a number\n• Determines if it is even or odd\n• Determines if it is positive, negative, or zero\n• Displays both results',
+example:'7',
+expected:'7 is odd\n7 is positive',
+hint:'Use % 2 == 0 for even/odd. Compare to 0 for sign.',
+concepts:['modulo operator','if/elif/else','number classification'],
+solution:"n = int(input('Enter a number: '))\nparity = 'even' if n % 2 == 0 else 'odd'\nif n > 0: sign = 'positive'\nelif n < 0: sign = 'negative'\nelse: sign = 'zero'\nprint(f'{n} is {parity}')\nprint(f'{n} is {sign}')"},
+
+{comp:'C1',topic:'Conditionals',diff:'inter',
+title:'Login Validation',
+prompt:'Write a Python program that:\n• Defines correct username: "admin" and correct password: "secure123"\n• Asks for a username and password\n• Validates both (both must be correct)\n• Displays "Access granted" or "Access denied"',
+example:'admin / secure123',
+expected:'Access granted',
+hint:'Use and to require both conditions. String comparison is case-sensitive.',
+concepts:['string comparison','and operator','boolean logic'],
+solution:"correct_user = 'admin'\ncorrect_pass = 'secure123'\nusername = input('Enter username: ')\npassword = input('Enter password: ')\nif username == correct_user and password == correct_pass:\n    print('Access granted')\nelse:\n    print('Access denied')"},
+
+{comp:'C1',topic:'Conditionals',diff:'inter',
+title:'Age Category Classification',
+prompt:'Write a Python program that:\n• Asks for an age\n• Classifies: Child (0–12), Teen (13–19), Adult (20–64), Senior (65+)\n• Displays category\n• Displays whether eligible to vote (18+)',
+example:'16',
+expected:'Category: Teen\nEligible to vote: No',
+hint:'if/elif chain for age ranges. Voting: age >= 18.',
+concepts:['if/elif/else chain','comparison operators','multi-condition logic'],
+solution:"age = int(input('Enter age: '))\nif age <= 12: cat = 'Child'\nelif age <= 19: cat = 'Teen'\nelif age <= 64: cat = 'Adult'\nelse: cat = 'Senior'\nvote = 'Yes' if age >= 18 else 'No'\nprint(f'Category: {cat}')\nprint(f'Eligible to vote: {vote}')"},
+
+{comp:'C1',topic:'Conditionals',diff:'inter',
+title:'Discount Calculator',
+prompt:'Write a Python program that:\n• Asks for original price\n• Asks for discount percentage\n• Calculates discount amount and final price\n• Displays all three formatted to 2 decimal places\n• Displays deal type: "Good deal" (≥20%) or "Regular discount" (<20%)',
+example:'100 / 25',
+expected:'Original price: $100.00\nDiscount amount: $25.00\nFinal price: $75.00\nDeal type: Good deal',
+hint:'Use float() for price. Discount amount = price * (pct/100). Deal type uses if/else.',
+concepts:['float arithmetic',':.2f formatting','percentage calculation'],
+solution:"price = float(input('Original price: '))\ndisc = float(input('Discount %: '))\namt = price * (disc / 100)\nfinal = price - amt\ndeal = 'Good deal' if disc >= 20 else 'Regular discount'\nprint(f'Original price: ${price:.2f}')\nprint(f'Discount amount: ${amt:.2f}')\nprint(f'Final price: ${final:.2f}')\nprint(f'Deal type: {deal}')"},
+
+// ── SECTION C: Loops ──────────────────────────────────────────
+{comp:'C1',topic:'For Loops',diff:'inter',
+title:'Multiplication Table',
+prompt:'Write a Python program that:\n• Asks for a number\n• Displays the multiplication table for that number (1–10)\n• Format each line as: "number × i = result"',
+example:'5',
+expected:'5 × 1 = 5\n5 × 2 = 10\n5 × 3 = 15\n... (through 5 × 10 = 50)',
+hint:'Use for i in range(1, 11). Format with f-strings.',
+concepts:['for loop','range()','f-string output','arithmetic in loop'],
+solution:"n = int(input('Enter a number: '))\nfor i in range(1, 11):\n    print(f'{n} × {i} = {n * i}')"},
+
+{comp:'C1',topic:'While Loops',diff:'inter',
+title:'Sum of Numbers',
+prompt:'Write a Python program that:\n• Asks how many numbers to sum\n• Asks for each number one at a time\n• Calculates and displays sum and average',
+example:'3 / then 10, 20, 30',
+expected:'Sum: 60\nAverage: 20.0',
+hint:'Use a while loop or for loop with range(count). Accumulate total with +=.',
+concepts:['while loop','accumulator pattern','average = sum/count'],
+solution:"count = int(input('How many numbers? '))\ntotal = 0\nfor i in range(count):\n    total += float(input(f'Enter number {i+1}: '))\nprint(f'Sum: {int(total)}')\nprint(f'Average: {total/count}')"},
+
+{comp:'C1',topic:'While Loops',diff:'inter',
+title:'Countdown Timer',
+prompt:'Write a Python program that:\n• Asks for a number to count down from\n• Counts down to 1, displaying each number\n• Displays "Blastoff!" at the end\n• Counts how many numbers were displayed (excluding "Blastoff!")',
+example:'5',
+expected:'5\n4\n3\n2\n1\nBlastoff!\nTotal count: 5',
+hint:'while n > 0: print(n), n -= 1. Counter increments each iteration.',
+concepts:['while loop','decrement','counter variable'],
+solution:"n = int(input('Count down from: '))\ncount = 0\nwhile n > 0:\n    print(n)\n    n -= 1\n    count += 1\nprint('Blastoff!')\nprint(f'Total count: {count}')"},
+
+{comp:'C2',topic:'String Processing / Loops',diff:'adv',
+title:'Password Strength Validator',
+prompt:'Write a Python program that:\n• Asks for a password\n• Checks: length ≥ 8, contains a number, contains uppercase, contains special char (!@#$%^&*)\n• Displays ✓ Pass or ✗ Fail for each criterion\n• Rates overall: "Weak" (0–1 met), "Medium" (2–3 met), "Strong" (all 4 met)',
+example:'Secure@1',
+expected:'Length check (8+ chars): ✓ Pass\nNumber check: ✓ Pass\nUppercase check: ✓ Pass\nSpecial character check: ✓ Pass\nPassword strength: Strong',
+hint:'Use any(c.isdigit() for c in pw), any(c.isupper() for c in pw). Special chars: check membership in "!@#$%^&*".',
+concepts:['any() with generator','str.isdigit()','str.isupper()','in operator for membership'],
+solution:"pw = input('Enter password: ')\nlength_ok = len(pw) >= 8\nhas_num = any(c.isdigit() for c in pw)\nhas_upper = any(c.isupper() for c in pw)\nhas_special = any(c in '!@#$%^&*' for c in pw)\nprint(f'Length check (8+ chars): {\"✓ Pass\" if length_ok else \"✗ Fail\"}')\nprint(f'Number check: {\"✓ Pass\" if has_num else \"✗ Fail\"}')\nprint(f'Uppercase check: {\"✓ Pass\" if has_upper else \"✗ Fail\"}')\nprint(f'Special character check: {\"✓ Pass\" if has_special else \"✗ Fail\"}')\nscore = sum([length_ok, has_num, has_upper, has_special])\nrating = 'Strong' if score == 4 else 'Medium' if score >= 2 else 'Weak'\nprint(f'Password strength: {rating}')"},
+
+// ── SECTION D: Functions ──────────────────────────────────────
+{comp:'C1',topic:'Functions',diff:'inter',
+title:'Temperature Converter Function',
+prompt:'Write a Python program that:\n• Creates celsius_to_fahrenheit(celsius) returning (C × 9/5) + 32\n• Creates fahrenheit_to_celsius(fahrenheit) returning (F - 32) × 5/9\n• Asks which conversion the user wants\n• Asks for the temperature value\n• Calls the appropriate function and displays the result',
+example:'C to F / 25',
+expected:'25°C = 77.0°F',
+hint:'def celsius_to_fahrenheit(c): return (c * 9/5) + 32. Use if/else to call the right function.',
+concepts:['def / return','function arguments','if/else branching',':.1f formatting'],
+solution:"def celsius_to_fahrenheit(c): return (c * 9/5) + 32\ndef fahrenheit_to_celsius(f): return (f - 32) * 5/9\ndirection = input('C to F or F to C? ')\ntemp = float(input('Enter temperature: '))\nif 'C' in direction.upper() and 'F' in direction.upper():\n    if direction.upper().startswith('C'):\n        print(f'{int(temp)}°C = {celsius_to_fahrenheit(temp):.1f}°F')\n    else:\n        print(f'{int(temp)}°F = {fahrenheit_to_celsius(temp):.1f}°C')"},
+
+{comp:'C1',topic:'Functions / Lists',diff:'inter',
+title:'Grade Calculator Function',
+prompt:'Write a Python program that:\n• Creates get_letter_grade(score) returning A/B/C/D/F\n• Creates is_passing(score) returning True if score ≥ 60\n• Asks for 3 test scores\n• Displays each score with its letter grade\n• Displays average and its letter grade\n• Displays how many scores were passing',
+example:'85 / 72 / 91',
+expected:'Score 1: 85 (B)\nScore 2: 72 (C)\nScore 3: 91 (A)\nAverage: 82.67 (B)\nPassing scores: 3 out of 3',
+hint:'Define functions first. Collect scores in a list with a loop. Use round(avg, 2) for average.',
+concepts:['def / return','function calls','list accumulation','round()'],
+solution:"def get_letter_grade(s):\n    if s >= 90: return 'A'\n    elif s >= 80: return 'B'\n    elif s >= 70: return 'C'\n    elif s >= 60: return 'D'\n    else: return 'F'\ndef is_passing(s): return s >= 60\nscores = [float(input(f'Enter score {i+1}: ')) for i in range(3)]\nfor i, s in enumerate(scores):\n    print(f'Score {i+1}: {int(s)} ({get_letter_grade(s)})')\navg = round(sum(scores)/3, 2)\npassing = sum(1 for s in scores if is_passing(s))\nprint(f'Average: {avg} ({get_letter_grade(avg)})')\nprint(f'Passing scores: {passing} out of 3')"},
+
+{comp:'C1',topic:'Functions',diff:'inter',
+title:'Simple Calculator with Functions',
+prompt:'Write a Python program that:\n• Creates functions: add(a, b), subtract(a, b), multiply(a, b), divide(a, b)\n• Asks for two numbers and an operation (add, subtract, multiply, divide)\n• Calls the appropriate function\n• Displays the result with the calculation shown',
+example:'20 / 4 / divide',
+expected:'20 ÷ 4 = 5.0',
+hint:'Define four functions. Use a dictionary or if/elif chain to select the right one.',
+concepts:['def / return','function dispatch','if/elif or dict lookup'],
+solution:"def add(a,b): return a+b\ndef subtract(a,b): return a-b\ndef multiply(a,b): return a*b\ndef divide(a,b): return a/b\na = float(input('First number: '))\nb = float(input('Second number: '))\nop = input('Operation (add/subtract/multiply/divide): ')\nif op == 'add': r = add(a,b); sym = '+'\nelif op == 'subtract': r = subtract(a,b); sym = '-'\nelif op == 'multiply': r = multiply(a,b); sym = '×'\nelif op == 'divide': r = divide(a,b); sym = '÷'\nprint(f'{int(a)} {sym} {int(b)} = {r}')"},
+
+// ── SECTION E: Lists and Data Structures ──────────────────────
+{comp:'C1',topic:'Lists / Statistics',diff:'inter',
+title:'List Statistics',
+prompt:'Write a Python program that:\n• Collects 5 numbers from the user\n• Calculates and displays: highest, lowest, sum, average, median\n• Displays the list in sorted order',
+example:'10 / 25 / 15 / 30 / 5',
+expected:'Original list: [10, 25, 15, 30, 5]\nSorted list: [5, 10, 15, 25, 30]\nHighest: 30\nLowest: 5\nSum: 85\nAverage: 17.0\nMedian: 15',
+hint:'Use sorted(). Median of 5 sorted values is index [2]. round(avg, 1) for average.',
+concepts:['sorted()','max() / min()','sum() / len()','median = middle of sorted list'],
+solution:"nums = [float(input(f'Enter number {i+1}: ')) for i in range(5)]\nprint(f'Original list: {[int(n) for n in nums]}')\ns = sorted(nums)\nprint(f'Sorted list: {[int(n) for n in s]}')\nprint(f'Highest: {int(max(nums))}')\nprint(f'Lowest: {int(min(nums))}')\nprint(f'Sum: {int(sum(nums))}')\nprint(f'Average: {sum(nums)/len(nums)}')\nprint(f'Median: {int(s[2])}')"},
+
+{comp:'C1',topic:'Lists / Dictionaries',diff:'inter',
+title:'Student Grade Tracker',
+prompt:'Write a Python program that:\n• Asks how many students to track\n• For each student, asks for name and grade\n• Displays all students with grades\n• Displays class average\n• Displays highest- and lowest-graded student',
+example:'3 / Alice 90 / Bob 78 / Charlie 85',
+expected:'Student Grades:\nAlice: 90\nBob: 78\nCharlie: 85\nClass average: 84.33\nHighest: Alice (90)\nLowest: Bob (78)',
+hint:'Store names and grades in parallel lists. Use zip() to display them together. round(avg, 2).',
+concepts:['parallel lists','zip()','max/min with key','round()'],
+solution:"n = int(input('Number of students: '))\nnames, grades = [], []\nfor i in range(n):\n    names.append(input(f'Student {i+1} name: '))\n    grades.append(float(input(f'{names[-1]} grade: ')))\nprint('Student Grades:')\nfor name, grade in zip(names, grades):\n    print(f'{name}: {int(grade)}')\navg = round(sum(grades)/len(grades), 2)\nprint(f'Class average: {avg}')\nhi = names[grades.index(max(grades))]\nlo = names[grades.index(min(grades))]\nprint(f'Highest: {hi} ({int(max(grades))})')\nprint(f'Lowest: {lo} ({int(min(grades))})')"},
+
+{comp:'C1',topic:'Dictionaries / Strings',diff:'adv',
+title:'Word Frequency Counter',
+prompt:'Write a Python program that:\n• Asks for a sentence\n• Converts to lowercase and removes punctuation\n• Counts occurrences of each word\n• Displays words and frequencies\n• Displays the most frequent word',
+example:'"hello world hello python"',
+expected:'Word frequencies:\nhello: 2\nworld: 1\npython: 1\nMost frequent word: hello (appears 2 times)',
+hint:'Use str.lower(), str.replace() for punctuation. Build a dict with word counts. max(counts, key=counts.get).',
+concepts:['dict accumulation','str.lower()','str.split()','max with key='],
+solution:"import string\nsentence = input('Enter a sentence: ').lower()\nfor ch in string.punctuation:\n    sentence = sentence.replace(ch, '')\nwords = sentence.split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint('Word frequencies:')\nfor w, c in counts.items():\n    print(f'{w}: {c}')\nbest = max(counts, key=counts.get)\nprint(f'Most frequent word: {best} (appears {counts[best]} times)')"},
+
+{comp:'C1',topic:'Lists / Loops',diff:'inter',
+title:'Even-Odd List Separator',
+prompt:'Write a Python program that:\n• Asks for numbers one per line; stop when user enters "done"\n• Separates into even and odd lists\n• Displays both lists\n• Displays counts, sums, and averages for each',
+example:'2 / 3 / 4 / 5 / 6 / done',
+expected:'Even numbers: [2, 4, 6]\nOdd numbers: [3, 5]\nCount - Even: 3, Odd: 2\nSum - Even: 12, Odd: 8\nAverage - Even: 4.0, Odd: 4.0',
+hint:'while True loop. Break when input == "done". Append to even or odd list based on % 2.',
+concepts:['while True / break','list.append()','modulo classification','sum() / len()'],
+solution:"evens, odds = [], []\nwhile True:\n    val = input('Enter a number (or done): ')\n    if val.lower() == 'done': break\n    n = int(val)\n    if n % 2 == 0: evens.append(n)\n    else: odds.append(n)\nprint(f'Even numbers: {evens}')\nprint(f'Odd numbers: {odds}')\nprint(f'Count - Even: {len(evens)}, Odd: {len(odds)}')\nprint(f'Sum - Even: {sum(evens)}, Odd: {sum(odds)}')\nprint(f'Average - Even: {sum(evens)/len(evens) if evens else 0}, Odd: {sum(odds)/len(odds) if odds else 0}')"},
+];
+
+// ── State ─────────────────────────────────────────────────────
+var codState={}, codCode={}, codOutput={}, codHint={}, codSol={}, codCur=0;
+
+ALL['cod']   = COD_Q;
+STATE['cod'] = codState;
+SECTIONS.push({key:'cod', label:'Coding Assessment', color:'#991B1B', short:'Code'});
+
+function codEsc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function codSave(){
+  var ca=document.getElementById('cod-code');
+  var oa=document.getElementById('cod-out');
+  if(ca) codCode[codCur]=ca.value;
+  if(oa) codOutput[codCur]=oa.value;
+}
+function codMark(pass){
+  codSave();
+  codState[codCur]=pass;
+  STATE['cod'][codCur]=pass;
+  codRender();
+  updateScore();
+}
+
+function codGrade(){
+  codSave();
+  var q=COD_Q[codCur];
+  var userOut=(codOutput[codCur]||'').trim();
+  var el=document.getElementById('cod-grade-result');
+  if(!el) return;
+  if(!userOut){
+    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#FAEEDA;border:0.5px solid #FAC775;font-size:13px;color:#633806">Paste your program output in Step 2 first, then click Check.</div>';
+    return;
+  }
+  var expLines=q.expected.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length>0;});
+  var usrLines=userOut.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length>0;});
+  var matched=0, mismatches=[];
+  expLines.forEach(function(exp,i){
+    var usr=usrLines[i]||'(missing)';
+    if(exp===usr) matched++;
+    else mismatches.push({line:i+1,exp:exp,got:usr});
+  });
+  var pct=Math.round(matched/expLines.length*100);
+  if(pct===100){
+    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#EAF3DE;border:0.5px solid #C0DD97;font-size:13px;color:#27500A"><strong>&#10003; Perfect match!</strong> All '+expLines.length+' lines correct. Click <em>Mark correct</em> above.</div>';
+  } else {
+    var diffs='';
+    mismatches.slice(0,3).forEach(function(m){
+      diffs+='<div style="margin-top:7px;font-size:12px">'
+        +'<span style="color:#9b9b97">Line '+m.line+':</span><br>'
+        +'<span style="color:#27500A">Expected: </span>'
+        +'<code style="font-family:monospace;font-size:11.5px;background:rgba(0,0,0,.06);padding:1px 4px;border-radius:3px">'+codEsc(m.exp)+'</code><br>'
+        +'<span style="color:#791F1F">Got:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+        +'<code style="font-family:monospace;font-size:11.5px;background:rgba(0,0,0,.06);padding:1px 4px;border-radius:3px">'+codEsc(m.got)+'</code>'
+        +'</div>';
+    });
+    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#FCEBEB;border:0.5px solid #F7C1C1;font-size:13px;color:#791F1F">'
+      +'<strong>&#10007; '+pct+'% match</strong> — '+matched+' of '+expLines.length+' lines correct.'
+      +diffs
+      +'<div style="margin-top:8px;font-size:12px;color:#555">Fix your code in PyCharm/VS Code, run again, paste new output.</div>'
+      +'</div>';
+  }
+}
+
+function codRender(){
+  var q=COD_Q[codCur];
+  var st=codState[codCur];
+  var done=(st!==undefined);
+  var passed=(st===true);
+
+  var tabRow=document.getElementById('tabs');
+  tabRow.innerHTML='';
+  COD_Q.forEach(function(qq,i){
+    var b=document.createElement('button');
+    var cls='t-btn'+(i===codCur?' active':'');
+    if(codState[i]===true)  cls+=' correct';
+    else if(codState[i]===false) cls+=' wrong';
+    b.className=cls;
+    b.textContent='Q'+(i+1);
+    (function(idx){ b.onclick=function(){ codSave(); codCur=idx; codRender(); }; })(i);
+    tabRow.appendChild(b);
+  });
+
+  document.getElementById('q-label').textContent='Coding Assessment — Write the solution in your IDE';
+
+  var compColors={C1:'p-c1',C2:'p-c2',C3:'p-c3'};
+  var diffLabels={found:'Foundational',inter:'Intermediate',adv:'Advanced'};
+  var diffCls={found:'d-found',inter:'d-inter',adv:'d-adv'};
+
+  var conceptPills='';
+  q.concepts.forEach(function(c){
+    conceptPills+='<span class="concept-pill">'+codEsc(c)+'</span>';
+  });
+
+  var hintBox=codHint[codCur]
+    ? '<div style="background:#E6F1FB;border:0.5px solid #B5D4F4;border-radius:8px;padding:10px 14px;font-size:13px;color:#0C447C;margin-bottom:12px;line-height:1.6">'+codEsc(q.hint)+'</div>'
+    : '';
+
+  var solBox=codSol[codCur]
+    ? '<div style="margin-top:12px">'
+      +'<div style="font-size:11px;font-weight:500;color:#9b9b97;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Model solution</div>'
+      +'<div style="font-family:\'Courier New\',monospace;font-size:12.5px;background:#f5f5f3;border:0.5px solid #e0ddd6;border-radius:8px;padding:14px;white-space:pre-wrap;color:#1a1a1a;line-height:1.65;max-height:360px;overflow-y:auto">'+codEsc(q.solution)+'</div>'
+      +'</div>'
+    : '';
+
+  var statusBox='';
+  if(done){
+    statusBox=passed
+      ? '<div style="margin-top:10px;padding:12px 16px;border-radius:8px;background:#EAF3DE;border:0.5px solid #C0DD97;font-size:13px;color:#27500A"><strong>&#10003; Marked correct</strong> — Great work. Move to the next challenge.</div>'
+      : '<div style="margin-top:10px;padding:12px 16px;border-radius:8px;background:#FCEBEB;border:0.5px solid #F7C1C1;font-size:13px;color:#791F1F"><strong>&#10007; Marked incorrect</strong> — Review the hint and solution, fix your code, and try again.</div>';
+  }
+
+  var expFormatted = q.expected.replace(/\n\.\.\. .+/,'');
+
+  var html=''
+    +'<div class="q-card">'
+    +'<div class="q-meta">'
+    +'<span class="pill '+(compColors[q.comp]||'p-gen')+'">'+q.comp+'</span>'
+    +'<span class="diff-badge '+(diffCls[q.diff]||'d-inter')+'">'+diffLabels[q.diff]+'</span>'
+    +'<span class="pill p-gen">'+codEsc(q.topic)+'</span>'
+    +'<span class="q-num">Challenge '+(codCur+1)+' of '+COD_Q.length+'</span>'
+    +'</div>'
+    +'<div style="font-size:16px;font-weight:500;color:#1a1a1a;margin-bottom:14px">'+codEsc(q.title)+'</div>'
+    +'<div class="cod-prompt">'+codEsc(q.prompt)+'</div>'
+    +'<div class="cod-example">'
+    +'<div class="cod-box cod-inp"><div class="cod-box-label inp">Example input</div><pre>'+codEsc(q.example)+'</pre></div>'
+    +'<div class="cod-box cod-out"><div class="cod-box-label out">Expected output</div><pre>'+codEsc(expFormatted)+'</pre></div>'
+    +'</div>'
+    +'<div class="concept-pills">'+conceptPills+'</div>'
+    +'<button id="cod-hint-btn" style="font-size:13px;color:#185FA5;background:none;border:none;cursor:pointer;padding:0;margin-bottom:'+(codHint[codCur]?'8':'14')+'px">&#128161; '+(codHint[codCur]?'Hide hint':'Show hint')+'</button>'
+    +hintBox
+    +'<div style="font-size:12px;color:#9b9b97;margin-bottom:5px;font-weight:500">STEP 1 — Write and run this in PyCharm or VS Code, then paste your code here:</div>'
+    +'<textarea id="cod-code" style="width:100%;font-family:\'Courier New\',monospace;font-size:13px;padding:12px;border:0.5px solid #ccc;border-radius:8px;background:#f5f5f3;color:#1a1a1a;resize:vertical;min-height:180px;line-height:1.65" placeholder="# Paste your Python solution here...">'+codEsc(codCode[codCur]||'')+'</textarea>'
+    +'<div style="font-size:12px;color:#9b9b97;margin:12px 0 5px;font-weight:500">STEP 2 — Paste your program\'s actual terminal output here:</div>'
+    +'<textarea id="cod-out" style="width:100%;font-family:\'Courier New\',monospace;font-size:13px;padding:12px;border:0.5px solid #ccc;border-radius:8px;background:#f5f5f3;color:#1a1a1a;resize:vertical;min-height:90px;line-height:1.65" placeholder="Paste what your program actually printed...">'+codEsc(codOutput[codCur]||'')+'</textarea>'
+    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'
+    +'<button id="cod-check" style="padding:9px 20px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer">&#10003; Check my output</button>'
+    +'<button id="cod-pass" style="padding:9px 16px;background:#fff;border:0.5px solid #1D9E75;color:#0F6E56;border-radius:8px;font-size:13px;cursor:pointer">Mark correct</button>'
+    +'<button id="cod-fail" style="padding:9px 16px;background:#fff;border:0.5px solid #A32D2D;color:#A32D2D;border-radius:8px;font-size:13px;cursor:pointer">Mark incorrect</button>'
+    +'<button id="cod-sol-btn" style="padding:9px 16px;background:#fff;border:0.5px solid #ccc;color:#555;border-radius:8px;font-size:13px;cursor:pointer">'+(codSol[codCur]?'Hide solution':'Show solution')+'</button>'
+    +'</div>'
+    +'<div id="cod-grade-result" style="margin-top:10px"></div>'
+    +statusBox
+    +solBox
+    +'</div>';
+
+  document.getElementById('qview').innerHTML=html;
+
+  var hintB  = document.getElementById('cod-hint-btn');
+  var solB   = document.getElementById('cod-sol-btn');
+  var checkB = document.getElementById('cod-check');
+  var passB  = document.getElementById('cod-pass');
+  var failB  = document.getElementById('cod-fail');
+  var codeTA = document.getElementById('cod-code');
+  var outTA  = document.getElementById('cod-out');
+
+  if(hintB)  hintB.onclick  = function(){ codSave(); codHint[codCur]=!codHint[codCur]; codRender(); };
+  if(solB)   solB.onclick   = function(){ codSave(); codSol[codCur]=!codSol[codCur];   codRender(); };
+  if(checkB) checkB.onclick = codGrade;
+  if(passB)  passB.onclick  = function(){ codMark(true);  };
+  if(failB)  failB.onclick  = function(){ codMark(false); };
+  if(codeTA) codeTA.oninput = function(){ codCode[codCur]   = codeTA.value; };
+  if(outTA)  outTA.oninput  = function(){ codOutput[codCur] = outTA.value;  };
+
+  updateScore();
+}
+
+// Patch switchSection
+var _origSwitch = switchSection;
+switchSection = function(key){
+  if(curSec === 'cod') codSave();
+  if(key === 'cod'){
+    curSec = 'cod';
+    curQ   = 0;
+    codCur = 0;
+    buildSectionNav();
+    codRender();
+    return;
+  }
+  _origSwitch(key);
+};
+
+var _origGo = go;
+go = function(d){
+  if(curSec === 'cod'){
+    codSave();
+    codCur = Math.max(0, Math.min(COD_Q.length - 1, codCur + d));
+    codRender();
+    return;
+  }
+  _origGo(d);
+};
+
+buildSectionNav();
+updateScore();
+</script>
+
+</body>
+</html>
