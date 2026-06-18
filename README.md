@@ -1,7 +1,7 @@
 # D615A — Foundations of Coding
 ## Full Practice Exam · WGU · Instructor: Dr. Mario Booker
 
-> **60 questions across 4 sections — all auto-graded in the browser.  
+> **80 questions across 4 sections — all auto-graded in the browser.  
 > No login required. No installation. Works on any device.**
 
 ---
@@ -139,11 +139,7 @@ The colored breakdown bars show your score by competency and difficulty level. U
 
 ---
 
-## For the Instructor
 
-The exam is a single self-contained HTML file (`d615a_full_practice_exam.html`) with zero external dependencies. All questions, grading logic, rationale, and UI are bundled inline — no server, no database, no CDN calls required. GitHub Pages serves it as a static file.
-
-To update questions or add new sections, edit the HTML file directly and push to the `main` branch. GitHub Pages rebuilds within 1–2 minutes.
 
 ---
 
