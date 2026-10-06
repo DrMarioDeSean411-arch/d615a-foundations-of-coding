@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D615A – Full Practice Exam</title>
+<title>D615A — Practice Exam Form B</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f3;color:#1a1a1a;min-height:100vh;font-size:15px}
 .shell{max-width:860px;margin:0 auto;padding:24px 16px 80px}
-
-/* top bar */
 .top-bar{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px 24px;margin-bottom:18px}
 .top-title{font-size:19px;font-weight:500}
 .top-sub{font-size:13px;color:#6b6b67;margin-top:3px}
@@ -18,10 +16,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .p-c1{background:#E1F5EE;color:#0F6E56;border-color:#9FE1CB}
 .p-c2{background:#FFF3E0;color:#B45309;border-color:#FCD48C}
 .p-c3{background:#EEEDFE;color:#534AB7;border-color:#CECBF6}
+.p-sim{background:#FEE2E2;color:#991B1B;border-color:#FECACA}
 .p-gen{background:#f0eeea;color:#444;border-color:#ccc}
-.p-cod{background:#FEE2E2;color:#991B1B;border-color:#FECACA}
-
-/* scoreboard */
 .scr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(108px,1fr));gap:8px;margin-bottom:14px}
 .scr-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:10px;padding:12px;text-align:center}
 .scr-num{font-size:22px;font-weight:500}
@@ -29,23 +25,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .prog-wrap{background:#e8e6e0;border-radius:999px;height:5px;margin-bottom:4px;overflow:hidden}
 .prog-bar{height:5px;border-radius:999px;transition:width .3s;background:#1D9E75}
 .prog-lbl{font-size:11px;color:#9b9b97;display:flex;justify-content:space-between;margin-bottom:16px}
-
-/* section nav */
 .sec-label{font-size:11px;font-weight:500;color:#9b9b97;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
 .sec-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .sec-btn{padding:8px 16px;border:0.5px solid #ccc;border-radius:8px;font-size:13px;background:#fff;cursor:pointer;color:#555;transition:all .12s;font-family:inherit}
 .sec-btn:hover{background:#f0eeea}
 .sec-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;font-weight:500}
 .sec-btn .sec-count{font-size:11px;opacity:.7;margin-left:4px}
-
-/* question tabs */
 .tab-row{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:14px}
 .t-btn{padding:5px 9px;border:0.5px solid #ccc;border-radius:7px;font-size:12px;background:#fff;cursor:pointer;color:#666;transition:all .12s;font-family:inherit}
 .t-btn.active{background:#f0eeea;color:#1a1a1a;border-color:#777;font-weight:500}
 .t-btn.correct{border-color:#1D9E75;color:#0F6E56;background:#f0fbf6}
 .t-btn.wrong{border-color:#A32D2D;color:#A32D2D;background:#fdf2f2}
-
-/* question card */
 .q-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px;margin-bottom:12px}
 .q-meta{display:flex;align-items:center;gap:7px;margin-bottom:10px;flex-wrap:wrap}
 .q-num{font-size:11px;color:#9b9b97}
@@ -63,19 +53,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .opt-btn.selected-wrong{border-color:#A32D2D;background:#FCEBEB;color:#791F1F}
 .opt-btn:disabled{cursor:default}
 .opt-btn code{font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.06);padding:1px 4px;border-radius:3px}
-
-/* feedback */
 .feedback{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:13px;line-height:1.7}
 .fb-c{background:#EAF3DE;border:0.5px solid #C0DD97;color:#27500A}
 .fb-w{background:#FCEBEB;border:0.5px solid #F7C1C1;color:#791F1F}
 .misconception{margin-top:6px;font-size:12px;color:#666;font-style:italic;border-top:0.5px solid rgba(0,0,0,.08);padding-top:6px}
-
-/* nav */
+.sim-scenario{background:#f0eeea;border:0.5px solid #ccc;border-radius:8px;padding:14px 16px;margin-bottom:14px;font-size:13.5px;line-height:1.8;color:#1a1a1a}
+.sim-scenario-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9b9b97;margin-bottom:6px}
 .nav-row{display:flex;gap:8px;margin-top:6px}
 .nav-btn{padding:8px 18px;background:#fff;border:0.5px solid #ccc;border-radius:8px;font-size:13px;cursor:pointer;color:#1a1a1a;transition:all .12s;font-family:inherit}
 .nav-btn:hover{background:#f0eeea}
-
-/* breakdown */
+.reset-btn{padding:8px 18px;background:#fff;border:0.5px solid #A32D2D;border-radius:8px;font-size:13px;cursor:pointer;color:#A32D2D;transition:all .12s;font-family:inherit}
+.reset-btn:hover{background:#fdf2f2}
 .breakdown{background:#fff;border:0.5px solid #e0ddd6;border-radius:12px;padding:20px;margin-top:20px}
 .bd-title{font-size:14px;font-weight:500;margin-bottom:14px}
 .bd-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px}
@@ -84,59 +72,44 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .bd-bar{height:8px;border-radius:999px;transition:width .4s}
 .bd-pct{min-width:42px;text-align:right;color:#6b6b67;font-size:12px}
 .bd-score{min-width:55px;text-align:right;color:#9b9b97;font-size:12px}
-
-/* section summary */
-.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:18px}
-.sum-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:10px;padding:14px;text-align:center;cursor:pointer}
-.sum-title{font-size:11px;color:#9b9b97;margin-bottom:6px}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:18px}
+.sum-card{background:#fff;border:0.5px solid #e0ddd6;border-radius:10px;padding:12px;text-align:center;cursor:pointer}
+.sum-title{font-size:10px;color:#9b9b97;margin-bottom:5px}
 .sum-num{font-size:20px;font-weight:500}
 .sum-sub{font-size:11px;color:#9b9b97;margin-top:2px}
-
-/* coding section */
-.cod-prompt{background:#f5f5f3;border:0.5px solid #e0ddd6;border-radius:8px;padding:14px 16px;margin-bottom:12px;font-size:13.5px;line-height:1.8;color:#1a1a1a;white-space:pre-wrap}
-.cod-example{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.cod-box{border-radius:8px;padding:12px}
-.cod-inp{background:#EAF3DE;border:0.5px solid #C0DD97}
-.cod-out{background:#E6F1FB;border:0.5px solid #B5D4F4}
-.cod-box-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
-.cod-box-label.inp{color:#27500A}
-.cod-box-label.out{color:#0C447C}
-.cod-box pre{font-family:'Courier New',monospace;font-size:12px;line-height:1.65;white-space:pre-wrap}
-.concept-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
-.concept-pill{font-size:11px;padding:3px 9px;border-radius:999px;background:#EEEDFE;color:#534AB7;border:0.5px solid #CECBF6;font-weight:500}
 </style>
 </head>
 <body>
 <div class="shell">
 
 <div class="top-bar">
-  <div class="top-title">D615A — Foundations of Coding</div>
-  <div class="top-sub">Full diagnostic practice exam · 40 questions + coding assessment · all auto-graded</div>
+  <div class="top-title">D615A — Foundations of Coding · Practice Exam Form B</div>
+  <div class="top-sub">110 questions · 4 sections · auto-graded · 90 seconds per question recommended</div>
   <div class="top-pills">
     <span class="pill p-c1">C1 Algorithmic Thinking</span>
     <span class="pill p-c2">C2 Troubleshooting &amp; Debugging</span>
-    <span class="pill p-c3">C3 Relational Databases &amp; SQL</span>
-    <span class="pill p-cod">Coding Assessment</span>
+    <span class="pill p-c3">C3 Databases &amp; SQL</span>
+    <span class="pill p-sim">Simulated Practice Test</span>
   </div>
 </div>
 
-<!-- scoreboard -->
 <div class="scr-grid">
-  <div class="scr-card"><div class="scr-num" id="sc-tot">0<span style="font-size:13px;color:#9b9b97">/40</span></div><div class="scr-lbl">Answered</div></div>
+  <div class="scr-card"><div class="scr-num" id="sc-tot">0<span style="font-size:13px;color:#9b9b97">/110</span></div><div class="scr-lbl">Answered</div></div>
   <div class="scr-card"><div class="scr-num" id="sc-right" style="color:#1D9E75">0</div><div class="scr-lbl">Correct</div></div>
   <div class="scr-card"><div class="scr-num" id="sc-wrong" style="color:#A32D2D">0</div><div class="scr-lbl">Incorrect</div></div>
   <div class="scr-card"><div class="scr-num" id="sc-pct">—</div><div class="scr-lbl">Overall score</div></div>
   <div class="scr-card"><div class="scr-num" id="sc-pass" style="color:#9b9b97">—</div><div class="scr-lbl">Exam ready?</div></div>
 </div>
 <div class="prog-wrap"><div class="prog-bar" id="prog" style="width:0%"></div></div>
-<div class="prog-lbl"><span id="prog-txt">0 of 40 answered</span><span id="pass-note" style="color:#1D9E75;font-weight:500"></span></div>
+<div class="prog-lbl"><span id="prog-txt">0 of 110 answered</span><span id="pass-note" style="color:#1D9E75;font-weight:500"></span></div>
 
-<!-- section nav -->
 <div class="sec-label">Select section</div>
-<div class="sec-row" id="sec-row"></div>
+<div style="display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px">
+  <div class="sec-row" id="sec-row" style="margin-bottom:0;flex:1"></div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset all</button>
+</div>
 <div class="sum-grid" id="sum-grid"></div>
 
-<!-- tabs + question -->
 <div class="sec-label" id="q-label">Questions</div>
 <div class="tab-row" id="tabs"></div>
 <div id="qview"></div>
@@ -145,621 +118,1053 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <button class="nav-btn" onclick="go(1)">Next &#8594;</button>
 </div>
 
-<!-- breakdown -->
 <div class="breakdown">
   <div class="bd-title">Competency breakdown</div>
   <div id="bd-rows"></div>
 </div>
 
 </div>
-
 <script>
-// ═══════════════════════════════════════════════════════════════
-// SECTION DEFINITIONS
-// ═══════════════════════════════════════════════════════════════
-const SECTIONS = [
-  {key:'c1', label:'C1 — Algorithmic Thinking', color:'#1D9E75', short:'C1'},
-  {key:'c2', label:'C2 — Troubleshooting &amp; Debugging', color:'#B45309', short:'C2'},
-  {key:'c3', label:'C3 — Databases &amp; SQL', color:'#534AB7', short:'C3'},
+// ═══════════════════════════════════════════════════════
+// C1 — ALGORITHMIC THINKING & PROGRAMMING  (30 questions)
+// Sources: Form B + Sim PT 2026
+// ═══════════════════════════════════════════════════════
+const C1=[
+{sec:'c1',comp:'C1',topic:'Interpreted Languages',diff:'found',
+stem:'Which statement best describes an interpreted language?',
+opts:['The entire program is translated into machine code before it runs',
+      'Code must be completely rewritten for every operating system',
+      'Code is translated and executed one statement at a time while the program runs',
+      'Programs cannot contain variables, loops, or conditions'],
+ans:2,
+rationale:'<strong>C is correct.</strong> An interpreter reads and executes source code one statement at a time at runtime, with no separate compilation step.',
+misconception:'D describes compiled languages. Students routinely reverse these two definitions.'},
+
+{sec:'c1',comp:'C1',topic:'Interpreted Languages — Example',diff:'found',
+stem:'Which programming language is interpreted at runtime?',
+opts:['PHP',
+      'C#',
+      'Swift',
+      'C++'],
+ans:0,
+rationale:'<strong>C is correct.</strong> PHP is an interpreted scripting language — source code is read and executed at runtime by the PHP interpreter. C#, Swift, and C++ are compiled.',
+misconception:'Students frequently pick C++ as an interpreted language. C++ requires compilation to machine code before any execution can occur.'},
+
+{sec:'c1',comp:'C1',topic:'Compiled Languages',diff:'found',
+stem:'Which programming language is typically compiled into machine code before the program runs?',
+opts:['Python','JavaScript','C++','PHP'],
+ans:2,
+rationale:'<strong>C is correct.</strong> C++ is a compiled language. Python, JavaScript, and PHP are all interpreted at runtime.',
+misconception:'Students pick Python because it is widely used. Python uses an interpreter — no separate compilation to machine code occurs in standard execution.'},
+
+{sec:'c1',comp:'C1',topic:'Compiled vs Interpreted',diff:'inter',
+stem:'Which statement describes how compiled and interpreted languages differ?',
+opts:['Compiled languages show results from changes faster',
+      'Compiled languages require more frequent translation',
+      'Compiled languages require more memory usage',
+      'Compiled languages require a greater effort to edit'],
+ans:3,
+rationale:'<strong>B is correct.</strong> A full recompile is required before any change can be tested, making the edit-run cycle more effort-intensive than in interpreted languages where changes run immediately.',
+misconception:'A reverses the reality — compiled programs run faster but interpreted languages reflect changes faster during development.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Definition',diff:'found',
+stem:'Which everyday activity is the clearest example of an algorithm?',
+opts:['Following a recipe\'s numbered steps to bake cookies',
+      'Recalling a friend\'s phone number from memory',
+      'Owning a cookbook that contains many recipes',
+      'Choosing a favorite song based on mood'],
+ans:0,
+rationale:'<strong>D is correct.</strong> An algorithm is an ordered, unambiguous, terminating sequence of steps. A numbered recipe satisfies all three criteria.',
+misconception:'Students pick the cookbook (B). Owning a book is data storage. The algorithm is the numbered steps inside one recipe, not the book containing them.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm — Daily Impact',diff:'found',
+stem:'How do algorithms help people perform daily tasks?',
+opts:['Clarify problem definitions',
+      'Ensure activities are performed in an organized way',
+      'Eliminate mathematical operations',
+      'Describe ideal solution characteristics'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Algorithms provide a defined, ordered sequence of steps that organizes task execution — removing ambiguity and ensuring consistent results.',
+misconception:'A and D describe planning activities, not the operational value algorithms provide once they are being executed.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm — Broader Effect',diff:'found',
+stem:'How do algorithms affect daily life?',
+opts:['Incorporate variety into task execution',
+      'Reveal new approaches to old problems',
+      'Provide guiding decision-making principles',
+      'Use metrics to evaluate performance'],
+ans:2,
+rationale:'<strong>D is correct.</strong> Algorithms provide systematic, rule-based decision-making principles that guide choices in navigation, search, recommendations, and countless other daily systems.',
+misconception:'A suggests novelty is the primary value. The primary contribution of algorithms to daily life is consistent, structured decision-making guidance.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Planning — First Step',diff:'inter',
+stem:'A manufacturing company hired a programmer to code an algorithm to choose the ideal box size for a shipping order. Which step should be taken first?',
+opts:['Describe individual tasks in pseudocode',
+      'Determine the inputs and outputs',
+      'Break down the problem into smaller tasks',
+      'Test each portion of pseudocode'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Identifying inputs and outputs is the foundational first step — without knowing what data enters and what result must be produced, no design decision can be valid.',
+misconception:'D (test pseudocode) and A (write pseudocode) come after the input/output definition phase. Students want to jump to implementation before the problem is fully scoped.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Planning — Next Step',diff:'inter',
+stem:'A developer has identified algorithm steps and written pseudocode. What should be done next?',
+opts:['Determine desired outputs and inputs',
+      'Write the algorithm in a compiled language',
+      'Conduct testing to verify solution accuracy',
+      'Translate pseudocode into machine language'],
+ans:2,
+rationale:'<strong>C is correct.</strong> After pseudocode is written, the next step is testing — confirming the logic produces correct outputs for valid inputs before any language translation occurs.',
+misconception:'Inputs/outputs (A) precede pseudocode. Translation (B, D) follows testing. Students who skip testing often discover flawed logic only after investing significant implementation effort.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Validation',diff:'inter',
+stem:'Which algorithm validation best practice should a programmer follow?',
+opts:['Compare speed to expectations',
+      'Test every possible input',
+      'Reduce dependence on external modules',
+      'Use testing to ensure reliability'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Systematic testing is the standard for algorithm validation — executing the algorithm against representative inputs and verifying outputs match expectations.',
+misconception:'B (test every possible input) is impractical for most real-world algorithms where input space is infinite. Representative testing across boundary and typical cases is the achievable standard.'},
+
+{sec:'c1',comp:'C1',topic:'Pseudocode Purpose',diff:'found',
+stem:'How does pseudocode assist algorithm planning?',
+opts:['Creates a secure testing environment',
+      'Makes a solution easier to understand',
+      'Restricts planning to one language',
+      'Provides a visual representation'],
+ans:1,
+rationale:'<strong>D is correct.</strong> Pseudocode expresses algorithm logic in plain language, making the solution readable and understandable to both technical and non-technical stakeholders without any syntax overhead.',
+misconception:'B describes flowcharts, not pseudocode. Pseudocode uses text; flowcharts use shapes. They serve complementary but distinct planning roles.'},
+
+{sec:'c1',comp:'C1',topic:'Flowcharts',diff:'found',
+stem:'How do flowcharts simplify program planning?',
+opts:['List every possible input',
+      'Show program history',
+      'Use shapes to represent actions and decisions',
+      'Provide examples of coding languages'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Flowcharts use standardized shapes — rectangles for processes, diamonds for decisions, parallelograms for I/O, ovals for start/end — to visually represent program logic.',
+misconception:'A (list all inputs) is impossible and not the purpose. Flowcharts represent the control flow of a program, not its data inventory.'},
+
+{sec:'c1',comp:'C1',topic:'Flowchart — Decision Shape',diff:'found',
+stem:'In a flowchart, which shape represents a decision such as "Is it raining?"',
+opts:['Diamond','Oval','Rectangle','Parallelogram'],
+ans:0,
+rationale:'<strong>A is correct.</strong> The diamond (rhombus) marks a decision point with two or more branches (yes/no, true/false). Rectangles are processes; parallelograms are I/O; ovals mark start/end.',
+misconception:'Students pick rectangle thinking any action box covers decisions. The rectangle is strictly for process steps, never for branching conditions.'},
+
+{sec:'c1',comp:'C1',topic:'Linear Search',diff:'inter',
+stem:'A linear search runs on an unsorted list of N items and the target value is not in the list. How many comparisons does the search make?',
+opts:['1','log N','N','N/2'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Linear search examines every element when the target is absent. With N items and no match, all N comparisons are made before concluding the target is missing.',
+misconception:'N/2 is the average case when the item IS present. When absent, every element must be checked — N comparisons, not half.'},
+
+{sec:'c1',comp:'C1',topic:'Binary Search Precondition',diff:'inter',
+stem:'Which search algorithm requires the data to be sorted before it can be used?',
+opts:['Linear search','Binary search','Depth-first search','Breadth-first search'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Binary search halves the search space at each step by comparing to the midpoint — a strategy that only works on sorted data.',
+misconception:'Linear search works on unsorted data by scanning sequentially. Binary search requires a sorted list as a hard precondition.'},
+
+{sec:'c1',comp:'C1',topic:'Search Algorithm — Large Databases',diff:'adv',
+stem:'What is an important best practice when selecting a search algorithm for large non-relational databases?',
+opts:['Consider the user\'s knowledge level',
+      'Consider complexity and scalability',
+      'Prioritize linear searching',
+      'Choose the most consistent algorithm'],
+ans:1,
+rationale:'<strong>B is correct.</strong> For large datasets, time complexity (how runtime grows with data size) and scalability (whether the algorithm remains viable as data grows) are the primary selection criteria.',
+misconception:'D (most consistent) is vague and ignores performance. A linear search (C) becomes impractical as dataset size grows — scalability must be evaluated.'},
+
+{sec:'c1',comp:'C1',topic:'Greedy Algorithms',diff:'inter',
+stem:'Which category of planning algorithm chooses the best available option at each step without considering whether that choice leads to the best overall solution?',
+opts:['Greedy algorithm','Dynamic programming','Binary search','Depth-first search'],
+ans:0,
+rationale:'<strong>A is correct.</strong> A greedy algorithm commits to the locally optimal choice at each step and never backtracks — which means it may miss the globally optimal solution.',
+misconception:'Dynamic programming stores subproblem solutions to find the global optimum. Greedy algorithms never look back or reconsider prior decisions.'},
+
+{sec:'c1',comp:'C1',topic:'Dynamic Programming',diff:'adv',
+stem:'What is the defining feature of dynamic programming?',
+opts:['It always commits to the locally best choice at each step',
+      'It breaks a problem into overlapping subproblems and stores each solution so it is computed only once',
+      'It follows one branch of a tree as deep as possible before backtracking',
+      'It repeatedly halves a sorted list to locate a value'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Dynamic programming uses memoization — storing solutions to overlapping subproblems so each is solved only once, avoiding redundant recomputation.',
+misconception:'A describes greedy, C describes depth-first search, D describes binary search. These four algorithm types are a high-frequency confusion cluster on the actual assessment.'},
+
+{sec:'c1',comp:'C1',topic:'Algorithm Correctness',diff:'found',
+stem:'What makes an algorithm correct?',
+opts:['It produces the correct output for any valid input',
+      'It uses the fewest possible lines of code',
+      'It runs faster than every other algorithm for the same problem',
+      'It is written in a high-level programming language'],
+ans:0,
+rationale:'<strong>D is correct.</strong> Correctness means the algorithm produces the right result for every valid input — independent of how fast it runs or how it is implemented.',
+misconception:'Speed (C) is a performance concern entirely separate from correctness. A slow algorithm that always produces the right answer is correct; a fast one that sometimes fails is not.'},
+
+{sec:'c1',comp:'C1',topic:'Space Complexity',diff:'adv',
+stem:'An algorithm makes a duplicate copy of an input list of N numbers and uses k fixed variables. What is the algorithm\'s space complexity?',
+opts:['S(N) = N + k','S(N) = N² + k','S(N) = k','S(N) = 2N + k'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Original list: N units. Duplicate: N units. Fixed variables: k. Total: N + N + k = 2N + k.',
+misconception:'Students pick N + k (A) by counting only one copy of the list. Both the original and the duplicate must be accounted for separately.'},
+
+{sec:'c1',comp:'C1',topic:'Scripting vs Programming',diff:'inter',
+stem:'What is the relationship between programming and scripting languages?',
+opts:['Scripting languages form the basis of programming languages',
+      'Scripting languages are a subgroup of programming languages',
+      'Scripting languages are compiled versions of programming languages',
+      'Scripting languages interpret programming instructions'],
+ans:1,
+rationale:'<strong>D is correct.</strong> Scripting languages are a specialized subset of programming languages — typically interpreted, designed for automating tasks within a larger system.',
+misconception:'C implies scripts run other programming languages. Scripting languages are themselves programming languages with a particular use profile, not translators of other languages.'},
+
+{sec:'c1',comp:'C1',topic:'Python — While Loop',diff:'found',
+stem:'What Python component executes a block of code until a specified condition changes?',
+opts:['While Loop',
+      'Function',
+      'For Loop',
+      'Comment Block'],
+ans:0,
+rationale:'<strong>D is correct.</strong> A <code>while</code> loop repeatedly executes its body as long as its condition evaluates to True. It stops when the condition becomes False.',
+misconception:'Students pick For Loop (B) thinking loops are interchangeable. A for loop iterates over a sequence a known number of times; a while loop runs until a condition changes — the distinction is the termination mechanism.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Input',diff:'found',
+stem:'Which Python statement collects user input and stores it in a variable named <code>guests</code>?',
+opts:['input("How many guests?", guests)',
+      'guests = input("How many guests?")',
+      'getInput(guests): "How many guests?"',
+      'guests = get input "How many guests?"'],
+ans:1,
+rationale:'<strong>B is correct.</strong> <code>input()</code> returns a string typed by the user. Assigning it with <code>guests = input(...)</code> stores that string in the variable. Options A, C, and D are not valid Python syntax.',
+misconception:'Students from other languages may expect a two-argument form (C, A). Python\'s input() takes only the prompt as an argument and returns the value to be captured by assignment.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Print',diff:'found',
+stem:'How is the string "Password accepted." printed to the console using Python?',
+opts:['output(string: "Password accepted.")',
+      'output("Password accepted.")',
+      'print("Password accepted.")',
+      'print(string: "Password accepted.")'],
+ans:2,
+rationale:'<strong>D is correct.</strong> <code>print()</code> is the Python built-in for console output. It takes the value to display as an argument without a named parameter. <code>output()</code> does not exist in Python.',
+misconception:'Students from Swift or Kotlin backgrounds may expect named parameters (C). Python\'s print() uses positional arguments by default.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Indentation',diff:'inter',
+stem:'What indicates where a block of Python code ends?',
+opts:['Indentation',
+      '# Symbol',
+      'Try-Except Block',
+      'Conditional Statement'],
+ans:0,
+rationale:'<strong>C is correct.</strong> Python uses indentation to define code blocks. When the indentation level returns to a prior level, the block is considered closed. There are no braces or end keywords.',
+misconception:'Students pick # symbol (A) confusing comments with block delimiters. # begins a comment line; it has no role in defining code block boundaries.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Comments',diff:'found',
+stem:'Which Python component indicates a line should be ignored by the interpreter?',
+opts:['Indentation','Conditional Statement','# Symbol','Try-Except Block'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A line beginning with # is a comment — the interpreter skips it entirely. Comments document code for human readers without affecting execution.',
+misconception:'Students pick Indentation (A) thinking it controls what runs. Indentation determines code block membership; # is the comment delimiter.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Class',diff:'inter',
+stem:'What purpose does a Python class serve?',
+opts:['Stores key-value pairs',
+      'Template for creating objects',
+      'Stores a single value',
+      'Ordered collection of items'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A class is a blueprint — it defines attributes and methods that instances (objects) will have. Creating an object from a class is called instantiation.',
+misconception:'A describes dictionaries; C describes variables; D describes lists. Students unfamiliar with OOP conflate class with data structure types.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Function Definition',diff:'inter',
+stem:'Which syntax correctly defines a Python function?',
+opts:['myFunction(a, b) = (a * b)**2',
+      'def myFunction(a, b): return (a * b)**2',
+      'function myFunction(a, b): output (a * b)**2',
+      'myFunction(a, b: (a * b)**2)'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Python functions use the <code>def</code> keyword followed by the function name, parenthesized parameters, a colon, and an indented body. <code>function</code> and <code>output</code> are not Python keywords.',
+misconception:'Students from JavaScript pick D because JavaScript uses the <code>function</code> keyword. Python uses <code>def</code> exclusively.'},
+
+{sec:'c1',comp:'C1',topic:'Python — Data Types',diff:'found',
+stem:'What data type represents numbers without fractional components?',
+opts:['Decimal','Spatial','Binary','Integer'],
+ans:3,
+rationale:'<strong>D is correct.</strong> An integer stores whole numbers — positive, negative, or zero — with no decimal point. In Python the type is <code>int</code>.',
+misconception:'Students pick Decimal (A) because it sounds like a number type. Decimal implies a fractional component. Integer specifically means whole numbers.'},
+
+{sec:'c1',comp:'C1',topic:'Python Variable Names',diff:'inter',
+stem:'Which of the following is a valid Python variable name?',
+opts:['first-name',
+      'total_score',
+      'class',
+      '2nd_place'],
+ans:1,
+rationale:'<strong>D is correct.</strong> <code>total_score</code> starts with a letter and uses only letters, digits, and underscores. <code>2nd_place</code> starts with a digit; <code>first-name</code> contains a hyphen; <code>class</code> is a reserved keyword.',
+misconception:'Students pick class thinking it is just a word. Python reserves class as a keyword for object definitions — it cannot be used as a variable name.'},
+
+{sec:'c1',comp:'C1',topic:'Code Trace — For Loop',diff:'inter',
+stem:'What is printed when the following Python code runs?\n\ntotal = 0\nfor i in range(1, 4):\n    total += i\nprint(total)',code:true,
+opts:['3','10','4','6'],
+ans:3,
+rationale:'<strong>D is correct.</strong> range(1,4) generates 1,2,3. Iteration 1: total=1. Iteration 2: total=3. Iteration 3: total=6. print(total) after the loop prints 6.',
+misconception:'Students picking 3 count only the last value of i. Students picking 10 extend range to include 4. The upper bound in range() is exclusive.'},
 ];
 
-// ═══════════════════════════════════════════════════════════════
-// C1 — ALGORITHMIC THINKING AND PROGRAMMING (40 questions)
-// Source: D615A_C1_Diagnostic_Test_1.pdf + Practice_test.pdf
-// ═══════════════════════════════════════════════════════════════
-const C1 = [
-
-// ── Diagnostic Test 1 (10 questions) ──────────────────────────
-{sec:'c1',comp:'C1',topic:'Basics of Programming',diff:'found',type:'mc',
-stem:'Which most accurately describes a program in the context of computing?',
-opts:['A physical device that stores data on a hard drive',
-      'A sequence of instructions written in a programming language that a computer executes to accomplish a task',
-      'A wireless network protocol used to connect devices',
-      'A graphical interface that allows users to interact with an operating system'],
-ans:1,
-rationale:'<strong>B is correct.</strong> A program is a set of executable instructions that directs a computer to perform specific operations. It exists as code, not hardware or a network protocol.',
-misconception:'Students picking A or C confuse software with hardware/networking concepts.'},
-
-{sec:'c1',comp:'C1',topic:'IPO Model',diff:'found',type:'mc',
-stem:'A payroll application reads hours worked and hourly rate, multiplies them for gross pay, then prints the paycheck. In the IPO model, what is the Output?',
-opts:['The employee\'s hours worked','The multiplication operation','The printed paycheck amount','The hourly rate stored in memory'],
+// ═══════════════════════════════════════════════════════
+// C2 — TROUBLESHOOTING & DEBUGGING  (30 questions)
+// Sources: Form B + Sim PT 2026
+// ═══════════════════════════════════════════════════════
+const C2=[
+{sec:'c2',comp:'C2',topic:'Debug Print Statements',diff:'found',
+stem:'What is the purpose of inserting <code>print("DEBUG: total =", total)</code> into a program?',
+opts:['To prevent the program from crashing',
+      'To convert total into a string for storage',
+      'To display the variable\'s value at that point so it can be compared with the expected value',
+      'To permanently fix the logic error'],
 ans:2,
-rationale:'<strong>C is correct.</strong> Output is the result delivered to the user after processing. Hours and rate are inputs; multiplication is the process; the printed paycheck is the output.',
-misconception:'Students pick B — computation is the process, not the output.'},
+rationale:'<strong>C is correct.</strong> A debug print surfaces the actual runtime value of a variable at a specific execution point so it can be compared against the expected value to isolate logic errors.',
+misconception:'Print statements do not prevent errors (A) or fix them (D). They are diagnostic instruments that surface information — the programmer must then interpret it.'},
 
-{sec:'c1',comp:'C1',topic:'Data Types',diff:'found',type:'mc',
-stem:'In Python, what data type does the expression <code>type(3.14)</code> return?',
-opts:['int','str','bool','float'],
+{sec:'c2',comp:'C2',topic:'Troubleshooting — First Hypothesis',diff:'found',
+stem:'Typing on a desktop keyboard produces no characters on the screen. Which hypothesis and test should the user try first?',
+opts:['The motherboard has failed; send the computer for repair',
+      'No text area is selected; click in a text box and type again',
+      'The keyboard is broken; buy and install a replacement',
+      'The operating system is corrupted; reinstall it'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Effective troubleshooting starts with the simplest, least disruptive hypothesis. No active text area is the most common and easiest-to-reverse cause.',
+misconception:'Jumping to hardware replacement (C) before testing reversible causes violates the fundamental troubleshooting principle: cheapest, most reversible test first.'},
+
+{sec:'c2',comp:'C2',topic:'Code Error — Missing Return',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\ndef square(x):\n    result = x * x\n\nprint(square(4) + 1)',code:true,
+opts:['Misspelled variable','Missing colon','Missing return line','Undefined variable'],
+ans:2,
+rationale:'<strong>C is correct.</strong> <code>square()</code> computes result but never returns it, so the function returns None. <code>None + 1</code> raises a TypeError. The fix: add <code>return result</code>.',
+misconception:'result is defined — it is just never returned to the caller. The function receives None and the subsequent addition fails.'},
+
+{sec:'c2',comp:'C2',topic:'Code Error — Undefined Variable',diff:'inter',
+stem:'Running the following code produces an error when the function is called. Which error is present?\n\ndef calc_tax(price):\n    tax = price * 0.06\n    return total',code:true,
+opts:['Missing return line','Improper indentation','Missing colon','Undefined variable'],
 ans:3,
-rationale:'<strong>D is correct.</strong> 3.14 is a decimal value. Python classifies decimal numbers as the <code>float</code> (floating-point) data type.',
-misconception:'Students who pick int may confuse the number\'s appearance with its type. Any decimal point signals float.'},
+rationale:'<strong>D is correct.</strong> The function returns <code>total</code>, which was never defined. Only <code>tax</code> was assigned. Python raises a NameError because <code>total</code> does not exist in scope.',
+misconception:'A return line IS present — it just references a variable that was never assigned. The error is the wrong name in the return statement, not a missing return.'},
 
-{sec:'c1',comp:'C1',topic:'Conditionals',diff:'inter',type:'mc',
-stem:'What is the output of the following code?\n\ntemperature = 95\nif temperature > 100:\n    print("Extreme")\nelif temperature > 85:\n    print("Hot")\nelse:\n    print("Comfortable")',code:true,
-opts:['"Extreme"','"Hot"','"Comfortable"','No output — syntax error'],
-ans:1,
-rationale:'<strong>B is correct.</strong> 95 is not > 100, so the first branch is skipped. 95 IS > 85, so the elif branch executes and prints "Hot".',
-misconception:'Students picking C apply the else. Python exits after the first true branch, not after all conditions are tested.'},
-
-{sec:'c1',comp:'C1',topic:'For Loops',diff:'inter',type:'mc',
-stem:'What will the following code print?\n\ntotal = 0\nfor num in [2, 4, 6]:\n    total += num\nprint(total)',code:true,
-opts:['2','6','12','246'],
+{sec:'c2',comp:'C2',topic:'Post-Mortem Review',diff:'found',
+stem:'After a bug is fixed and verified, what is the purpose of a post-mortem review?',
+opts:['To assign blame to the developer who introduced the bug',
+      'To restore the original, unfixed code',
+      'To understand the root cause and identify practices that prevent similar issues',
+      'To delete the tests written for the bug'],
 ans:2,
-rationale:'<strong>C is correct.</strong> The loop adds 2, then 4, then 6. 0 + 2 + 4 + 6 = 12.',
-misconception:'Students picking 6 stop at the last added value rather than the running total.'},
+rationale:'<strong>C is correct.</strong> A post-mortem is a blameless retrospective that analyzes why the bug occurred and what process changes prevent recurrence. It is forward-looking, not punitive.',
+misconception:'Post-mortems are explicitly blameless in effective engineering cultures. Blame (A) produces defensiveness and hides information, preventing the systemic improvements that post-mortems are designed to surface.'},
 
-{sec:'c1',comp:'C1',topic:'Functions',diff:'inter',type:'mc',
-stem:'What value does result hold after this function call?\n\ndef multiply(a, b):\n    return a * b\nresult = multiply(6, 7)',code:true,
-opts:['0','13','42','67'],
-ans:2,
-rationale:'<strong>C is correct.</strong> The function returns a * b. With a=6 and b=7, the return value is 42.',
-misconception:'Students picking 13 add instead of multiply. Students picking 67 concatenate the digits.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Design',diff:'inter',type:'mc',
-stem:'A student needs to find the largest number in a list without using built-in functions. Which algorithm strategy is most appropriate?',
-opts:['Set a variable to the first element; loop through the list and replace it whenever a larger value is found',
-      'Sort the list using a sorting algorithm, then select index 0',
-      'Add all numbers together and divide by the count of elements',
-      'Remove elements one by one until only one remains'],
-ans:0,
-rationale:'<strong>A is correct.</strong> Tracking a running maximum and updating it on each comparison is the standard O(n) linear scan for finding a maximum — correct, efficient, and does not rely on built-ins.',
-misconception:'B uses sorting, which adds O(n log n) overhead and changes the list structure. C computes the average, not the max.'},
-
-{sec:'c1',comp:'C1',topic:'String Operations',diff:'inter',type:'mc',
-stem:'What does the following code print?\n\nname = "Python"\nprint(name[0] + name[-1])',code:true,
-opts:['"Pn"','"Py"','"on"','"PP"'],
-ans:0,
-rationale:'<strong>A is correct.</strong> <code>name[0]</code> accesses "P". <code>name[-1]</code> accesses the last character "n". Concatenation produces "Pn".',
-misconception:'Students picking "Py" think index 0 and 1 are selected. Negative indexing from the end is a common source of confusion.'},
-
-{sec:'c1',comp:'C1',topic:'Programming Languages',diff:'found',type:'mc',
-stem:'Which characteristic makes Python particularly well-suited for beginners compared to C or Java?',
-opts:['Python requires explicit memory management, teaching foundational skills',
-      'Python uses English-like syntax and does not require declaring variable types explicitly',
-      'Python compiles to faster machine code than any other language',
-      'Python only runs on Linux-based operating systems'],
+{sec:'c2',comp:'C2',topic:'Debugger — Step Into',diff:'found',
+stem:'A debugger is paused on a line calling <code>calculate_total()</code>. Which action moves execution inside the function so its lines can be examined one at a time?',
+opts:['Continue','Step Into','Step Over','Stop'],
 ans:1,
-rationale:'<strong>B is correct.</strong> Python\'s clean, readable syntax and dynamic typing reduce cognitive load for beginners. C and Java require more boilerplate and explicit type declarations.',
-misconception:'A is backwards — Python abstracts memory management away, which is beginner-friendly, not a teaching burden.'},
+rationale:'<strong>B is correct.</strong> Step Into follows the call into the function body, pausing on the first line inside <code>calculate_total()</code>. Step Over executes the entire function as one unit without entering it.',
+misconception:'Step Over sounds like it moves to the next line — it does, but by running the entire function without entering it. Step Into is required to inspect the function\'s internals.'},
 
-{sec:'c1',comp:'C1',topic:'Nested Logic',diff:'adv',type:'mc',
-stem:'What is printed when this code runs?\n\nx = 8\nif x > 5:\n    if x > 10:\n        print("Large")\n    else:\n        print("Medium")\nelse:\n    print("Small")',code:true,
-opts:['"Large"','"Medium"','"Small"','Nothing is printed'],
-ans:1,
-rationale:'<strong>B is correct.</strong> x=8 satisfies x > 5, entering the outer if. Inside, x=8 does NOT satisfy x > 10, so the inner else executes: "Medium".',
-misconception:'Students who pick "Large" misread the nested condition. Students who pick "Small" stop at the outer branch without tracing the nested logic.'},
-
-// ── Practice Test Q1–Q30 (algorithmic thinking + Python basics) ─
-{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
-stem:'A sequence of instructions that solves a problem is called a:',
-opts:['Instruction','Process','Algorithm','Variable'],
-ans:2,
-rationale:'<strong>C is correct.</strong> An algorithm is a precise, ordered sequence of steps designed to solve a specific problem or accomplish a task.',
-misconception:'Students confuse algorithm with program. A program is an implementation; an algorithm is the abstract plan.'},
-
-{sec:'c1',comp:'C1',topic:'Variables',diff:'found',type:'mc',
-stem:'In the instruction <code>z = x + y</code>, the symbols x, y, and z are examples of:',
-opts:['Expressions','Processes','Variables','Functions'],
-ans:2,
-rationale:'<strong>C is correct.</strong> Variables are named storage locations in memory that hold values. x, y, and z are containers for data.',
-misconception:'Students picking "Expressions" identify the right-hand side only. All three — x, y, z — serve as variable containers.'},
-
-{sec:'c1',comp:'C1',topic:'IPO Model',diff:'found',type:'mc',
-stem:'Which is an example of a process in the IPO model?',
-opts:['int','15','x + y','y, 10'],
-ans:2,
-rationale:'<strong>C is correct.</strong> A process is a computation or transformation. <code>x + y</code> is an arithmetic operation — a process applied to the inputs x and y.',
-misconception:'Students pick 15 thinking it is the result. 15 is a value (output or literal), not a process.'},
-
-{sec:'c1',comp:'C1',topic:'Problem Decomposition',diff:'inter',type:'mc',
-stem:'For the problem "find the longest word in a list," which correctly identifies input and output?',
-opts:['Input: Number of words / Output: Longest word',
-      'Input: Longest word / Output: Number of words',
-      'Input: Array of all words / Output: String value for the longest word',
-      'Input: List size / Output: Word count'],
-ans:2,
-rationale:'<strong>C is correct.</strong> The input is the full collection of words (the array). The output is the single string representing the longest word found.',
-misconception:'Students picking A confuse count (a derived property) with the actual input data structure.'},
-
-{sec:'c1',comp:'C1',topic:'Search Algorithms',diff:'inter',type:'mc',
-stem:'Which algorithm should be used to quickly find "Pizza Hut" in a phone book (sorted alphabetically)?',
-opts:['Binary search','Linear search','Longest common substring','Shortest path'],
-ans:0,
-rationale:'<strong>A is correct.</strong> A phone book is sorted. Binary search exploits sorted order by halving the search space each step, achieving O(log n) rather than O(n) for linear search.',
-misconception:'Students pick linear search thinking any search works. Binary search is dramatically faster on sorted data.'},
-
-{sec:'c1',comp:'C1',topic:'Computational Complexity',diff:'adv',type:'mc',
-stem:'Which is true if an efficient solution for one NP-complete problem is found?',
-opts:['The solution would run in exponential time',
-      'There is an efficient algorithm for all other NP-complete problems',
-      'The solution would be incorrect',
-      'Only that one problem has been solved'],
-ans:1,
-rationale:'<strong>B is correct.</strong> NP-complete problems are all reducible to each other. An efficient (polynomial-time) solution to any one of them would imply P=NP, unlocking efficient solutions for all.',
-misconception:'Students picking D miss the theoretical equivalence. NP-completeness means the problems share computational structure.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Steps',diff:'found',type:'mc',
-stem:'What is the correct step order to count occurrences of 2 in an array?',
-opts:['(1) increment counter (2) loop through array (3) inspect each element',
-      '(1) loop through array (2) inspect each array element (3) increment counter if 2 is found',
-      '(1) inspect each element (2) loop through array (3) increment counter',
-      '(1) initialize counter (2) increment counter (3) loop through array'],
-ans:1,
-rationale:'<strong>B is correct.</strong> The loop must be established first, then each element is examined, and then — conditionally — the counter increments. Sequence matters in algorithms.',
-misconception:'D is tempting but you cannot increment before you have looped and inspected.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Design',diff:'inter',type:'mc',
-stem:'Which algorithm correctly finds the minimum of 5 values?',
-opts:['min = first value / for each value / if value < min / min = value',
-      'min = first value / for each value / if value > min / min = value',
-      'min = first value / for each value / if value = min / min = value',
-      'min = first value / for each value / if value < 0 / min = value'],
-ans:0,
-rationale:'<strong>A is correct.</strong> To find the minimum, replace the running minimum whenever a smaller value is found (<). Option B finds the maximum. Option D only catches negative values.',
-misconception:'Students confuse < (minimum) with > (maximum) — a common inversion error.'},
-
-{sec:'c1',comp:'C1',topic:'Binary Search',diff:'inter',type:'mc',
-stem:'Which real-life activity is analogous to binary search?',
-opts:['Finding a matching sock in a drawer',
-      'Looking up Pizza Hut in the phone book',
-      'Looking for a house on a street sequentially',
-      'Finding the largest number in an unsorted array'],
-ans:1,
-rationale:'<strong>B is correct.</strong> A phone book is sorted alphabetically. You open to the middle, determine which half "P" falls in, and repeat — exactly the binary search pattern.',
-misconception:'C describes linear search (sequential scan). A is unordered exhaustive search.'},
-
-{sec:'c1',comp:'C1',topic:'Logic Puzzle',diff:'inter',type:'mc',
-stem:'Three sock types A, B, C exist in a drawer. If the first three pulls are all different, how many additional pulls are needed to guarantee a matching pair?',
-opts:['Two more pulls','Only one more pull','Three more pulls','No more pulls needed'],
-ans:1,
-rationale:'<strong>B is correct.</strong> With A, B, and C already in hand, any fourth pull must match one of the three types already held. One more pull guarantees a pair by the pigeonhole principle.',
-misconception:'Students who pick "two more" overthink it. The fourth pull is deterministic.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
-stem:'Describing the steps necessary for finding a solution to a problem in programming is called:',
-opts:['Algorithm','Compile','Interpret','Code'],
-ans:0,
-rationale:'<strong>A is correct.</strong> An algorithm is the problem-solving description — the abstract plan — before it is written in any specific language.',
-misconception:'Students confuse algorithm (the plan) with code (the implementation). Algorithm precedes code.'},
-
-{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
-stem:'What is the missing last line of a pseudocode block that calculates total purchase price (item cost + tax)?',
-opts:['Set the tax to the item cost plus the rate',
-      'Set the item cost to the tax plus the rate',
-      'Set the total cost to the item cost plus the tax',
-      'Set the rate to the item cost plus the tax'],
-ans:2,
-rationale:'<strong>C is correct.</strong> After computing the tax separately, the total cost is the sum of item cost and tax. This is the output step of the algorithm.',
-misconception:'Students pick A, confusing computation of tax with use of tax in the final total.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'inter',type:'mc',
-stem:'What is the purpose of: <code>num=0, repeat 15 times, ask for number, if userNum > num then num=userNum</code>?',
-opts:['To find the lowest among 15 numbers',
-      'To find the average of 15 numbers',
-      'To find a specific number',
-      'To find the highest among 15 numbers'],
+{sec:'c2',comp:'C2',topic:'Reproducing Bugs',diff:'found',
+stem:'A user reports that a program crashes occasionally. What should the developer do first?',
+opts:['Apply a colleague\'s suggested fix without testing it',
+      'Add custom error messages throughout the code',
+      'Rewrite the program in a different language',
+      'Reproduce the problem and identify the inputs or steps that trigger it'],
 ans:3,
-rationale:'<strong>D is correct.</strong> This is the running maximum algorithm. num is initialized to 0 and replaced whenever a larger value appears. After 15 iterations, num holds the highest.',
-misconception:'Students picking A reverse the comparison. The condition > means we update on larger values, not smaller.'},
+rationale:'<strong>D is correct.</strong> A bug cannot be diagnosed or fixed reliably without first reproducing it. Identifying the triggering conditions gives the developer a concrete target.',
+misconception:'Error messages (B) only help once the bug is reproduced — they cannot identify a problem that has not been isolated to specific conditions yet.'},
 
-{sec:'c1',comp:'C1',topic:'Algorithm Fundamentals',diff:'found',type:'mc',
-stem:'Which of the following is NOT an algorithm?',
-opts:['A recipe for baking cookies','A grocery list','Tire-changing instructions','Paint calculation steps'],
-ans:1,
-rationale:'<strong>B is correct.</strong> A grocery list is an unordered collection of items, not a sequence of steps that transforms inputs to outputs. Algorithms must be executable and ordered.',
-misconception:'Students overlook that a list without step-order and transformation is not an algorithm.'},
+{sec:'c2',comp:'C2',topic:'NameError',diff:'inter',
+stem:'A program stops with <code>NameError: name \'totl\' is not defined</code>. What does this most likely indicate?',
+opts:['A variable name is misspelled or was used before it was assigned',
+      'A block of code is not indented correctly',
+      'Two incompatible data types were combined',
+      'The program attempted to divide by zero'],
+ans:0,
+rationale:'<strong>D is correct.</strong> A NameError means Python encountered a name it cannot find in any scope. The most common causes are a typo (totl vs total) or using a variable before assigning it.',
+misconception:'Indentation issues raise IndentationError, not NameError. Each Python error type has a specific and distinct meaning.'},
 
-{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
-stem:'Which pseudocode statement represents a decision (selection)?',
-opts:['while total cost > 15','for each item in list','if total cost > 15','total cost = unit cost + tax'],
-ans:2,
-rationale:'<strong>C is correct.</strong> An <code>if</code> statement is a decision/selection construct. It branches execution based on a Boolean condition.',
-misconception:'A uses while (repetition). D is an assignment (sequence). Only C is a decision.'},
-
-{sec:'c1',comp:'C1',topic:'Algorithm Definition',diff:'found',type:'mc',
-stem:'A sequence of steps that is unambiguous, executable, and terminating is called:',
-opts:['Pseudocode','A program','An algorithm','A function'],
-ans:2,
-rationale:'<strong>C is correct.</strong> These three properties — unambiguous, executable, terminating — are the formal definition criteria for an algorithm.',
-misconception:'Students pick program. A program is an algorithm expressed in a specific language; the algorithm is the abstract concept.'},
-
-{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'found',type:'mc',
-stem:'Which pseudocode statement represents a repetition (loop) statement?',
-opts:['set i equal to 3','total cost = unit cost + tax','if balance > 0','while the balance is > 0'],
+{sec:'c2',comp:'C2',topic:'Asymmetric Testing',diff:'adv',
+stem:'A user suspects a lamp bulb is burned out and shakes it to listen for a rattling filament. Why is this an asymmetric test?',
+opts:['The test requires a second, known-working lamp',
+      'The test gives the same result no matter what is wrong',
+      'A rattle invalidates the hypothesis, and silence validates it',
+      'A rattle validates the hypothesis, but no rattle does not invalidate it'],
 ans:3,
-rationale:'<strong>D is correct.</strong> A <code>while</code> statement repeats a block of instructions as long as its condition remains true — the defining feature of a repetition construct.',
-misconception:'C uses if (decision). A is an assignment. Only D is a loop.'},
+rationale:'<strong>D is correct.</strong> Asymmetric tests produce conclusive evidence in one direction only. A rattle confirms a broken filament. Silence is inconclusive — the filament could still be damaged in ways that produce no rattle.',
+misconception:'Students reverse the logic (C). A rattle validates (confirms broken). Silence is a non-result — it does not disprove the hypothesis.'},
 
-{sec:'c1',comp:'C1',topic:'Pseudocode',diff:'inter',type:'mc',
-stem:'Which statement about pseudocode is NOT correct?',
-opts:['Pseudocode must be unambiguous',
-      'Pseudocode must be terminating',
-      'Pseudocode should be properly formatted',
-      'Pseudocode must be executable'],
+{sec:'c2',comp:'C2',topic:'Hypothesis Testing — Efficiency',diff:'inter',
+stem:'What is a strategy to make hypothesis testing more efficient?',
+opts:['Create a hypothesis for each program function',
+      'Use the same conditions to test each hypothesis',
+      'Test a hypothesis asymmetrically when possible',
+      'Create hypotheses that are likely and easy to test'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Asymmetric tests can confirm or conclusively rule out a hypothesis in one result — eliminating the need for multiple follow-up tests and accelerating the diagnostic process.',
+misconception:'D sounds reasonable but "easy" is not the primary efficiency criterion. An asymmetric test that is harder to run but provides a definitive result is more efficient than an easy symmetric test.'},
+
+{sec:'c2',comp:'C2',topic:'Hypothesis Testing — Purpose',diff:'found',
+stem:'What is the purpose of hypothesis testing in troubleshooting?',
+opts:['Verify a solution works for all inputs',
+      'Validate the cause of a problem',
+      'Identify multiple solutions simultaneously',
+      'Rank code issues by severity'],
+ans:1,
+rationale:'<strong>B is correct.</strong> Hypothesis testing confirms or eliminates a suspected cause. Each test either validates that the hypothesis explains the observed behavior or rules it out.',
+misconception:'Verifying a solution (A) describes regression testing after a fix. Hypothesis testing occurs during diagnosis, before any fix is applied.'},
+
+{sec:'c2',comp:'C2',topic:'AI Debugging Prompts',diff:'inter',
+stem:'Which prompt gives an AI debugging tool the most useful context?',
+opts:['"Here is my Python function, the full error message, and the output I expected. Why does it fail?"',
+      '"My code is broken. Fix it."',
+      '"Write me a new program that works."',
+      '"What is the best programming language?"'],
+ans:0,
+rationale:'<strong>A is correct.</strong> Effective AI debugging prompts include the code, the error message, and expected vs. actual behavior. Without these three, the AI has no basis for diagnosing the specific failure.',
+misconception:'Vague requests (B) give the AI no information about what the code should do or where the failure is. Specificity is the single biggest factor in AI debugging response quality.'},
+
+{sec:'c2',comp:'C2',topic:'Type Mismatch Error',diff:'inter',
+stem:'Running the following code produces an error after the user types 25. Which error is present?\n\nage = input("Enter your age: ")\nnext_year = age + 1\nprint(next_year)',code:true,
+opts:['Undefined variable',
+      'Incorrect parenthesis',
+      'Mismatched data types',
+      'Missing colon'],
+ans:2,
+rationale:'<strong>D is correct.</strong> <code>input()</code> always returns a string. Attempting "25" + 1 raises a TypeError because Python cannot add a string and an integer without explicit conversion.',
+misconception:'The code is syntactically valid — the error is semantic. A string and an int cannot be added together; <code>int(input(...))</code> is the fix.'},
+
+{sec:'c2',comp:'C2',topic:'Runtime Errors',diff:'found',
+stem:'A bill-splitting program stops with ZeroDivisionError when the user enters 0. What type of error is this?',
+opts:['Logic error','Syntax error','Indentation error','Runtime error'],
 ans:3,
-rationale:'<strong>D is correct.</strong> Pseudocode is a planning tool written in natural language — it is not required to be directly executable by a computer. Only real code must be executable.',
-misconception:'Students confuse pseudocode with actual programming languages. Pseudocode communicates the algorithm, not a runnable implementation.'},
+rationale:'<strong>D is correct.</strong> The code is syntactically valid and runs correctly for non-zero inputs. The ZeroDivisionError occurs only at runtime when a specific input triggers division by zero.',
+misconception:'Logic errors produce wrong outputs without crashing. ZeroDivisionError is a runtime crash — a different category that the program cannot survive without a try-except block.'},
 
-{sec:'c1',comp:'C1',topic:'Problem Analysis',diff:'inter',type:'mc',
-stem:'What inputs are needed to calculate the total cost of purchasing and using each cell phone plan?',
-opts:['Cost of phone and rate per minute',
-      'Cost of phone and minutes provided by plan',
-      'Rate per minute and total usage allowed',
-      'Cost of each phone, rate per minute for each phone, and number of minutes you would use'],
+{sec:'c2',comp:'C2',topic:'Code Error — Indentation',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\nfor n in range(3):\nprint(n)',code:true,
+opts:['Improper indentation',
+      'Missing colon',
+      'Misspelled variable',
+      'Incorrect parenthesis'],
+ans:0,
+rationale:'<strong>D is correct.</strong> The body of a for loop must be indented. print(n) at the same level as the for statement triggers an IndentationError.',
+misconception:'The colon IS present after range(3). Students scan the for statement for the error instead of examining the loop body indentation.'},
+
+{sec:'c2',comp:'C2',topic:'IDE — Breakpoints',diff:'found',
+stem:'Which IDE feature pauses program execution at a chosen line so the programmer can inspect variable values?',
+opts:['Auto-completion',
+      'Linter',
+      'Breakpoint',
+      'Syntax highlighting'],
+ans:2,
+rationale:'<strong>D is correct.</strong> A breakpoint marks a line where the debugger pauses execution, giving the programmer access to all current variable values and the call stack.',
+misconception:'A linter (B) performs static analysis before execution — it flags potential issues but does not pause running programs.'},
+
+{sec:'c2',comp:'C2',topic:'Watch Panel',diff:'inter',
+stem:'While debugging in VS Code, a programmer wants to monitor how <code>balance</code> changes each loop iteration. Which feature is designed for this?',
+opts:['Watch panel (watch expression)','Source control panel','Extensions marketplace','File explorer'],
+ans:0,
+rationale:'<strong>A is correct.</strong> The Watch panel lets a programmer add variable names or expressions that update in real time as the debugger steps through execution.',
+misconception:'Source control (B) tracks file version history, not runtime variable state. The Watch panel is the runtime monitoring tool.'},
+
+{sec:'c2',comp:'C2',topic:'Logic Errors',diff:'inter',
+stem:'The following code runs without errors but prints 135.0 instead of 90.0. What type of error is present?\n\nscores = [80, 90, 100]\naverage = sum(scores) / 2\nprint(average)',code:true,
+opts:['Performance issue',
+      'Runtime error',
+      'Logic error',
+      'Syntax error'],
+ans:2,
+rationale:'<strong>A is correct.</strong> The code executes without crashing. Dividing by 2 instead of len(scores) (which is 3) produces the wrong result. Wrong result without crash = logic error.',
+misconception:'Runtime errors produce exceptions that halt execution. This code runs to completion — it just computes incorrectly. That is the hallmark of a logic error.'},
+
+{sec:'c2',comp:'C2',topic:'AI-Assisted Debugging',diff:'inter',
+stem:'A developer asks an AI assistant to fix a bug and the assistant returns revised code. What is the best next step?',
+opts:['Test the revised code to confirm it resolves the issue without creating new problems',
+      'Ask the AI to confirm its own answer, then deploy',
+      'Delete the original code so only the AI version remains',
+      'Deploy immediately because AI tools are trained on large code repositories'],
+ans:0,
+rationale:'<strong>A is correct.</strong> AI tools can introduce new bugs or miss edge cases. Revised code must be tested against the original failure, boundary conditions, and additional inputs before deployment.',
+misconception:'Training on large repositories (D) does not guarantee correctness for a specific application context. AI-generated fixes always require human verification.'},
+
+{sec:'c2',comp:'C2',topic:'Bug Isolation',diff:'adv',
+stem:'A bug appears somewhere in a 600-line program. Which strategy best isolates the cause?',
+opts:['Leave the bug alone unless users complain',
+      'Rewrite the whole program from scratch',
+      'Create a minimal test case that still reproduces the bug, removing unrelated code',
+      'Change several sections at once and rerun the program'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A minimal reproducible example strips away everything irrelevant until only the code that triggers the bug remains. This dramatically narrows the search space.',
+misconception:'Changing multiple sections simultaneously (D) makes it impossible to determine which change fixed — or broke — behavior. One variable at a time is the discipline.'},
+
+{sec:'c2',comp:'C2',topic:'Code Error — Missing Colon',diff:'found',
+stem:'Running the following code produces an error. Which error is present?\n\ndef greet(name)\n    print("Hello, " + name)',code:true,
+opts:['Undefined variable','Improper indentation','Missing colon','Incorrect parenthesis'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Python function definitions require a colon after the closing parenthesis: <code>def greet(name):</code>. Without it, Python raises a SyntaxError.',
+misconception:'The indentation on print is correct. Students scan the body instead of examining the def line where the colon is missing.'},
+
+{sec:'c2',comp:'C2',topic:'Code Error — Incorrect Parenthesis',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\nscore1 = int(input("Enter the first exam score: "))\nscore2 = int(input("Enter the second exam score: ")\navg = int(input("Enter the desired average: "))',code:true,
+opts:['Missing colon','Invalid variable name','Undefined variable','Incorrect parenthesis'],
 ans:3,
-rationale:'<strong>D is correct.</strong> To compare plans completely, you need the purchase cost, the rate, and your actual usage pattern. Missing any one of these leaves the calculation incomplete.',
-misconception:'A and B are partial inputs that would not produce a complete cost comparison.'},
+rationale:'<strong>D is correct.</strong> Line 2 closes the input() call with one parenthesis but the int() wrapping it is never closed — <code>int(input("...")</code> is missing the outer closing parenthesis.',
+misconception:'Students scan for variable errors. The code\'s variable names are valid. The error is an unbalanced parenthesis that Python catches as a SyntaxError.'},
 
-{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'adv',type:'mc',
-stem:'The Sieve of Eratosthenes pseudocode removes multiples of p from a list. What does it produce?',
-opts:['All even numbers up to n','All prime numbers up to n','All factorials up to n','All odd numbers up to n'],
-ans:1,
-rationale:'<strong>B is correct.</strong> The Sieve systematically removes composite numbers by eliminating multiples of each prime. What remains after all passes are the prime numbers.',
-misconception:'Students picking D confuse "not even" with "prime." Removing multiples of 2 gives odds, but removing all composites gives primes.'},
+{sec:'c2',comp:'C2',topic:'Code Error — Misspelled Variable',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\nbirth_year = input("Enter your year of birth: ")\nage_in_2050 = 2050 - int(birt_year)',code:true,
+opts:['Improper indentation','Invalid variable name','Incorrect parenthesis','Misspelled variable'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Line 1 assigns to <code>birth_year</code> but line 2 references <code>birt_year</code> — one letter dropped. Python raises a NameError because <code>birt_year</code> was never defined.',
+misconception:'Students pick invalid variable name (B) thinking birt_year is illegal. It is a valid name — the problem is it was never assigned. The assigned name was birth_year.'},
 
-{sec:'c1',comp:'C1',topic:'Algorithm Tracing',diff:'adv',type:'mc',
-stem:'What sequence does the pseudocode <code>a=0, b=0, c=1, d=1</code> produce when <code>d = b + c</code> is repeated 10 times?',
-opts:['1 1 2 3 5 8 13 21 34 55 89','1 2 3 4 5 6 7 8 9 10','2 4 6 8 10 12 14 16 18 20','1 3 5 7 9 11 13 15 17 19'],
+{sec:'c2',comp:'C2',topic:'Code Error — Return Indentation',diff:'adv',
+stem:'An error occurs in the following code. What is the error?\n\ndef count_numerical_characters(input_string):\n    count = 0\n    for char in input_string:\n        if char in "0123456789":\n            count += 1\n        return count',code:true,
+opts:['Improper indentation',
+      'Misspelled variable',
+      'Incorrect parenthesis',
+      'Undefined variable'],
 ans:0,
-rationale:'<strong>A is correct.</strong> Each term is the sum of the two preceding terms. This is the Fibonacci sequence. Starting values of 0 and 1 generate 1,1,2,3,5,8,13,21,34,55,89.',
-misconception:'Students unfamiliar with the Fibonacci pattern may pick arithmetic sequences (B, C, D).'},
+rationale:'<strong>D is correct.</strong> <code>return count</code> is indented at the <code>if</code> level — inside the for loop. This causes the function to return after the first character checked, not after the full loop. Moving return to the function level fixes it.',
+misconception:'The logic looks plausible because return count sounds like a reasonable final line. The indentation puts it inside the loop, causing premature return on the first iteration.'},
 
-{sec:'c1',comp:'C1',topic:'Python Runtime',diff:'found',type:'mc',
-stem:'In order to run Python programs, the computer needs software called a(n):',
-opts:['Compiler','Interpreter','Assembler','Debugger'],
-ans:1,
-rationale:'<strong>B is correct.</strong> Python is an interpreted language. The Python interpreter reads and executes source code line by line at runtime, without a separate compilation step.',
-misconception:'Students picking Compiler confuse Python with C/C++ which require compilation to machine code before running.'},
+{sec:'c2',comp:'C2',topic:'Troubleshooting Best Practice',diff:'inter',
+stem:'Which action is a best practice during troubleshooting?',
+opts:['Reduce source code volume',
+      'Test with another operating system',
+      'Add custom error messages',
+      'Collaborate with team members'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Collaboration brings additional perspectives, domain knowledge, and fresh eyes to a problem — significantly increasing the likelihood of identifying the root cause.',
+misconception:'C (add error messages) is a tactic within troubleshooting, not a general best practice. Adding messages without first reproducing and isolating the issue adds noise without insight.'},
 
-{sec:'c1',comp:'C1',topic:'Programming Languages',diff:'found',type:'mc',
-stem:'High-level programming languages were created primarily to:',
-opts:['Increase execution speed',
-      'Make programming less error-prone and less tedious',
-      'Replace machine code entirely',
-      'Simplify hardware requirements'],
-ans:1,
-rationale:'<strong>B is correct.</strong> High-level languages abstract away hardware details, letting programmers express logic in human-readable syntax, reducing both errors and development time.',
-misconception:'A is wrong — high-level code typically runs slower than low-level. The tradeoff is productivity vs. raw speed.'},
+{sec:'c2',comp:'C2',topic:'Solution Evaluation',diff:'inter',
+stem:'Which strategy is a best practice when evaluating a solution during troubleshooting?',
+opts:['Verify that no new problems exist',
+      'Evaluate using multiple languages',
+      'Run program versions in parallel',
+      'Test with multiple end users'],
+ans:0,
+rationale:'<strong>D is correct.</strong> After applying a fix, verification must confirm the original issue is resolved AND that no new issues were introduced — regression testing is the standard.',
+misconception:'Running versions in parallel (C) is an operational deployment strategy, not a solution evaluation technique. Regression testing is the correct answer here.'},
 
-{sec:'c1',comp:'C1',topic:'Python Benefits',diff:'found',type:'mc',
-stem:'What are two of the most important benefits of the Python language?',
-opts:['Speed and power','Efficiency and complexity','Ease of use and portability','Graphics and gaming'],
+{sec:'c2',comp:'C2',topic:'Avoiding New Problems',diff:'inter',
+stem:'What should be done to avoid introducing new problems while troubleshooting?',
+opts:['Use symmetric and asymmetric tests',
+      'Develop multiple hypotheses',
+      'Test changes iteratively',
+      'Conduct testing with limited inputs'],
 ans:2,
-rationale:'<strong>C is correct.</strong> Python is valued for its beginner-friendly syntax (ease of use) and the fact that Python programs run on any platform with a Python interpreter (portability).',
-misconception:'Students may pick A, but Python is not known for raw speed — it trades performance for readability and portability.'},
+rationale:'<strong>D is correct.</strong> Iterative testing — making one change, testing it, then proceeding — ensures that each modification can be evaluated in isolation before additional changes compound the complexity.',
+misconception:'B (limited inputs) is the opposite of good practice. Limited testing increases the risk of missing regression failures introduced by the fix.'},
 
-{sec:'c1',comp:'C1',topic:'Python Benefits',diff:'inter',type:'mc',
-stem:'Which is NOT a benefit of Python compared to Java, C, and C++?',
-opts:['Cleaner syntax','Easier to use','Python programs run more quickly','Rapid development'],
-ans:2,
-rationale:'<strong>C is correct.</strong> Python programs generally execute more slowly than compiled languages like C, C++, or Java. Its advantages are readability, ease, and development speed — not runtime performance.',
-misconception:'Students unfamiliar with performance tradeoffs may assume Python is universally superior. Speed is where it falls short.'},
-
-{sec:'c1',comp:'C1',topic:'Functions',diff:'found',type:'mc',
-stem:'A collection of programming instructions that carries out a particular task is called a:',
-opts:['Program','Compiler','Function','Comment'],
-ans:2,
-rationale:'<strong>C is correct.</strong> A function is a named, reusable block of instructions that performs a defined task. It can be called by name from elsewhere in the program.',
-misconception:'Students confuse function with program. A program is the full application; a function is a named sub-component.'},
-
-{sec:'c1',comp:'C1',topic:'Functions',diff:'found',type:'mc',
-stem:'To call a function in Python, you need to specify:',
-opts:['The function name and its arguments','At least one argument','Only the function name','The function\'s address in memory'],
-ans:0,
-rationale:'<strong>A is correct.</strong> A function call requires the function name plus any required arguments inside parentheses. Functions with no parameters use empty parentheses.',
-misconception:'B is wrong — many functions take zero arguments. C is incomplete for functions requiring inputs.'},
-
-{sec:'c1',comp:'C1',topic:'Strings',diff:'found',type:'mc',
-stem:'A sequence of characters enclosed in quotes is called:',
-opts:['A string','A list','A function','An argument'],
-ans:0,
-rationale:'<strong>A is correct.</strong> A string is a data type representing a sequence of characters, delimited by single or double quotes in Python.',
-misconception:'Students may pick list thinking a sequence implies a list. A list uses brackets; a string uses quotes.'},
-
-{sec:'c1',comp:'C1',topic:'Strings',diff:'found',type:'mc',
-stem:'Which of the following is considered a string in Python?',
-opts:['Today is Wednesday','"Today is Wednesday"','# Today is Wednesday','Today_is_Wednesday'],
-ans:1,
-rationale:'<strong>B is correct.</strong> Quotes delimit string literals in Python. Without quotes, Python treats the words as variable names. # begins a comment, not a value.',
-misconception:'Students pick A thinking the text content makes it a string. In Python, the quotes are what classify it as a string.'},
-
-{sec:'c1',comp:'C1',topic:'Indentation',diff:'inter',type:'mc',
-stem:'What is wrong with two print() calls where the second is unexpectedly indented at the top level?',
-opts:['The first print() call is incorrect',
-      'There is no error; indentation is required',
-      'Nothing is wrong; the second line should not be indented at the top level',
-      'Both statements must be on the same line'],
-ans:2,
-rationale:'<strong>C is correct.</strong> In Python, top-level statements must not be indented. Unexpected indentation outside a block causes an IndentationError. Only block contents (inside if, for, def, etc.) should be indented.',
-misconception:'Students from Java/C++ backgrounds think indentation is always style. In Python, indentation is syntax.'},
-
-{sec:'c1',comp:'C1',topic:'Arithmetic in print()',diff:'found',type:'mc',
-stem:'What is printed by <code>print(25 + 84)</code>?',
-opts:['25 84','109','25 + 84','Error'],
-ans:1,
-rationale:'<strong>B is correct.</strong> When Python evaluates 25 + 84 outside of quotes, it performs the arithmetic and passes the integer result (109) to print().',
-misconception:'Students picking "25 + 84" think print() shows the expression literally. That only happens when the expression is inside quotes.'},
-
-{sec:'c1',comp:'C1',topic:'Arithmetic in print()',diff:'found',type:'mc',
-stem:'What is printed by <code>print("The answer is", 25 + 84)</code>?',
-opts:['The answer is25 + 84','The answer is 109','The answer is (109)','Error'],
-ans:1,
-rationale:'<strong>B is correct.</strong> print() with multiple comma-separated arguments inserts a space between them. The string literal prints as-is; 25+84 evaluates to 109. Output: "The answer is 109".',
-misconception:'Students who pick A expect no space. Python\'s print() default separator is a single space.'},
-
-{sec:'c1',comp:'C1',topic:'Operator Precedence',diff:'inter',type:'mc',
-stem:'What is printed by <code>print("The answers are:", 4 + 3 * 2, 7 * 5 - 24)</code>?',
-opts:['The answers are: 10 11','The answers are: 14 11','The answers are: 7 35','The answers are: 10 35'],
-ans:0,
-rationale:'<strong>A is correct.</strong> Multiplication before addition: 3*2=6, 4+6=10. Then 7*5=35, 35-24=11. Output: "The answers are: 10 11".',
-misconception:'Students picking B apply left-to-right without respecting operator precedence (PEMDAS). * before +.'},
-
-{sec:'c1',comp:'C1',topic:'Strings vs Arithmetic',diff:'found',type:'mc',
-stem:'What is printed by <code>print("25 + 84")</code>?',
-opts:['109','25 84','25 + 84','Error'],
-ans:2,
-rationale:'<strong>C is correct.</strong> The expression is inside quotes — Python treats it as a string literal, not arithmetic. The text "25 + 84" prints exactly as written.',
-misconception:'Students picking 109 forget that quotes suppress evaluation. Arithmetic only runs on unquoted expressions.'},
-
-{sec:'c1',comp:'C1',topic:'NameError',diff:'inter',type:'mc',
-stem:'What is printed by <code>print(Hello)</code> (no quotes around Hello)?',
-opts:['Nothing — an error is produced indicating Hello is not defined','Hello','"Hello"','HELLO'],
-ans:0,
-rationale:'<strong>A is correct.</strong> Without quotes, Python treats Hello as a variable name. Since no variable named Hello has been assigned, Python raises a NameError.',
-misconception:'Students expecting Python to guess intent will pick B. Python cannot infer that unquoted text is meant as a string.'},
-
-{sec:'c1',comp:'C1',topic:'Comments',diff:'found',type:'mc',
-stem:'What is the purpose of a comment in Python code?',
-opts:['To execute a program instruction','To provide information to the programmer','To create a variable','To call a function'],
-ans:1,
-rationale:'<strong>B is correct.</strong> Comments (lines beginning with #) are annotations for human readers. Python ignores them entirely at runtime.',
-misconception:'Students new to programming sometimes think comments are executed. They are documentation only.'},
-
-{sec:'c1',comp:'C1',topic:'Function Arguments',diff:'found',type:'mc',
-stem:'When a function is called, the values placed in parentheses are referred to as:',
-opts:['Arguments','Keywords','Operators','Statements'],
-ans:0,
-rationale:'<strong>A is correct.</strong> Arguments (also called actual parameters) are the values passed to a function at the point of the call. The function\'s parameters receive these values.',
-misconception:'Students may confuse arguments with keywords. Keywords are reserved words like if/for; arguments are data passed to functions.'},
+{sec:'c2',comp:'C2',topic:'Error Types — Distance Calculation',diff:'inter',
+stem:'A distance calculation program produces an incorrect result for a specific city pair but no error message appears. What type of error is most likely present?',
+opts:['Syntax error','Runtime error','Indentation error','Logic error'],
+ans:3,
+rationale:'<strong>D is correct.</strong> The program runs to completion without crashing, which eliminates syntax and runtime errors. An incorrect result with no exception is the defining signature of a logic error — the computation is wrong.',
+misconception:'Runtime errors crash the program with an exception. Syntax errors prevent the program from starting. A silent wrong answer is always a logic error.'},
 ];
 
-// ═══════════════════════════════════════════════════════════════
-// C2 — TROUBLESHOOTING AND DEBUGGING (10 questions)
-// Source: D615A_C2_Diagnostic_Test_1.pdf
-// ═══════════════════════════════════════════════════════════════
-const C2 = [
-
-{sec:'c2',comp:'C2',topic:'Error Classification',diff:'found',type:'mc',
-stem:'A student\'s program runs without error messages but produces an incorrect result. Manual tracing reveals an incorrect formula. What type of error is this?',
-opts:['Syntax error','Runtime error','Logic error','Import error'],
+// ═══════════════════════════════════════════════════════
+// C3 — RELATIONAL DATABASES & SQL  (30 questions)
+// Sources: Form B + Sim PT 2026
+// ═══════════════════════════════════════════════════════
+const C3=[
+{sec:'c3',comp:'C3',topic:'SQL Sublanguages — DDL',diff:'found',
+stem:'Which SQL sublanguage includes the CREATE statement?',
+opts:['Data Manipulation Language (DML)',
+      'Data Transaction Language (DTL)',
+      'Data Definition Language (DDL)',
+      'Data Query Language (DQL)'],
 ans:2,
-rationale:'<strong>C is correct.</strong> Logic errors produce wrong results without crashing. The code is syntactically valid and executes — it just computes the wrong thing.',
-misconception:'Students picking runtime error expect a crash. Logic errors are silent failures — the hardest type to catch.'},
+rationale:'<strong>C is correct.</strong> DDL (Data Definition Language) defines and modifies database structure: CREATE, ALTER, DROP, and TRUNCATE. DML operates on row data; DQL queries.',
+misconception:'Students pick DML because CREATE sounds like it "creates" data. DDL creates and modifies the structural containers (tables, indexes, schemas). DML puts data into those containers.'},
 
-{sec:'c2',comp:'C2',topic:'Syntax Errors',diff:'found',type:'mc',
-stem:'Which line in the code below contains a syntax error?\n\n1: def calculate(x, y):\n2:     result = x + y\n3:     return result\n4: print(calculate(3, 4)',code:true,
-opts:['Line 1','Line 2','Line 3','Line 4 — missing closing parenthesis'],
+{sec:'c3',comp:'C3',topic:'SQL Sublanguages — DML',diff:'found',
+stem:'Which SQL sublanguage includes the INSERT statement?',
+opts:['Data Transaction Language (DTL)',
+      'Data Manipulation Language (DML)',
+      'Data Query Language (DQL)',
+      'Data Definition Language (DDL)'],
+ans:1,
+rationale:'<strong>B is correct.</strong> DML covers statements that operate on data rows: INSERT, UPDATE, DELETE, and MERGE. DDL defines structure; DQL queries (SELECT).',
+misconception:'Students pick DDL because INSERT "creates" a row. DDL creates structural containers. INSERT adds data to existing structures — that is manipulation, not definition.'},
+
+{sec:'c3',comp:'C3',topic:'SQL Sublanguages — DCL',diff:'found',
+stem:'Which SQL sublanguage includes the GRANT statement?',
+opts:['Data Control Language (DCL)',
+      'Data Manipulation Language (DML)',
+      'Data Definition Language (DDL)',
+      'Data Query Language (DQL)'],
+ans:0,
+rationale:'<strong>A is correct.</strong> DCL (Data Control Language) manages user privileges: GRANT assigns permissions and REVOKE removes them.',
+misconception:'Students pick DDL because GRANT sounds like it "creates" an access right. Permissions are a security/control concern handled by DCL, not DDL.'},
+
+{sec:'c3',comp:'C3',topic:'SQL Sublanguages — DTL',diff:'inter',
+stem:'A user needs to undo changes made during the current transaction. The ROLLBACK statement belongs to which SQL sublanguage?',
+opts:['Data Transaction Language (DTL)',
+      'Data Manipulation Language (DML)',
+      'Data Control Language (DCL)',
+      'Data Definition Language (DDL)'],
+ans:0,
+rationale:'<strong>A is correct.</strong> DTL manages transactions: COMMIT (save permanently) and ROLLBACK (undo since last COMMIT). DCL handles privileges; DML handles row data.',
+misconception:'Students pick DML because ROLLBACK sounds like it manipulates data. DTL controls the transaction boundary that wraps DML operations — a distinct sublanguage.'},
+
+{sec:'c3',comp:'C3',topic:'SQL — FROM Keyword',diff:'found',
+stem:'A user needs to name the table to be searched in a SQL query. Which keyword is needed?',
+opts:['SHOW','WHERE','FROM','MARK'],
+ans:2,
+rationale:'<strong>C is correct.</strong> FROM specifies the table to query in a SELECT statement. WHERE filters rows; SHOW is not a standard DQL keyword; MARK is not a SQL keyword.',
+misconception:'Students pick WHERE because it sounds like table selection. WHERE filters rows by condition after FROM has identified the table.'},
+
+{sec:'c3',comp:'C3',topic:'SQL — ORDER BY',diff:'found',
+stem:'Which SQL keyword sorts the rows returned by a SELECT statement?',
+opts:['WHERE','GROUP BY','SORT','ORDER BY'],
 ans:3,
-rationale:'<strong>D is correct.</strong> Line 4 calls print() but the outer closing parenthesis is missing: <code>print(calculate(3, 4)</code> has unbalanced parentheses, causing a SyntaxError.',
-misconception:'Students scan the function definition for errors but miss the unclosed parenthesis at the call site.'},
+rationale:'<strong>D is correct.</strong> ORDER BY specifies columns to sort the result set, with ASC (default) or DESC. SORT is not a valid SQL keyword. WHERE filters; GROUP BY aggregates.',
+misconception:'Students pick SORT because it is the plain-English word. SQL uses ORDER BY — SORT does not exist as a standard SQL clause.'},
 
-{sec:'c2',comp:'C2',topic:'Hypothesis Testing',diff:'inter',type:'mc',
-stem:'A student suspects the variable <code>counter</code> is not incrementing inside a loop. Which test directly validates or refutes this?',
-opts:['Delete the loop and run the code again',
-      'Add print(counter) at the start and end of each loop iteration to observe the value change',
-      'Change the variable name from counter to count and rerun',
-      'Rewrite the entire function from scratch'],
+{sec:'c3',comp:'C3',topic:'SQL — WHERE Keyword',diff:'found',
+stem:'Which SQL keyword narrows the rows selected by a SELECT statement?',
+opts:['FROM','SHOW','USE','WHERE'],
+ans:3,
+rationale:'<strong>D is correct.</strong> WHERE applies a filter condition that each row must satisfy to be included in the result. FROM names the table; USE selects a database; SHOW is metadata-specific.',
+misconception:'Students pick FROM thinking both FROM and WHERE are involved in "selecting" data. FROM identifies the table; WHERE filters its rows — separate operations with distinct keywords.'},
+
+{sec:'c3',comp:'C3',topic:'SQL — ALTER TABLE',diff:'inter',
+stem:'Which statement adds a new column named Email to an existing Customer table?',
+opts:['Stapler, Notebook','Pen, Marker','Notebook, Stapler','Stapler, Notebook, Marker'],
+ans:0,
+rationale:'<strong>C is correct.</strong> ALTER TABLE modifies the structure of an existing table. CREATE TABLE creates a new table from scratch. UPDATE modifies data values; INSERT adds rows.',
+misconception:'Students pick CREATE TABLE because adding a column sounds like "creating." CREATE TABLE is for new tables only. ALTER TABLE modifies existing structures.'},
+
+{sec:'c3',comp:'C3',topic:'SQL — SELECT with WHERE and ORDER BY',diff:'inter',
+stem:'Given the Product table (Pen $1.50, Notebook $4.00, Stapler $8.25, Marker $2.75), which rows does this query return?\n\nSELECT Name FROM Product WHERE Price > 3 ORDER BY Price DESC;',code:true,
+opts:['Pen, Marker','Notebook, Stapler','Stapler, Notebook, Marker','Stapler, Notebook'],
+ans:3,
+rationale:'<strong>D is correct.</strong> WHERE Price > 3 includes Notebook ($4.00) and Stapler ($8.25) only. ORDER BY Price DESC sorts descending: Stapler first, then Notebook.',
+misconception:'Marker ($2.75) fails Price > 3. Students including Marker have misread the operator. Students choosing B have the right rows but wrong order — DESC means highest first.'},
+
+{sec:'c3',comp:'C3',topic:'SQL Operators — Division',diff:'found',
+stem:'A person needs to find the quotient of two numbers in SQL. Which operator is used?',
+opts:['%',
+      '/',
+      '++',
+      '^'],
 ans:1,
-rationale:'<strong>B is correct.</strong> A targeted <code>print()</code> at the hypothesis location provides direct evidence. If the value doesn\'t change between start and end, the hypothesis is confirmed.',
-misconception:'A destroys the context. C and D make changes that obscure rather than test the specific hypothesis.'},
+rationale:'<strong>D is correct.</strong> The / operator performs division in SQL. % is modulo (remainder); ^ is not a standard SQL arithmetic operator; ++ does not exist in SQL.',
+misconception:'Students pick % confusing division with modulo. % returns the remainder, not the quotient. / is the division operator.'},
 
-{sec:'c2',comp:'C2',topic:'Runtime Errors',diff:'inter',type:'mc',
-stem:'What error will this code produce, and at what stage?\n\nx = int(input("Enter a number: "))\nresult = 10 / x\nprint(result)',code:true,
-opts:['SyntaxError before the program runs',
-      'NameError when x is referenced',
-      'ZeroDivisionError at runtime if the user enters 0',
-      'TypeError when print() is called'],
+{sec:'c3',comp:'C3',topic:'SQL Operators — Multiplication',diff:'found',
+stem:'Which SQL operator finds the product of two numbers?',
+opts:['#',
+      '++',
+      '*',
+      '-'],
 ans:2,
-rationale:'<strong>C is correct.</strong> The code is syntactically valid and runs normally. Only when x=0 does <code>10 / 0</code> trigger a ZeroDivisionError at runtime.',
-misconception:'Students picking A expect static analysis to catch division by zero. Python cannot know the user\'s input at parse time.'},
+rationale:'<strong>D is correct.</strong> The * operator performs multiplication in SQL. # and ++ are not SQL arithmetic operators. - is subtraction.',
+misconception:'Students who are more familiar with general programming may overlook * because it also functions as "all columns" in SELECT *. In arithmetic context, * is multiplication.'},
 
-{sec:'c2',comp:'C2',topic:'IDE Features',diff:'found',type:'mc',
-stem:'A developer uses VS Code and notices a variable name highlighted in red with a squiggly underline before the program runs. What IDE feature is responsible?',
-opts:['The terminal / integrated console','Static analysis / linting','The version control panel','The run configuration'],
+{sec:'c3',comp:'C3',topic:'SQL Operators — Negation',diff:'inter',
+stem:'Which SQL operator reverses the sign of a numeric value?',
+opts:['/','%','^','-'],
+ans:3,
+rationale:'<strong>D is correct.</strong> The unary minus (-) negates a numeric value (e.g., -salary reverses the sign). / is division; % is modulo; ^ is not a standard SQL arithmetic operator.',
+misconception:'Students pick ^ thinking it means "opposite" from mathematical notation. In standard SQL, ^ is not a recognized arithmetic operator. The unary minus is the negation operator.'},
+
+{sec:'c3',comp:'C3',topic:'Relational Operations — Aggregate',diff:'inter',
+stem:'A manager needs the total salary paid across all rows of the Employee table. Which relational operation applies?',
+opts:['Join','Aggregate','Intersect','Rename'],
 ans:1,
-rationale:'<strong>B is correct.</strong> Linters perform static analysis — examining code without running it. They flag potential errors, undefined names, and style violations in real time.',
-misconception:'Students pick terminal thinking errors only appear at runtime. Linting catches issues before execution.'},
+rationale:'<strong>B is correct.</strong> Aggregate operations compute a single summary value from multiple rows — sum, count, average, min, max. Totaling salary requires SUM (an aggregate function).',
+misconception:'Join (A) combines rows from two tables. This question summarizes rows within one table — that is aggregation, not joining.'},
 
-{sec:'c2',comp:'C2',topic:'Troubleshooting Strategy',diff:'inter',type:'mc',
-stem:'A developer\'s program crashes with a long error traceback. What is the most efficient first action?',
-opts:['Read the entire traceback from top to bottom and fix every warning first',
-      'Read the last line of the traceback — it contains the actual error type and message',
-      'Restart the computer and try again',
-      'Comment out all code and restore it line by line'],
+{sec:'c3',comp:'C3',topic:'Relational Operations — Join',diff:'inter',
+stem:'A user needs to compare related columns of two tables to combine them. Which relational operation should be used?',
+opts:['Difference','Join','Intersect','Union'],
 ans:1,
-rationale:'<strong>B is correct.</strong> Python tracebacks are read from bottom up for the critical information. The final line identifies the specific exception type and message — the diagnostic entry point.',
-misconception:'Students read tracebacks top-down because English reads that way. The actionable error is always at the bottom.'},
+rationale:'<strong>B is correct.</strong> Join combines rows from two tables based on a matching condition between related columns (typically a FK and PK). Union, Difference, and Intersect operate on rows without a matching condition.',
+misconception:'Union (D) stacks rows from tables with identical schemas — it does not match related columns. Join is the relational linking operation.'},
 
-{sec:'c2',comp:'C2',topic:'Fix the Code',diff:'inter',type:'mc',
-stem:'The code below raises an IndentationError. What is the issue?\n\ndef square(n):\nreturn n * n\nprint(square(5))',code:true,
-opts:['square is not a valid function name',
-      'return n * n must be indented inside the function body',
-      'print() should be inside the function',
-      'The function needs a parameter type declaration'],
+{sec:'c3',comp:'C3',topic:'Relational Operations — Product',diff:'inter',
+stem:'A user needs to list all combinations of rows from two tables. Which relational operation should be used?',
+opts:['Product',
+      'Select',
+      'Intersect',
+      'Aggregate'],
+ans:0,
+rationale:'<strong>D is correct.</strong> The Cartesian product (Product) produces every possible pairing of rows from two tables — if table A has m rows and B has n rows, the result has m×n rows.',
+misconception:'Intersect (B) returns only rows that appear in both tables. Product returns all combinations regardless of matching — the two operations produce fundamentally different results.'},
+
+{sec:'c3',comp:'C3',topic:'Relational Operations — Project',diff:'inter',
+stem:'Which relational operation returns only specified columns of a table?',
+opts:['Union','Select','Product','Project'],
+ans:3,
+rationale:'<strong>D is correct.</strong> Project (SQL: SELECT column_list) reduces the result to named columns. Select (SQL: WHERE) filters rows. Union combines rows from two tables.',
+misconception:'Students pick Select because SQL uses SELECT for column retrieval. In relational algebra, Select filters rows and Project retrieves columns — the terms are inverted from SQL conventions.'},
+
+{sec:'c3',comp:'C3',topic:'Relational Operations — Difference',diff:'adv',
+stem:'Which relational operation selects rows appearing in only one of two tables?',
+opts:['Union',
+      'Join',
+      'Difference',
+      'Rename'],
+ans:2,
+rationale:'<strong>D is correct.</strong> Difference (A MINUS B) returns rows that appear in the first table but not the second — those unique to one set. Union returns all rows from both; Intersect returns only shared rows.',
+misconception:'Students pick Union thinking "only one table." Union returns rows from BOTH tables. Difference returns rows exclusive to one table.'},
+
+{sec:'c3',comp:'C3',topic:'Relational Operations — Rename',diff:'inter',
+stem:'Which relational operation updates a table identifier?',
+opts:['Rename',
+      'Select',
+      'Join',
+      'Intersect'],
+ans:0,
+rationale:'<strong>C is correct.</strong> The Rename operation assigns a new name to a relation (table) or its attributes — primarily used in relational algebra to avoid naming conflicts when combining tables.',
+misconception:'Students pick Join thinking it "connects" identifiers. Join combines rows based on conditions; Rename modifies identifiers without changing data.'},
+
+{sec:'c3',comp:'C3',topic:'Foreign Key — ON DELETE CASCADE',diff:'inter',
+stem:'A business rule states that when an employee is deleted, all tasks for that employee must also be deleted. Which clause enforces this?',
+opts:['ON DELETE RESTRICT','NOT NULL','ON DELETE SET NULL','ON DELETE CASCADE'],
+ans:3,
+rationale:'<strong>D is correct.</strong> ON DELETE CASCADE automatically deletes all child rows when the parent row is deleted. ON DELETE RESTRICT blocks the deletion. ON DELETE SET NULL nullifies the FK instead.',
+misconception:'ON DELETE RESTRICT (A) prevents deletion — the opposite of what the rule requires. CASCADE propagates the delete action to dependent rows.'},
+
+{sec:'c3',comp:'C3',topic:'Normalization — 1NF',diff:'found',
+stem:'A Customer table stores "555-0101, 555-0199" in a single PhoneNumbers column cell. Which normal form does this violate?',
+opts:['Second normal form (2NF)',
+      'First normal form (1NF)',
+      'Third normal form (3NF)',
+      'None; storing several values in one cell is permitted'],
 ans:1,
-rationale:'<strong>B is correct.</strong> Python uses indentation to define code blocks. The <code>return</code> statement must be indented by at least one level inside the <code>def</code> block.',
-misconception:'Students from C/Java expect curly braces. In Python, indentation IS the block delimiter.'},
+rationale:'<strong>D is correct.</strong> 1NF requires atomic (indivisible) values in every cell. Storing two phone numbers in one cell violates atomicity — the first rule of normalization.',
+misconception:'Functional storage and normalized storage are different standards. A cell with multiple values is a 1NF violation regardless of whether the application can parse the comma-separated string.'},
 
-{sec:'c2',comp:'C2',topic:'AI Debugging',diff:'inter',type:'mc',
-stem:'When describing a bug to an AI debugging tool, which description is most likely to produce a useful response?',
-opts:['"My code is broken, please fix it"',
-      '"Something is wrong with the loop"',
-      '"My function is supposed to return the sum of a list, but it always returns 0. Here is the code: [paste code]"',
-      '"I think there might be an error somewhere in my program"'],
-ans:2,
-rationale:'<strong>C is correct.</strong> Effective AI debugging prompts include: what the code should do, what it actually does, and the relevant code. Vague descriptions cannot be diagnosed.',
-misconception:'A, B, D lack specific behavior descriptions. The AI needs expected vs. actual behavior plus the code to reason about.'},
+{sec:'c3',comp:'C3',topic:'Normalization — 2NF',diff:'adv',
+stem:'An Enrollment table has StudentID+CourseID as primary key. StudentName depends only on StudentID. Which problem does this design have?',
+opts:['A partial dependency, violating second normal form (2NF)',
+      'A transitive dependency, violating 3NF',
+      'A repeating group, violating 1NF',
+      'The table has no primary key'],
+ans:0,
+rationale:'<strong>A is correct.</strong> A partial dependency occurs when a non-key column depends on only part of a composite key. StudentName depends on StudentID alone — not the full key (StudentID + CourseID).',
+misconception:'Transitive dependency (B) involves a non-key column depending on another non-key column. StudentName depends on part of the key — partial, not transitive.'},
 
-{sec:'c2',comp:'C2',topic:'Error Identification',diff:'inter',type:'mc',
-stem:'Identify the type of error in the code below.\n\ngrades = [88, 92, 78]\naverage = sum(grades) / len(grades) + 10\nprint("Class average:", average)',code:true,
-opts:['Syntax error — the formula uses too many operators',
-      'Runtime error — sum() does not work on lists',
-      'Logic error — adding 10 inflates the average, but the code runs without crashing',
-      'No error — the code is correct'],
-ans:2,
-rationale:'<strong>C is correct.</strong> The code runs successfully, but the formula is logically wrong if the intent was a pure average. Adding 10 is a logic error — incorrect behavior with no crash.',
-misconception:'Students picking D assume the code is correct because it runs. Correctness and executability are different properties.'},
+{sec:'c3',comp:'C3',topic:'Normalization — 3NF',diff:'adv',
+stem:'An Employee table has EmployeeID (PK), Name, DeptCode, and DeptName, where DeptName is determined by DeptCode rather than directly by EmployeeID. Which problem does this design have?',
+opts:['A repeating group, violating 1NF',
+      'A transitive dependency, violating third normal form (3NF)',
+      'None; the table is fully normalized',
+      'A partial dependency, violating 2NF'],
+ans:1,
+rationale:'<strong>D is correct.</strong> A transitive dependency exists when a non-key column depends on another non-key column (DeptName → DeptCode → EmployeeID). This violates 3NF.',
+misconception:'Partial dependency (C) involves composite keys. The key here is single-column (EmployeeID), so the dependency must be transitive. Students swap these two normalization violations.'},
 
-{sec:'c2',comp:'C2',topic:'Validate the Fix',diff:'adv',type:'mc',
-stem:'After applying a fix to a bug, what is the correct validation approach?',
-opts:['Assume the fix works and submit the code',
-      'Test only the specific case that caused the original error',
-      'Test the original failing case, boundary cases, and several additional inputs to verify no new errors were introduced',
-      'Ask an AI tool to confirm the fix is correct without running the code'],
+{sec:'c3',comp:'C3',topic:'Normalization — Purpose',diff:'found',
+stem:'What is the primary purpose of database normalization?',
+opts:['To reduce redundant data and prevent insert, update, and delete anomalies',
+      'To encrypt sensitive columns',
+      'To store all data in one large table so queries never need joins',
+      'To create backup copies on a second server'],
+ans:0,
+rationale:'<strong>D is correct.</strong> Normalization eliminates redundancy and prevents the three update anomalies: insert, update, and delete anomalies that arise from storing related data in a single table.',
+misconception:'C is the opposite of normalization. Normalization splits data into related tables (requiring joins) but eliminates the redundancy and anomalies that single large tables produce.'},
+
+{sec:'c3',comp:'C3',topic:'Primary Key Rules',diff:'found',
+stem:'Which rule applies to a table\'s primary key?',
+opts:['A table may define several separate primary keys',
+      'Its values must be unique and cannot be NULL',
+      'It must always be a text column',
+      'Its values may repeat as long as other columns differ'],
+ans:1,
+rationale:'<strong>B is correct.</strong> A primary key must uniquely identify each row (no duplicates) and cannot contain NULL. A table has exactly one primary key constraint.',
+misconception:'A table has exactly one primary key (A is wrong). Multiple unique constraints are allowed but only one is designated the primary key.'},
+
+{sec:'c3',comp:'C3',topic:'NOT NULL Constraint',diff:'found',
+stem:'Which constraint prevents a column from containing a missing value?',
+opts:['NOT NULL','UNIQUE','DEFAULT','FOREIGN KEY'],
+ans:0,
+rationale:'<strong>A is correct.</strong> NOT NULL prohibits NULL values in a column — every row must supply an actual value. UNIQUE prevents duplicates but allows NULLs. DEFAULT provides a fallback but does not prohibit NULL.',
+misconception:'Students pick UNIQUE thinking it enforces completeness. UNIQUE ensures no two rows share the same non-null value but allows NULLs in most databases.'},
+
+{sec:'c3',comp:'C3',topic:'Relational Model Terminology',diff:'inter',
+stem:'In the mathematical terminology of the relational model, what is a table row called?',
+opts:['Attribute','Tuple','Relation','Domain'],
+ans:1,
+rationale:'<strong>B is correct.</strong> In relational theory: a table is a relation, a column is an attribute, a row is a tuple, and the set of valid values for an attribute is its domain.',
+misconception:'Students swap Attribute (column) and Tuple (row). The relational model has specific mathematical terms that differ from everyday database vocabulary.'},
+
+{sec:'c3',comp:'C3',topic:'Database Security Roles',diff:'found',
+stem:'Which database role is responsible for securing the database system against unauthorized users?',
+opts:['Database user','Database administrator','Database designer','Database programmer'],
+ans:1,
+rationale:'<strong>B is correct.</strong> The DBA manages security, access control, backups, and user privileges. Designers model structure; programmers write queries; users interact with data.',
+misconception:'Students pick database designer thinking the person who built it controls access. Design and administration are distinct roles with distinct ongoing responsibilities.'},
+
+{sec:'c3',comp:'C3',topic:'Authorization vs Authentication',diff:'inter',
+stem:'After a user logs in with verified credentials, which security measure determines which tables that user may read or modify?',
+opts:['Normalization',
+      'Authentication',
+      'Authorization',
+      'Encryption'],
 ans:2,
-rationale:'<strong>C is correct.</strong> Fixing one bug can introduce others. Comprehensive validation tests the original failure, boundary conditions (empty list, zero, max values), and additional inputs.',
-misconception:'B is insufficient — regression testing catches new failures introduced by the fix.'},
+rationale:'<strong>D is correct.</strong> Authorization determines what an authenticated user is permitted to do — which resources they can access and what operations they can perform. Authentication only verifies identity.',
+misconception:'Students pick Authentication (C) because login was just mentioned. Authentication (who are you?) and authorization (what can you do?) are sequential but distinct security steps.'},
+
+{sec:'c3',comp:'C3',topic:'SQL Injection Defense',diff:'adv',
+stem:'An application inserts whatever the user types directly into the SQL query string. Which measure best protects against SQL injection?',
+opts:['Give the application\'s database account full administrator privileges',
+      'Remove the primary keys from sensitive tables',
+      'Use parameterized queries (prepared statements) and validate user input',
+      'Store user passwords in plain text for easier recovery'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Parameterized queries separate SQL code from user data at the driver level — user input is never interpreted as SQL syntax regardless of what is typed.',
+misconception:'Admin privileges (A) expand the damage an injection attack can cause. They are a security liability, not a defense.'},
+
+{sec:'c3',comp:'C3',topic:'NoSQL Databases',diff:'inter',
+stem:'Which type of database is optimized for big data?',
+opts:['Relational','Open Source','Commercial','NoSQL'],
+ans:3,
+rationale:'<strong>D is correct.</strong> NoSQL databases are designed for horizontal scalability, flexible schemas, and large-scale distributed data — characteristics that make them suited for big data workloads.',
+misconception:'Relational databases (A) have rigid schemas and scale vertically — not the architecture optimized for unstructured big data at distributed scale.'},
+
+{sec:'c3',comp:'C3',topic:'Spatial Data Type',diff:'inter',
+stem:'Which relational database data type stores geometric information such as polygons?',
+opts:['Document','Binary','Character','Spatial'],
+ans:3,
+rationale:'<strong>D is correct.</strong> The Spatial data type stores geometric and geographic data (points, lines, polygons) and supports spatial queries like distance calculations and intersection tests.',
+misconception:'Binary (B) stores raw byte streams but has no spatial computation capabilities. Spatial is a purpose-built type for geographic and geometric data.'},
 ];
 
-// ═══════════════════════════════════════════════════════════════
-// C3 — RELATIONAL DATABASES AND SQL (10 questions)
-// Source: D615A_C3_Diagnostic_Test_1.pdf
-// ═══════════════════════════════════════════════════════════════
-const C3 = [
+// ═══════════════════════════════════════════════════════
+// SIM — SIMULATED PRACTICE TEST  (20 questions)
+// Mixed competencies · all from Sim PT 2026 + Form B
+// styled like the actual WGU objective assessment
+// ═══════════════════════════════════════════════════════
+const SIM=[
+{sec:'sim',comp:'SIM',topic:'Database Architecture — Storage Manager',diff:'found',
+stem:'What is the part of a database that translates request instructions into low-level file-system commands?',
+opts:['Storage Manager',
+      'Transaction Manager',
+      'Log',
+      'Query Processor'],
+ans:0,
+rationale:'<strong>D is correct.</strong> The Storage Manager bridges the database engine and the operating system\'s file system — it translates high-level data requests into the low-level file I/O operations that actually read and write data on disk.',
+misconception:'Students pick Query Processor (C) thinking it handles all translation. The Query Processor translates SQL into an execution plan; the Storage Manager translates that plan into file-system commands.'},
 
-{sec:'c3',comp:'C3',topic:'Database Fundamentals',diff:'found',type:'mc',
-stem:'Which most accurately describes a relational database?',
-opts:['A database that stores data as a single flat text file with no structure',
-      'A collection of data organized into tables with defined relationships between them, managed by a DBMS',
-      'A database that only stores images and multimedia files',
-      'A spreadsheet application like Microsoft Excel'],
+{sec:'sim',comp:'SIM',topic:'Database Architecture — Query Processor',diff:'found',
+stem:'What part of a database returns request results to an application?',
+opts:['Storage Manager',
+      'Query Processor',
+      'Transaction Manager',
+      'Catalog'],
 ans:1,
-rationale:'<strong>B is correct.</strong> A relational database organizes data into structured tables. Relationships between tables are enforced through keys and managed by a DBMS (Database Management System).',
-misconception:'D is a common misconception — Excel spreadsheets superficially resemble tables but lack referential integrity, ACID guarantees, and relational constraints.'},
+rationale:'<strong>D is correct.</strong> The Query Processor parses and executes queries, coordinates with the Storage Manager to retrieve data, and packages results for return to the calling application.',
+misconception:'Students pick Catalog (B) thinking it "knows about" everything and therefore returns results. The Catalog stores metadata (table definitions, indexes); the Query Processor uses that metadata to execute queries and deliver results.'},
 
-{sec:'c3',comp:'C3',topic:'Primary Keys',diff:'found',type:'mc',
-stem:'A table called <code>employees</code> has columns: employee_id, first_name, last_name, department. Which column should serve as the primary key and why?',
-opts:['first_name — it is alphabetically first',
-      'department — it is used most frequently in queries',
-      'employee_id — it is unique to every employee and never null',
-      'last_name — names are always unique'],
+{sec:'sim',comp:'SIM',topic:'Database Architecture — Transaction Manager',diff:'inter',
+stem:'What database component prevents conflicts among concurrent requests?',
+opts:['Catalog','Query Processor','Transaction Manager','Storage Manager'],
 ans:2,
-rationale:'<strong>C is correct.</strong> A primary key must uniquely identify each row and cannot contain NULL values. employee_id satisfies both requirements. Names can repeat; departments are shared by many employees.',
-misconception:'Students pick last_name assuming names are unique. In practice, multiple employees can share the same last name.'},
+rationale:'<strong>C is correct.</strong> The Transaction Manager enforces concurrency control — ensuring that simultaneous transactions do not interfere with each other through mechanisms like locking and serialization.',
+misconception:'Students pick Storage Manager (D) thinking concurrent disk access is the issue. The Transaction Manager handles the logical concurrency problem; the Storage Manager handles physical I/O.'},
 
-{sec:'c3',comp:'C3',topic:'SQL SELECT',diff:'found',type:'mc',
-stem:'Which query returns all columns and all rows from a table named <code>inventory</code>?',
-opts:['SELECT inventory;',
-      'GET ALL FROM inventory;',
-      'SELECT * FROM inventory;',
-      'SHOW TABLE inventory;'],
-ans:2,
-rationale:'<strong>C is correct.</strong> <code>SELECT * FROM table_name</code> retrieves all columns (*) from every row in the specified table. The other options use invalid SQL syntax.',
-misconception:'GET and SHOW are not standard SQL keywords. SELECT is the only retrieval keyword in SQL.'},
-
-{sec:'c3',comp:'C3',topic:'SQL WHERE',diff:'found',type:'mc',
-stem:'A <code>customers</code> table has a column <code>city</code>. Which query returns only customers from "Chicago"?',
-opts:['SELECT * FROM customers IF city = "Chicago";',
-      'SELECT * FROM customers WHERE city = \'Chicago\';',
-      'FILTER customers WHERE city = Chicago;',
-      'SELECT city FROM customers EQUALS \'Chicago\';'],
+{sec:'sim',comp:'SIM',topic:'Database Architecture — Catalog',diff:'inter',
+stem:'Which database architecture component contains metadata about tables, columns, and indexes?',
+opts:['Log','Catalog','Transaction Manager','Query Processor'],
 ans:1,
-rationale:'<strong>B is correct.</strong> WHERE is the correct SQL clause for filtering rows by condition. String values must be enclosed in single quotes in standard SQL.',
-misconception:'IF is not a SQL filtering clause. FILTER and EQUALS are not valid SQL keywords.'},
+rationale:'<strong>B is correct.</strong> The Catalog (also called the data dictionary or system catalog) stores metadata — descriptions of tables, columns, data types, indexes, constraints, and user permissions that the engine uses at query time.',
+misconception:'Students pick Log (A) thinking it stores "information about" the database. The Log records transactional changes (what happened); the Catalog describes the structure (what exists).'},
 
-{sec:'c3',comp:'C3',topic:'Foreign Keys',diff:'inter',type:'mc',
-stem:'The <code>orders</code> table has a column <code>customer_id</code> that references the <code>customer_id</code> column in the <code>customers</code> table. What is this design mechanism called?',
-opts:['A compound key','A foreign key','A check constraint','An index'],
+{sec:'sim',comp:'SIM',topic:'Database Architecture — Log',diff:'inter',
+stem:'What database component stores information about updates, insertions, and deletions?',
+opts:['Transaction Manager','Log','Query Processor','Storage Manager'],
 ans:1,
-rationale:'<strong>B is correct.</strong> A foreign key is a column in one table that creates a referential link to the primary key of another table, enforcing referential integrity.',
-misconception:'An index speeds up queries but does not enforce relationships. A compound key combines multiple columns into a single key — not applicable here.'},
+rationale:'<strong>B is correct.</strong> The transaction log records every data modification in sequence, enabling recovery (ROLLBACK, crash recovery) and replication. It is the audit trail of all DML operations.',
+misconception:'Students pick Transaction Manager (A) thinking it "manages" changes and therefore stores them. The Transaction Manager coordinates operations; the Log persistently records them.'},
 
-{sec:'c3',comp:'C3',topic:'Normalization — 1NF',diff:'inter',type:'mc',
-stem:'A table stores product colors in a single column as "Red, Blue, Green". Which normalization rule does this violate?',
-opts:['Second Normal Form (2NF)',
-      'Third Normal Form (3NF)',
-      'First Normal Form (1NF) — each column must store atomic (indivisible) values',
-      'No rule is violated — this is efficient storage'],
+{sec:'sim',comp:'SIM',topic:'SQL — SHOW Statement',diff:'found',
+stem:'Which SQL statement type lets a user access information about a database structure?',
+opts:['FIND',
+      'SET',
+      'SHOW',
+      'LIST'],
 ans:2,
-rationale:'<strong>C is correct.</strong> 1NF requires that every cell contain a single, atomic value. Storing multiple values ("Red, Blue, Green") in one cell violates atomicity.',
-misconception:'Students picking D justify the design as storage-efficient. Efficiency is not a normalization criterion; atomicity is.'},
+rationale:'<strong>D is correct.</strong> SHOW is used in MySQL and similar systems to display metadata: SHOW TABLES, SHOW DATABASES, SHOW COLUMNS. FIND, SET (in this context), and LIST are not standard SQL metadata commands.',
+misconception:'Students pick LIST thinking it sounds like a metadata retrieval command. LIST is not a standard SQL keyword for database introspection. SHOW is the recognized metadata command in MySQL-family databases.'},
 
-{sec:'c3',comp:'C3',topic:'SQL INSERT',diff:'found',type:'mc',
-stem:'Which statement correctly adds a new record to a <code>students</code> table with columns (student_id, name, grade)?',
-opts:['ADD TO students (101, \'Jordan\', \'B\');',
-      'INSERT INTO students VALUES (101, \'Jordan\', \'B\');',
-      'PUT students (101, \'Jordan\', \'B\');',
-      'NEW RECORD students (101, \'Jordan\', \'B\');'],
+{sec:'sim',comp:'SIM',topic:'Python — Feature',diff:'found',
+stem:'What is a feature of Python?',
+opts:['Similarity to regular English',
+      'Capability of redefining basic operators',
+      'Automatic correction of logic errors',
+      'Flexibility with line indentation'],
+ans:0,
+rationale:'<strong>D is correct.</strong> Python\'s syntax is designed to read like plain English — variable names, control flow keywords (if, for, while, and, or, not), and structure all closely mirror natural language.',
+misconception:'C is a trap: Python does NOT offer flexibility with indentation — indentation is strict and syntactically significant. D correctly identifies the design goal that makes Python beginner-friendly.'},
+
+{sec:'sim',comp:'SIM',topic:'Database — Primary Function',diff:'found',
+stem:'What is a primary function of a database system?',
+opts:['Performing data forecasting',
+      'Identifying trends in data',
+      'Ensuring data security',
+      'Simplifying complex data'],
+ans:2,
+rationale:'<strong>C is correct.</strong> A primary function of a database system is enforcing data security — controlling who can access, read, modify, or delete data through authentication and authorization mechanisms.',
+misconception:'A and B describe analytical functions performed on top of a database. Data security is a core system responsibility built into the DBMS itself, not an add-on.'},
+
+{sec:'sim',comp:'SIM',topic:'Code Error — Incorrect Parenthesis',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\nscore1 = int(input("Enter the first exam score: "))\nscore2 = int(input("Enter the second exam score: ")\navg = int(input("Enter the desired average: "))',code:true,
+opts:['Incorrect parenthesis',
+      'Invalid variable name',
+      'Missing colon',
+      'Undefined variable'],
+ans:0,
+rationale:'<strong>D is correct.</strong> Line 2 is missing the closing parenthesis for int(). The input() call closes correctly but int() is never closed, producing a SyntaxError before the program runs.',
+misconception:'Students scan variable names for the error. Variable names are all valid. The unbalanced parenthesis on line 2 is the syntactic error Python catches at parse time.'},
+
+{sec:'sim',comp:'SIM',topic:'Code Error — Misspelled Variable',diff:'inter',
+stem:'Running the following code produces an error. Which error is present?\n\nbirth_year = input("Enter your year of birth: ")\nage_in_2050 = 2050 - int(birt_year)',code:true,
+opts:['Improper indentation','Incorrect parenthesis','Invalid variable name','Misspelled variable'],
+ans:3,
+rationale:'<strong>D is correct.</strong> birth_year is assigned on line 1 but birt_year is referenced on line 2 — one letter missing. Python raises NameError because birt_year was never defined.',
+misconception:'birt_year is a valid Python identifier (C is wrong). The problem is not its legality but that it was never assigned — the correct name birth_year has an h that birt_year drops.'},
+
+{sec:'sim',comp:'SIM',topic:'Code Error — Return Indentation',diff:'adv',
+stem:'An error occurs in the following code. What is the error?\n\ndef count_numerical_characters(input_string):\n    count = 0\n    for char in input_string:\n        if char in "0123456789":\n            count += 1\n        return count',code:true,
+opts:['Incorrect parenthesis','Misspelled variable','Undefined variable','Improper indentation'],
+ans:3,
+rationale:'<strong>D is correct.</strong> return count is indented at the if level — inside the for loop. The function returns after checking only the first character. Moving return to align with count = 0 fixes it.',
+misconception:'The logic looks plausible at a glance. The indentation subtly places return inside the loop, causing the function to exit prematurely on the first iteration regardless of the condition.'},
+
+{sec:'sim',comp:'SIM',topic:'Python — Function Definition',diff:'inter',
+stem:'Which syntax correctly defines a Python function?',
+opts:['myFunction(a, b) = (a * b)**2',
+      'def myFunction(a, b): return (a * b)**2',
+      'myFunction(a, b: (a * b)**2)',
+      'function myFunction(a, b): output (a * b)**2'],
 ans:1,
-rationale:'<strong>B is correct.</strong> <code>INSERT INTO table_name VALUES (...)</code> is the standard SQL syntax for adding a new row. ADD, PUT, and NEW RECORD are not SQL keywords.',
-misconception:'Students with Python backgrounds may try write-like syntax. SQL has strict keyword structures that must be memorized.'},
+rationale:'<strong>D is correct.</strong> Python functions use def, followed by the name, parenthesized parameters, a colon, and an indented body using return. function and output are not Python keywords.',
+misconception:'D (function keyword) reflects JavaScript syntax. Python uses def exclusively for function definition.'},
 
-{sec:'c3',comp:'C3',topic:'Relationships',diff:'inter',type:'mc',
-stem:'In a hospital database, one doctor can treat many patients, but each patient has only one primary doctor. What type of relationship is this?',
-opts:['One-to-one','Many-to-many','One-to-many','Self-referencing'],
+{sec:'sim',comp:'SIM',topic:'Algorithm Steps — Pseudocode Next',diff:'inter',
+stem:'A developer has identified algorithm steps and written pseudocode. What should be done next?',
+opts:['Write the algorithm in a compiled language',
+      'Translate pseudocode into machine language',
+      'Conduct testing to verify solution accuracy',
+      'Determine desired outputs and inputs'],
 ans:2,
-rationale:'<strong>C is correct.</strong> One-to-many: one doctor maps to multiple patients; each patient maps to exactly one doctor. This is the most common relationship type in relational databases.',
-misconception:'Students pick many-to-many thinking doctors and patients both have multiple associations. The constraint is that each patient has only ONE doctor.'},
+rationale:'<strong>C is correct.</strong> After pseudocode is written, testing validates the logic against expected outputs before any language translation. Inputs and outputs (D) should have been defined before pseudocode was written.',
+misconception:'Translation (A, B) follows testing. Students who skip testing often discover logic flaws only after significant implementation effort — the most expensive point to discover them.'},
 
-{sec:'c3',comp:'C3',topic:'SQL UPDATE',diff:'inter',type:'mc',
-stem:'Which statement correctly changes the grade of the student with student_id = 5 to "A" in the students table?',
-opts:['MODIFY students SET grade = \'A\' WHERE student_id = 5;',
-      'CHANGE students grade = \'A\' WHERE student_id = 5;',
-      'UPDATE students SET grade = \'A\' WHERE student_id = 5;',
-      'UPDATE students WHERE student_id = 5 THEN grade = \'A\';'],
+{sec:'sim',comp:'SIM',topic:'Relational Operations — Rename',diff:'inter',
+stem:'Which relational operation updates a table identifier?',
+opts:['Intersect','Select','Join','Rename'],
+ans:3,
+rationale:'<strong>D is correct.</strong> The Rename operation assigns a new name to a relation or its attributes — primarily used in relational algebra to avoid naming conflicts when combining tables.',
+misconception:'Students pick Join thinking "connecting" implies renaming. Join combines rows by matching column values. Rename changes identifiers without altering data.'},
+
+{sec:'sim',comp:'SIM',topic:'Algorithm Validation',diff:'inter',
+stem:'Which algorithm validation best practice should a programmer follow?',
+opts:['Compare speed to expectations',
+      'Reduce dependence on external modules',
+      'Use testing to ensure reliability',
+      'Test every possible input'],
 ans:2,
-rationale:'<strong>C is correct.</strong> <code>UPDATE table SET column = value WHERE condition</code> is the correct syntax. Always include WHERE when updating; omitting it modifies every row in the table.',
-misconception:'D swaps the clause order. SET must come before WHERE. MODIFY and CHANGE are not SQL keywords.'},
+rationale:'<strong>C is correct.</strong> Systematic testing against representative inputs is the standard for algorithm validation. It provides evidence that the algorithm produces correct outputs reliably.',
+misconception:'D (test every possible input) is impractical for algorithms with large or infinite input spaces. Representative testing across typical cases and boundary conditions is the achievable standard.'},
 
-{sec:'c3',comp:'C3',topic:'Database Security',diff:'adv',type:'mc',
-stem:'A developer builds a login form that constructs: <code>query = "SELECT * FROM users WHERE username = \'" + username + "\';"</code>. A user enters <code>admin\'--</code> and bypasses authentication. What is this attack called?',
-opts:['Cross-site scripting (XSS)','SQL injection','Phishing','Buffer overflow'],
+{sec:'sim',comp:'SIM',topic:'Troubleshooting — Collaboration',diff:'found',
+stem:'Which action is a best practice during troubleshooting?',
+opts:['Add custom error messages',
+      'Reduce source code volume',
+      'Collaborate with team members',
+      'Test with another operating system'],
+ans:2,
+rationale:'<strong>D is correct.</strong> Collaboration brings additional perspectives and domain knowledge — one of the most effective tactics for finding bugs that a single developer has been staring at too long to see.',
+misconception:'Adding error messages (B) is a tactic within troubleshooting, not a general best practice. It is only useful after the problem has been reproduced and isolated.'},
+
+{sec:'sim',comp:'SIM',topic:'Hypothesis Testing — Efficiency',diff:'inter',
+stem:'What is a strategy to make hypothesis testing more efficient?',
+opts:['Create hypotheses that are likely and easy to test',
+      'Test a hypothesis asymmetrically when possible',
+      'Create a hypothesis for each program function',
+      'Use the same conditions to test each hypothesis'],
 ans:1,
-rationale:'<strong>B is correct.</strong> SQL injection occurs when user-supplied input is directly embedded into an SQL query, allowing an attacker to alter query logic. <code>admin\'--</code> closes the string and comments out the rest of the query.',
-misconception:'XSS targets client-side script injection. SQL injection targets the database query layer. Both are injection attacks but at different levels.'},
+rationale:'<strong>B is correct.</strong> Asymmetric tests provide a definitive result in one direction — a single outcome either confirms or rules out the hypothesis, eliminating the need for multiple follow-up tests.',
+misconception:'A sounds reasonable but "easy to test" is not the efficiency criterion. An asymmetric test that requires more setup but provides a conclusive result is more efficient than an easy symmetric one.'},
+
+{sec:'sim',comp:'SIM',topic:'Avoiding Regressions',diff:'inter',
+stem:'What should be done to avoid introducing new problems while troubleshooting?',
+opts:['Test changes iteratively',
+      'Run program versions in parallel',
+      'Test with multiple end users',
+      'Evaluate using multiple languages'],
+ans:0,
+rationale:'<strong>D is correct.</strong> Iterative testing — one change, one test, evaluate, then proceed — ensures each modification can be evaluated in isolation before compounding complexity with additional changes.',
+misconception:'C (limited inputs) is the opposite of safe practice. Limited testing increases the risk of missing regression failures that the fix introduced.'},
+
+{sec:'sim',comp:'SIM',topic:'Solution Evaluation',diff:'inter',
+stem:'Which strategy is a best practice when evaluating a solution during troubleshooting?',
+opts:['Run program versions in parallel',
+      'Verify that no new problems exist',
+      'Test with multiple end users',
+      'Evaluate using multiple languages'],
+ans:1,
+rationale:'<strong>B is correct.</strong> After applying a fix, verification must confirm both that the original issue is resolved and that no new issues were introduced — regression testing is the standard.',
+misconception:'Running versions in parallel (A) is an operational deployment strategy. Solution evaluation during troubleshooting means running the fixed version against the original failure case and additional boundary inputs.'},
+
+{sec:'sim',comp:'SIM',topic:'Pseudocode Value',diff:'found',
+stem:'How does pseudocode assist algorithm planning?',
+opts:['Creates a secure testing environment',
+      'Provides a visual representation of the algorithm',
+      'Makes a solution easier to understand',
+      'Restricts planning to one language'],
+ans:2,
+rationale:'<strong>C is correct.</strong> Pseudocode expresses algorithm logic in plain language, making the solution readable and understandable to both technical and non-technical stakeholders without any syntax constraints.',
+misconception:'B describes flowcharts, not pseudocode. Pseudocode uses structured text; flowcharts use shapes. They serve complementary but distinct planning roles.'},
 ];
 
-// ═══════════════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════════════
-const ALL   = {c1:C1, c2:C2, c3:C3};
-const STATE = {c1:{}, c2:{}, c3:{}};
-const SELS  = {c1:{}, c2:{}, c3:{}};
-let curSec='c1', curQ=0;
+// ═══════════════════════════════════════════════════════
+// ENGINE
+// ═══════════════════════════════════════════════════════
+const SECTIONS=[
+  {key:'c1',label:'C1 — Algorithmic Thinking',color:'#1D9E75'},
+  {key:'c2',label:'C2 — Troubleshooting &amp; Debugging',color:'#B45309'},
+  {key:'c3',label:'C3 — Databases &amp; SQL',color:'#534AB7'},
+  {key:'sim',label:'Simulated Practice Test',color:'#991B1B'},
+];
+const ALL={c1:C1,c2:C2,c3:C3,sim:SIM};
+const STATE={c1:{},c2:{},c3:{},sim:{}};
+const SELS={c1:{},c2:{},c3:{},sim:{}};
+let curSec='c1',curQ=0;
 
-// ═══════════════════════════════════════════════════════════════
-// SCORE
-// ═══════════════════════════════════════════════════════════════
+function resetAll(){
+  if(!confirm('Reset all answers and start over?'))return;
+  ['c1','c2','c3','sim'].forEach(k=>{STATE[k]={};SELS[k]={};});
+  curSec='c1';curQ=0;render();
+}
 function calcSection(key){
-  const qs=ALL[key], st=STATE[key];
+  const qs=ALL[key],st=STATE[key];
   let done=0,right=0;
   qs.forEach((_,i)=>{if(st[i]!==undefined){done++;if(st[i])right++;}});
   return{done,right,total:qs.length};
 }
-
+function totalQuestions(){
+  return Object.keys(ALL).reduce((s,k)=>s+ALL[k].length,0);
+}
 function updateScore(){
-  let tot=0,right=0,done=0;
-  Object.keys(ALL).forEach(k=>{const r=calcSection(k);tot+=r.total;done+=r.done;right+=r.right;});
+  const tot=totalQuestions();
+  let right=0,done=0;
+  Object.keys(ALL).forEach(k=>{const r=calcSection(k);done+=r.done;right+=r.right;});
   const pct=done>0?Math.round(right/tot*100):null;
   document.getElementById('sc-tot').innerHTML=done+'<span style="font-size:13px;color:#9b9b97">/'+tot+'</span>';
   document.getElementById('sc-right').textContent=right;
@@ -771,43 +1176,36 @@ function updateScore(){
   document.getElementById('prog').style.width=(done/tot*100)+'%';
   document.getElementById('prog-txt').textContent=done+' of '+tot+' answered';
   document.getElementById('pass-note').textContent=passing?'On track to pass':'';
-  updateSumCards();
-  updateBreakdown();
-  buildTabs();
+  updateSumCards();updateBreakdown();buildTabs();
 }
-
 function updateSumCards(){
-  const grid=document.getElementById('sum-grid');
-  grid.innerHTML='';
+  const grid=document.getElementById('sum-grid');grid.innerHTML='';
   SECTIONS.forEach(sec=>{
-    if(!ALL[sec.key]) return;
     const r=calcSection(sec.key);
     const pct=r.done>0?Math.round(r.right/r.total*100):null;
     const passing=pct!==null&&pct>=80;
     const card=document.createElement('div');
-    card.className='sum-card';
-    card.onclick=()=>switchSection(sec.key);
+    card.className='sum-card';card.onclick=()=>switchSection(sec.key);
     card.innerHTML=`<div class="sum-title">${sec.label.replace(/&amp;/g,'&')}</div>
       <div class="sum-num" style="color:${pct===null?'#1a1a1a':passing?'#1D9E75':'#A32D2D'}">${pct!==null?pct+'%':'—'}</div>
       <div class="sum-sub">${r.done}/${r.total} answered</div>`;
     grid.appendChild(card);
   });
 }
-
 function updateBreakdown(){
-  const rows=document.getElementById('bd-rows');
-  rows.innerHTML='';
+  const rows=document.getElementById('bd-rows');rows.innerHTML='';
   const cats=[
     {label:'C1 — Algorithmic Thinking',filter:q=>q.comp==='C1',color:'#1D9E75'},
     {label:'C2 — Troubleshooting',filter:q=>q.comp==='C2',color:'#B45309'},
     {label:'C3 — Databases &amp; SQL',filter:q=>q.comp==='C3',color:'#534AB7'},
+    {label:'Simulation',filter:q=>q.comp==='SIM',color:'#991B1B'},
     {label:'Foundational',filter:q=>q.diff==='found',color:'#3B6D11'},
     {label:'Intermediate',filter:q=>q.diff==='inter',color:'#854F0B'},
     {label:'Advanced',filter:q=>q.diff==='adv',color:'#A32D2D'},
   ];
   cats.forEach(cat=>{
     let right=0,done=0,total=0;
-    ['c1','c2','c3'].forEach(key=>{
+    Object.keys(ALL).forEach(key=>{
       (ALL[key]||[]).forEach((q,i)=>{
         if(cat.filter(q)){total++;if(STATE[key][i]!==undefined){done++;if(STATE[key][i])right++;}}
       });
@@ -821,10 +1219,6 @@ function updateBreakdown(){
     </div>`;
   });
 }
-
-// ═══════════════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════════════
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmtStem(raw){
   return raw.split('\n')[0]
@@ -832,12 +1226,9 @@ function fmtStem(raw){
     .replace(/`([^`]+)`/g,'<code>$1</code>')
     .replace(/&lt;code&gt;/g,'<code>').replace(/&lt;\/code&gt;/g,'</code>');
 }
-
 function buildSectionNav(){
-  const row=document.getElementById('sec-row');
-  row.innerHTML='';
+  const row=document.getElementById('sec-row');row.innerHTML='';
   SECTIONS.forEach(sec=>{
-    if(!ALL[sec.key]) return;
     const r=calcSection(sec.key);
     const pct=r.done>0?Math.round(r.right/r.total*100):null;
     const b=document.createElement('button');
@@ -847,55 +1238,39 @@ function buildSectionNav(){
     row.appendChild(b);
   });
 }
-
-function switchSection(key){
-  curSec=key; curQ=0;
-  buildSectionNav();
-  render();
-}
-
+function switchSection(key){curSec=key;curQ=0;buildSectionNav();render();}
 function buildTabs(){
-  const row=document.getElementById('tabs');
-  row.innerHTML='';
-  const qs=ALL[curSec]||[];
-  const st=STATE[curSec]||{};
+  const row=document.getElementById('tabs');row.innerHTML='';
+  const qs=ALL[curSec]||[];const st=STATE[curSec]||{};
   qs.forEach((q,i)=>{
     const b=document.createElement('button');
     let cls='t-btn'+(i===curQ?' active':'');
-    if(st[i]===true)cls+=' correct';
-    else if(st[i]===false)cls+=' wrong';
-    b.className=cls;
-    b.textContent='Q'+(i+1);
+    if(st[i]===true)cls+=' correct';else if(st[i]===false)cls+=' wrong';
+    b.className=cls;b.textContent='Q'+(i+1);
     b.onclick=()=>{curQ=i;render();};
     row.appendChild(b);
   });
 }
-
 function render(){
-  buildSectionNav();
-  buildTabs();
-  const qs=ALL[curSec]||[];
-  const q=qs[curQ];
+  buildSectionNav();buildTabs();
+  const qs=ALL[curSec]||[];const q=qs[curQ];
   if(!q){document.getElementById('qview').innerHTML='';return;}
-  const st=STATE[curSec], done=st[curQ]!==undefined, correct=st[curQ]===true;
+  const st=STATE[curSec],done=st[curQ]!==undefined,correct=st[curQ]===true;
   const diffMap={found:'Foundational',inter:'Intermediate',adv:'Advanced'};
   const diffCls={found:'d-found',inter:'d-inter',adv:'d-adv'};
-  const compColor={C1:'p-c1',C2:'p-c2',C3:'p-c3'};
-
+  const compPill={C1:'p-c1',C2:'p-c2',C3:'p-c3',SIM:'p-sim'};
   let h=`<div class="q-card">
     <div class="q-meta">
-      <span class="pill ${compColor[q.comp]||'p-gen'}">${q.comp}</span>
+      <span class="pill ${compPill[q.comp]||'p-gen'}">${q.comp==='SIM'?'Simulated':q.comp}</span>
       <span class="diff-badge ${diffCls[q.diff]}">${diffMap[q.diff]}</span>
       <span class="pill p-gen">${q.topic}</span>
       <span class="q-num">Question ${curQ+1} of ${qs.length}</span>
     </div>
     <div class="q-stem">${fmtStem(q.stem)}</div>`;
-
   if(q.code){
     const codeLines=q.stem.split('\n').slice(1).join('\n').trim();
-    if(codeLines) h+=`<div class="code-block">${esc(codeLines)}</div>`;
+    if(codeLines)h+=`<div class="code-block">${esc(codeLines)}</div>`;
   }
-
   const letters=['A','B','C','D'];
   h+=`<div class="opt-list">`;
   q.opts.forEach((opt,oi)=>{
@@ -907,7 +1282,6 @@ function render(){
     h+=`<button class="${cls}" ${done?'disabled':''} onclick="pickMC(${oi})"><strong>${letters[oi]}.</strong> ${dispOpt}</button>`;
   });
   h+=`</div>`;
-
   if(done){
     h+=`<div class="feedback ${correct?'fb-c':'fb-w'}">
       <strong>${correct?'&#10003; Correct':'&#10007; Incorrect'}</strong> — ${q.rationale}
@@ -916,416 +1290,21 @@ function render(){
   }
   h+=`</div>`;
   document.getElementById('qview').innerHTML=h;
-  document.getElementById('q-label').textContent='Questions — '+(curSec==='c1'?'C1 Algorithmic Thinking':curSec==='c2'?'C2 Troubleshooting & Debugging':'C3 Databases & SQL');
+  const secNames={c1:'C1 Algorithmic Thinking',c2:'C2 Troubleshooting & Debugging',c3:'C3 Databases & SQL',sim:'Simulated Practice Test'};
+  document.getElementById('q-label').textContent='Questions — '+secNames[curSec];
   updateScore();
 }
-
 function pickMC(oi){
   const q=ALL[curSec][curQ];
-  if(STATE[curSec][curQ]!==undefined) return;
-  SELS[curSec][curQ]=oi;
-  STATE[curSec][curQ]=oi===q.ans;
+  if(STATE[curSec][curQ]!==undefined)return;
+  SELS[curSec][curQ]=oi;STATE[curSec][curQ]=oi===q.ans;
   render();
 }
-
 function go(d){
   const max=(ALL[curSec]||[]).length-1;
-  curQ=Math.max(0,Math.min(max,curQ+d));
-  render();
+  curQ=Math.max(0,Math.min(max,curQ+d));render();
 }
-
 render();
 </script>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     CODING ASSESSMENT — 20 hands-on challenges
-     Source: D615A_Coding_Assessment_20Q_md.pdf
-     Format: prompt + expected output + self-mark, mirrors D335 NYDI
-     ═══════════════════════════════════════════════════════════════ -->
-<script>
-var COD_Q = [
-// ── SECTION A: Variables, Data Types, I/O ──────────────────────
-{comp:'C1',topic:'Data Types / I/O',diff:'found',
-title:'Temperature Conversion',
-prompt:'Write a Python program that:\n• Asks the user to enter a temperature in Celsius\n• Converts to Fahrenheit using: F = (C × 9/5) + 32\n• Displays the result with one decimal place',
-example:'0',
-expected:'32.0 degrees Fahrenheit',
-hint:'Use float(input()). f-string with {result:.1f} forces one decimal place.',
-concepts:['float() conversion','arithmetic formula','f-string :.1f'],
-solution:"celsius = float(input('Enter temperature in Celsius: '))\nfahrenheit = (celsius * 9 / 5) + 32\nprint(f'{fahrenheit:.1f} degrees Fahrenheit')"},
-
-{comp:'C1',topic:'Strings',diff:'found',
-title:'String Manipulation',
-prompt:'Write a Python program that:\n• Asks for first name and last name separately\n• Combines them into a full name with a space between\n• Displays the full name in uppercase\n• Displays how many characters are in the full name (including the space)',
-example:'John / Smith',
-expected:'Full name: JOHN SMITH\nCharacter count: 10',
-hint:'Use f-string concatenation. .upper() on the full name string. len() for character count.',
-concepts:['string concatenation','str.upper()','len()','f-strings'],
-solution:"first = input('Enter first name: ')\nlast = input('Enter last name: ')\nfull = first + ' ' + last\nprint(f'Full name: {full.upper()}')\nprint(f'Character count: {len(full)}')"},
-
-{comp:'C1',topic:'Arithmetic / I/O',diff:'found',
-title:'Simple Calculator',
-prompt:'Write a Python program that:\n• Asks the user for two numbers\n• Asks for an operator (+, -, *, /)\n• Performs the calculation\n• Displays the result in the format: 10 + 5 = 15',
-example:'10 / 5 / +',
-expected:'10 + 5 = 15',
-hint:'Use if/elif/else to branch on the operator. Convert inputs with float().',
-concepts:['if/elif/else','float() conversion','operator branching'],
-solution:"a = float(input('Enter first number: '))\nb = float(input('Enter second number: '))\nop = input('Enter operator (+, -, *, /): ')\nif op == '+': result = a + b\nelif op == '-': result = a - b\nelif op == '*': result = a * b\nelif op == '/': result = a / b\nprint(f'{int(a)} {op} {int(b)} = {int(result)}')"},
-
-{comp:'C1',topic:'Lists / Built-ins',diff:'found',
-title:'List Creation and Access',
-prompt:'Write a Python program that:\n• Creates a list of 5 numbers: [12, 45, 23, 67, 34]\n• Displays the first number\n• Displays the last number\n• Displays the sum of all numbers\n• Displays the average of all numbers',
-example:'(no input needed)',
-expected:'First number: 12\nLast number: 34\nSum: 181\nAverage: 36.2',
-hint:'Use list[0] for first, list[-1] for last. sum() and sum()/len() for total and average.',
-concepts:['list indexing','sum()','len()','average calculation'],
-solution:"nums = [12, 45, 23, 67, 34]\nprint(f'First number: {nums[0]}')\nprint(f'Last number: {nums[-1]}')\nprint(f'Sum: {sum(nums)}')\nprint(f'Average: {sum(nums)/len(nums)}')"},
-
-// ── SECTION B: Conditional Statements ─────────────────────────
-{comp:'C1',topic:'Conditionals',diff:'inter',
-title:'Grading System',
-prompt:'Write a Python program that:\n• Asks for a test score (0–100)\n• Assigns a letter grade: 90–100=A, 80–89=B, 70–79=C, 60–69=D, below 60=F\n• Displays the grade\n• Displays whether the score is passing (60 or above)',
-example:'85',
-expected:'Your grade is: B\nStatus: Passing',
-hint:'Use if/elif/else chain. Passing means score >= 60.',
-concepts:['if/elif/else chain','comparison operators','boolean conditions'],
-solution:"score = int(input('Enter test score: '))\nif score >= 90: grade = 'A'\nelif score >= 80: grade = 'B'\nelif score >= 70: grade = 'C'\nelif score >= 60: grade = 'D'\nelse: grade = 'F'\nstatus = 'Passing' if score >= 60 else 'Failing'\nprint(f'Your grade is: {grade}')\nprint(f'Status: {status}')"},
-
-{comp:'C1',topic:'Conditionals',diff:'found',
-title:'Even or Odd Checker',
-prompt:'Write a Python program that:\n• Asks for a number\n• Determines if it is even or odd\n• Determines if it is positive, negative, or zero\n• Displays both results',
-example:'7',
-expected:'7 is odd\n7 is positive',
-hint:'Use % 2 == 0 for even/odd. Compare to 0 for sign.',
-concepts:['modulo operator','if/elif/else','number classification'],
-solution:"n = int(input('Enter a number: '))\nparity = 'even' if n % 2 == 0 else 'odd'\nif n > 0: sign = 'positive'\nelif n < 0: sign = 'negative'\nelse: sign = 'zero'\nprint(f'{n} is {parity}')\nprint(f'{n} is {sign}')"},
-
-{comp:'C1',topic:'Conditionals',diff:'inter',
-title:'Login Validation',
-prompt:'Write a Python program that:\n• Defines correct username: "admin" and correct password: "secure123"\n• Asks for a username and password\n• Validates both (both must be correct)\n• Displays "Access granted" or "Access denied"',
-example:'admin / secure123',
-expected:'Access granted',
-hint:'Use and to require both conditions. String comparison is case-sensitive.',
-concepts:['string comparison','and operator','boolean logic'],
-solution:"correct_user = 'admin'\ncorrect_pass = 'secure123'\nusername = input('Enter username: ')\npassword = input('Enter password: ')\nif username == correct_user and password == correct_pass:\n    print('Access granted')\nelse:\n    print('Access denied')"},
-
-{comp:'C1',topic:'Conditionals',diff:'inter',
-title:'Age Category Classification',
-prompt:'Write a Python program that:\n• Asks for an age\n• Classifies: Child (0–12), Teen (13–19), Adult (20–64), Senior (65+)\n• Displays category\n• Displays whether eligible to vote (18+)',
-example:'16',
-expected:'Category: Teen\nEligible to vote: No',
-hint:'if/elif chain for age ranges. Voting: age >= 18.',
-concepts:['if/elif/else chain','comparison operators','multi-condition logic'],
-solution:"age = int(input('Enter age: '))\nif age <= 12: cat = 'Child'\nelif age <= 19: cat = 'Teen'\nelif age <= 64: cat = 'Adult'\nelse: cat = 'Senior'\nvote = 'Yes' if age >= 18 else 'No'\nprint(f'Category: {cat}')\nprint(f'Eligible to vote: {vote}')"},
-
-{comp:'C1',topic:'Conditionals',diff:'inter',
-title:'Discount Calculator',
-prompt:'Write a Python program that:\n• Asks for original price\n• Asks for discount percentage\n• Calculates discount amount and final price\n• Displays all three formatted to 2 decimal places\n• Displays deal type: "Good deal" (≥20%) or "Regular discount" (<20%)',
-example:'100 / 25',
-expected:'Original price: $100.00\nDiscount amount: $25.00\nFinal price: $75.00\nDeal type: Good deal',
-hint:'Use float() for price. Discount amount = price * (pct/100). Deal type uses if/else.',
-concepts:['float arithmetic',':.2f formatting','percentage calculation'],
-solution:"price = float(input('Original price: '))\ndisc = float(input('Discount %: '))\namt = price * (disc / 100)\nfinal = price - amt\ndeal = 'Good deal' if disc >= 20 else 'Regular discount'\nprint(f'Original price: ${price:.2f}')\nprint(f'Discount amount: ${amt:.2f}')\nprint(f'Final price: ${final:.2f}')\nprint(f'Deal type: {deal}')"},
-
-// ── SECTION C: Loops ──────────────────────────────────────────
-{comp:'C1',topic:'For Loops',diff:'inter',
-title:'Multiplication Table',
-prompt:'Write a Python program that:\n• Asks for a number\n• Displays the multiplication table for that number (1–10)\n• Format each line as: "number × i = result"',
-example:'5',
-expected:'5 × 1 = 5\n5 × 2 = 10\n5 × 3 = 15\n... (through 5 × 10 = 50)',
-hint:'Use for i in range(1, 11). Format with f-strings.',
-concepts:['for loop','range()','f-string output','arithmetic in loop'],
-solution:"n = int(input('Enter a number: '))\nfor i in range(1, 11):\n    print(f'{n} × {i} = {n * i}')"},
-
-{comp:'C1',topic:'While Loops',diff:'inter',
-title:'Sum of Numbers',
-prompt:'Write a Python program that:\n• Asks how many numbers to sum\n• Asks for each number one at a time\n• Calculates and displays sum and average',
-example:'3 / then 10, 20, 30',
-expected:'Sum: 60\nAverage: 20.0',
-hint:'Use a while loop or for loop with range(count). Accumulate total with +=.',
-concepts:['while loop','accumulator pattern','average = sum/count'],
-solution:"count = int(input('How many numbers? '))\ntotal = 0\nfor i in range(count):\n    total += float(input(f'Enter number {i+1}: '))\nprint(f'Sum: {int(total)}')\nprint(f'Average: {total/count}')"},
-
-{comp:'C1',topic:'While Loops',diff:'inter',
-title:'Countdown Timer',
-prompt:'Write a Python program that:\n• Asks for a number to count down from\n• Counts down to 1, displaying each number\n• Displays "Blastoff!" at the end\n• Counts how many numbers were displayed (excluding "Blastoff!")',
-example:'5',
-expected:'5\n4\n3\n2\n1\nBlastoff!\nTotal count: 5',
-hint:'while n > 0: print(n), n -= 1. Counter increments each iteration.',
-concepts:['while loop','decrement','counter variable'],
-solution:"n = int(input('Count down from: '))\ncount = 0\nwhile n > 0:\n    print(n)\n    n -= 1\n    count += 1\nprint('Blastoff!')\nprint(f'Total count: {count}')"},
-
-{comp:'C2',topic:'String Processing / Loops',diff:'adv',
-title:'Password Strength Validator',
-prompt:'Write a Python program that:\n• Asks for a password\n• Checks: length ≥ 8, contains a number, contains uppercase, contains special char (!@#$%^&*)\n• Displays ✓ Pass or ✗ Fail for each criterion\n• Rates overall: "Weak" (0–1 met), "Medium" (2–3 met), "Strong" (all 4 met)',
-example:'Secure@1',
-expected:'Length check (8+ chars): ✓ Pass\nNumber check: ✓ Pass\nUppercase check: ✓ Pass\nSpecial character check: ✓ Pass\nPassword strength: Strong',
-hint:'Use any(c.isdigit() for c in pw), any(c.isupper() for c in pw). Special chars: check membership in "!@#$%^&*".',
-concepts:['any() with generator','str.isdigit()','str.isupper()','in operator for membership'],
-solution:"pw = input('Enter password: ')\nlength_ok = len(pw) >= 8\nhas_num = any(c.isdigit() for c in pw)\nhas_upper = any(c.isupper() for c in pw)\nhas_special = any(c in '!@#$%^&*' for c in pw)\nprint(f'Length check (8+ chars): {\"✓ Pass\" if length_ok else \"✗ Fail\"}')\nprint(f'Number check: {\"✓ Pass\" if has_num else \"✗ Fail\"}')\nprint(f'Uppercase check: {\"✓ Pass\" if has_upper else \"✗ Fail\"}')\nprint(f'Special character check: {\"✓ Pass\" if has_special else \"✗ Fail\"}')\nscore = sum([length_ok, has_num, has_upper, has_special])\nrating = 'Strong' if score == 4 else 'Medium' if score >= 2 else 'Weak'\nprint(f'Password strength: {rating}')"},
-
-// ── SECTION D: Functions ──────────────────────────────────────
-{comp:'C1',topic:'Functions',diff:'inter',
-title:'Temperature Converter Function',
-prompt:'Write a Python program that:\n• Creates celsius_to_fahrenheit(celsius) returning (C × 9/5) + 32\n• Creates fahrenheit_to_celsius(fahrenheit) returning (F - 32) × 5/9\n• Asks which conversion the user wants\n• Asks for the temperature value\n• Calls the appropriate function and displays the result',
-example:'C to F / 25',
-expected:'25°C = 77.0°F',
-hint:'def celsius_to_fahrenheit(c): return (c * 9/5) + 32. Use if/else to call the right function.',
-concepts:['def / return','function arguments','if/else branching',':.1f formatting'],
-solution:"def celsius_to_fahrenheit(c): return (c * 9/5) + 32\ndef fahrenheit_to_celsius(f): return (f - 32) * 5/9\ndirection = input('C to F or F to C? ')\ntemp = float(input('Enter temperature: '))\nif 'C' in direction.upper() and 'F' in direction.upper():\n    if direction.upper().startswith('C'):\n        print(f'{int(temp)}°C = {celsius_to_fahrenheit(temp):.1f}°F')\n    else:\n        print(f'{int(temp)}°F = {fahrenheit_to_celsius(temp):.1f}°C')"},
-
-{comp:'C1',topic:'Functions / Lists',diff:'inter',
-title:'Grade Calculator Function',
-prompt:'Write a Python program that:\n• Creates get_letter_grade(score) returning A/B/C/D/F\n• Creates is_passing(score) returning True if score ≥ 60\n• Asks for 3 test scores\n• Displays each score with its letter grade\n• Displays average and its letter grade\n• Displays how many scores were passing',
-example:'85 / 72 / 91',
-expected:'Score 1: 85 (B)\nScore 2: 72 (C)\nScore 3: 91 (A)\nAverage: 82.67 (B)\nPassing scores: 3 out of 3',
-hint:'Define functions first. Collect scores in a list with a loop. Use round(avg, 2) for average.',
-concepts:['def / return','function calls','list accumulation','round()'],
-solution:"def get_letter_grade(s):\n    if s >= 90: return 'A'\n    elif s >= 80: return 'B'\n    elif s >= 70: return 'C'\n    elif s >= 60: return 'D'\n    else: return 'F'\ndef is_passing(s): return s >= 60\nscores = [float(input(f'Enter score {i+1}: ')) for i in range(3)]\nfor i, s in enumerate(scores):\n    print(f'Score {i+1}: {int(s)} ({get_letter_grade(s)})')\navg = round(sum(scores)/3, 2)\npassing = sum(1 for s in scores if is_passing(s))\nprint(f'Average: {avg} ({get_letter_grade(avg)})')\nprint(f'Passing scores: {passing} out of 3')"},
-
-{comp:'C1',topic:'Functions',diff:'inter',
-title:'Simple Calculator with Functions',
-prompt:'Write a Python program that:\n• Creates functions: add(a, b), subtract(a, b), multiply(a, b), divide(a, b)\n• Asks for two numbers and an operation (add, subtract, multiply, divide)\n• Calls the appropriate function\n• Displays the result with the calculation shown',
-example:'20 / 4 / divide',
-expected:'20 ÷ 4 = 5.0',
-hint:'Define four functions. Use a dictionary or if/elif chain to select the right one.',
-concepts:['def / return','function dispatch','if/elif or dict lookup'],
-solution:"def add(a,b): return a+b\ndef subtract(a,b): return a-b\ndef multiply(a,b): return a*b\ndef divide(a,b): return a/b\na = float(input('First number: '))\nb = float(input('Second number: '))\nop = input('Operation (add/subtract/multiply/divide): ')\nif op == 'add': r = add(a,b); sym = '+'\nelif op == 'subtract': r = subtract(a,b); sym = '-'\nelif op == 'multiply': r = multiply(a,b); sym = '×'\nelif op == 'divide': r = divide(a,b); sym = '÷'\nprint(f'{int(a)} {sym} {int(b)} = {r}')"},
-
-// ── SECTION E: Lists and Data Structures ──────────────────────
-{comp:'C1',topic:'Lists / Statistics',diff:'inter',
-title:'List Statistics',
-prompt:'Write a Python program that:\n• Collects 5 numbers from the user\n• Calculates and displays: highest, lowest, sum, average, median\n• Displays the list in sorted order',
-example:'10 / 25 / 15 / 30 / 5',
-expected:'Original list: [10, 25, 15, 30, 5]\nSorted list: [5, 10, 15, 25, 30]\nHighest: 30\nLowest: 5\nSum: 85\nAverage: 17.0\nMedian: 15',
-hint:'Use sorted(). Median of 5 sorted values is index [2]. round(avg, 1) for average.',
-concepts:['sorted()','max() / min()','sum() / len()','median = middle of sorted list'],
-solution:"nums = [float(input(f'Enter number {i+1}: ')) for i in range(5)]\nprint(f'Original list: {[int(n) for n in nums]}')\ns = sorted(nums)\nprint(f'Sorted list: {[int(n) for n in s]}')\nprint(f'Highest: {int(max(nums))}')\nprint(f'Lowest: {int(min(nums))}')\nprint(f'Sum: {int(sum(nums))}')\nprint(f'Average: {sum(nums)/len(nums)}')\nprint(f'Median: {int(s[2])}')"},
-
-{comp:'C1',topic:'Lists / Dictionaries',diff:'inter',
-title:'Student Grade Tracker',
-prompt:'Write a Python program that:\n• Asks how many students to track\n• For each student, asks for name and grade\n• Displays all students with grades\n• Displays class average\n• Displays highest- and lowest-graded student',
-example:'3 / Alice 90 / Bob 78 / Charlie 85',
-expected:'Student Grades:\nAlice: 90\nBob: 78\nCharlie: 85\nClass average: 84.33\nHighest: Alice (90)\nLowest: Bob (78)',
-hint:'Store names and grades in parallel lists. Use zip() to display them together. round(avg, 2).',
-concepts:['parallel lists','zip()','max/min with key','round()'],
-solution:"n = int(input('Number of students: '))\nnames, grades = [], []\nfor i in range(n):\n    names.append(input(f'Student {i+1} name: '))\n    grades.append(float(input(f'{names[-1]} grade: ')))\nprint('Student Grades:')\nfor name, grade in zip(names, grades):\n    print(f'{name}: {int(grade)}')\navg = round(sum(grades)/len(grades), 2)\nprint(f'Class average: {avg}')\nhi = names[grades.index(max(grades))]\nlo = names[grades.index(min(grades))]\nprint(f'Highest: {hi} ({int(max(grades))})')\nprint(f'Lowest: {lo} ({int(min(grades))})')"},
-
-{comp:'C1',topic:'Dictionaries / Strings',diff:'adv',
-title:'Word Frequency Counter',
-prompt:'Write a Python program that:\n• Asks for a sentence\n• Converts to lowercase and removes punctuation\n• Counts occurrences of each word\n• Displays words and frequencies\n• Displays the most frequent word',
-example:'"hello world hello python"',
-expected:'Word frequencies:\nhello: 2\nworld: 1\npython: 1\nMost frequent word: hello (appears 2 times)',
-hint:'Use str.lower(), str.replace() for punctuation. Build a dict with word counts. max(counts, key=counts.get).',
-concepts:['dict accumulation','str.lower()','str.split()','max with key='],
-solution:"import string\nsentence = input('Enter a sentence: ').lower()\nfor ch in string.punctuation:\n    sentence = sentence.replace(ch, '')\nwords = sentence.split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint('Word frequencies:')\nfor w, c in counts.items():\n    print(f'{w}: {c}')\nbest = max(counts, key=counts.get)\nprint(f'Most frequent word: {best} (appears {counts[best]} times)')"},
-
-{comp:'C1',topic:'Lists / Loops',diff:'inter',
-title:'Even-Odd List Separator',
-prompt:'Write a Python program that:\n• Asks for numbers one per line; stop when user enters "done"\n• Separates into even and odd lists\n• Displays both lists\n• Displays counts, sums, and averages for each',
-example:'2 / 3 / 4 / 5 / 6 / done',
-expected:'Even numbers: [2, 4, 6]\nOdd numbers: [3, 5]\nCount - Even: 3, Odd: 2\nSum - Even: 12, Odd: 8\nAverage - Even: 4.0, Odd: 4.0',
-hint:'while True loop. Break when input == "done". Append to even or odd list based on % 2.',
-concepts:['while True / break','list.append()','modulo classification','sum() / len()'],
-solution:"evens, odds = [], []\nwhile True:\n    val = input('Enter a number (or done): ')\n    if val.lower() == 'done': break\n    n = int(val)\n    if n % 2 == 0: evens.append(n)\n    else: odds.append(n)\nprint(f'Even numbers: {evens}')\nprint(f'Odd numbers: {odds}')\nprint(f'Count - Even: {len(evens)}, Odd: {len(odds)}')\nprint(f'Sum - Even: {sum(evens)}, Odd: {sum(odds)}')\nprint(f'Average - Even: {sum(evens)/len(evens) if evens else 0}, Odd: {sum(odds)/len(odds) if odds else 0}')"},
-];
-
-// ── State ─────────────────────────────────────────────────────
-var codState={}, codCode={}, codOutput={}, codHint={}, codSol={}, codCur=0;
-
-ALL['cod']   = COD_Q;
-STATE['cod'] = codState;
-SECTIONS.push({key:'cod', label:'Coding Assessment', color:'#991B1B', short:'Code'});
-
-function codEsc(s){
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function codSave(){
-  var ca=document.getElementById('cod-code');
-  var oa=document.getElementById('cod-out');
-  if(ca) codCode[codCur]=ca.value;
-  if(oa) codOutput[codCur]=oa.value;
-}
-function codMark(pass){
-  codSave();
-  codState[codCur]=pass;
-  STATE['cod'][codCur]=pass;
-  codRender();
-  updateScore();
-}
-
-function codGrade(){
-  codSave();
-  var q=COD_Q[codCur];
-  var userOut=(codOutput[codCur]||'').trim();
-  var el=document.getElementById('cod-grade-result');
-  if(!el) return;
-  if(!userOut){
-    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#FAEEDA;border:0.5px solid #FAC775;font-size:13px;color:#633806">Paste your program output in Step 2 first, then click Check.</div>';
-    return;
-  }
-  var expLines=q.expected.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length>0;});
-  var usrLines=userOut.split('\n').map(function(l){return l.trim();}).filter(function(l){return l.length>0;});
-  var matched=0, mismatches=[];
-  expLines.forEach(function(exp,i){
-    var usr=usrLines[i]||'(missing)';
-    if(exp===usr) matched++;
-    else mismatches.push({line:i+1,exp:exp,got:usr});
-  });
-  var pct=Math.round(matched/expLines.length*100);
-  if(pct===100){
-    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#EAF3DE;border:0.5px solid #C0DD97;font-size:13px;color:#27500A"><strong>&#10003; Perfect match!</strong> All '+expLines.length+' lines correct. Click <em>Mark correct</em> above.</div>';
-  } else {
-    var diffs='';
-    mismatches.slice(0,3).forEach(function(m){
-      diffs+='<div style="margin-top:7px;font-size:12px">'
-        +'<span style="color:#9b9b97">Line '+m.line+':</span><br>'
-        +'<span style="color:#27500A">Expected: </span>'
-        +'<code style="font-family:monospace;font-size:11.5px;background:rgba(0,0,0,.06);padding:1px 4px;border-radius:3px">'+codEsc(m.exp)+'</code><br>'
-        +'<span style="color:#791F1F">Got:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
-        +'<code style="font-family:monospace;font-size:11.5px;background:rgba(0,0,0,.06);padding:1px 4px;border-radius:3px">'+codEsc(m.got)+'</code>'
-        +'</div>';
-    });
-    el.innerHTML='<div style="padding:10px 14px;border-radius:8px;background:#FCEBEB;border:0.5px solid #F7C1C1;font-size:13px;color:#791F1F">'
-      +'<strong>&#10007; '+pct+'% match</strong> — '+matched+' of '+expLines.length+' lines correct.'
-      +diffs
-      +'<div style="margin-top:8px;font-size:12px;color:#555">Fix your code in PyCharm/VS Code, run again, paste new output.</div>'
-      +'</div>';
-  }
-}
-
-function codRender(){
-  var q=COD_Q[codCur];
-  var st=codState[codCur];
-  var done=(st!==undefined);
-  var passed=(st===true);
-
-  var tabRow=document.getElementById('tabs');
-  tabRow.innerHTML='';
-  COD_Q.forEach(function(qq,i){
-    var b=document.createElement('button');
-    var cls='t-btn'+(i===codCur?' active':'');
-    if(codState[i]===true)  cls+=' correct';
-    else if(codState[i]===false) cls+=' wrong';
-    b.className=cls;
-    b.textContent='Q'+(i+1);
-    (function(idx){ b.onclick=function(){ codSave(); codCur=idx; codRender(); }; })(i);
-    tabRow.appendChild(b);
-  });
-
-  document.getElementById('q-label').textContent='Coding Assessment — Write the solution in your IDE';
-
-  var compColors={C1:'p-c1',C2:'p-c2',C3:'p-c3'};
-  var diffLabels={found:'Foundational',inter:'Intermediate',adv:'Advanced'};
-  var diffCls={found:'d-found',inter:'d-inter',adv:'d-adv'};
-
-  var conceptPills='';
-  q.concepts.forEach(function(c){
-    conceptPills+='<span class="concept-pill">'+codEsc(c)+'</span>';
-  });
-
-  var hintBox=codHint[codCur]
-    ? '<div style="background:#E6F1FB;border:0.5px solid #B5D4F4;border-radius:8px;padding:10px 14px;font-size:13px;color:#0C447C;margin-bottom:12px;line-height:1.6">'+codEsc(q.hint)+'</div>'
-    : '';
-
-  var solBox=codSol[codCur]
-    ? '<div style="margin-top:12px">'
-      +'<div style="font-size:11px;font-weight:500;color:#9b9b97;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Model solution</div>'
-      +'<div style="font-family:\'Courier New\',monospace;font-size:12.5px;background:#f5f5f3;border:0.5px solid #e0ddd6;border-radius:8px;padding:14px;white-space:pre-wrap;color:#1a1a1a;line-height:1.65;max-height:360px;overflow-y:auto">'+codEsc(q.solution)+'</div>'
-      +'</div>'
-    : '';
-
-  var statusBox='';
-  if(done){
-    statusBox=passed
-      ? '<div style="margin-top:10px;padding:12px 16px;border-radius:8px;background:#EAF3DE;border:0.5px solid #C0DD97;font-size:13px;color:#27500A"><strong>&#10003; Marked correct</strong> — Great work. Move to the next challenge.</div>'
-      : '<div style="margin-top:10px;padding:12px 16px;border-radius:8px;background:#FCEBEB;border:0.5px solid #F7C1C1;font-size:13px;color:#791F1F"><strong>&#10007; Marked incorrect</strong> — Review the hint and solution, fix your code, and try again.</div>';
-  }
-
-  var expFormatted = q.expected.replace(/\n\.\.\. .+/,'');
-
-  var html=''
-    +'<div class="q-card">'
-    +'<div class="q-meta">'
-    +'<span class="pill '+(compColors[q.comp]||'p-gen')+'">'+q.comp+'</span>'
-    +'<span class="diff-badge '+(diffCls[q.diff]||'d-inter')+'">'+diffLabels[q.diff]+'</span>'
-    +'<span class="pill p-gen">'+codEsc(q.topic)+'</span>'
-    +'<span class="q-num">Challenge '+(codCur+1)+' of '+COD_Q.length+'</span>'
-    +'</div>'
-    +'<div style="font-size:16px;font-weight:500;color:#1a1a1a;margin-bottom:14px">'+codEsc(q.title)+'</div>'
-    +'<div class="cod-prompt">'+codEsc(q.prompt)+'</div>'
-    +'<div class="cod-example">'
-    +'<div class="cod-box cod-inp"><div class="cod-box-label inp">Example input</div><pre>'+codEsc(q.example)+'</pre></div>'
-    +'<div class="cod-box cod-out"><div class="cod-box-label out">Expected output</div><pre>'+codEsc(expFormatted)+'</pre></div>'
-    +'</div>'
-    +'<div class="concept-pills">'+conceptPills+'</div>'
-    +'<button id="cod-hint-btn" style="font-size:13px;color:#185FA5;background:none;border:none;cursor:pointer;padding:0;margin-bottom:'+(codHint[codCur]?'8':'14')+'px">&#128161; '+(codHint[codCur]?'Hide hint':'Show hint')+'</button>'
-    +hintBox
-    +'<div style="font-size:12px;color:#9b9b97;margin-bottom:5px;font-weight:500">STEP 1 — Write and run this in PyCharm or VS Code, then paste your code here:</div>'
-    +'<textarea id="cod-code" style="width:100%;font-family:\'Courier New\',monospace;font-size:13px;padding:12px;border:0.5px solid #ccc;border-radius:8px;background:#f5f5f3;color:#1a1a1a;resize:vertical;min-height:180px;line-height:1.65" placeholder="# Paste your Python solution here...">'+codEsc(codCode[codCur]||'')+'</textarea>'
-    +'<div style="font-size:12px;color:#9b9b97;margin:12px 0 5px;font-weight:500">STEP 2 — Paste your program\'s actual terminal output here:</div>'
-    +'<textarea id="cod-out" style="width:100%;font-family:\'Courier New\',monospace;font-size:13px;padding:12px;border:0.5px solid #ccc;border-radius:8px;background:#f5f5f3;color:#1a1a1a;resize:vertical;min-height:90px;line-height:1.65" placeholder="Paste what your program actually printed...">'+codEsc(codOutput[codCur]||'')+'</textarea>'
-    +'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'
-    +'<button id="cod-check" style="padding:9px 20px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer">&#10003; Check my output</button>'
-    +'<button id="cod-pass" style="padding:9px 16px;background:#fff;border:0.5px solid #1D9E75;color:#0F6E56;border-radius:8px;font-size:13px;cursor:pointer">Mark correct</button>'
-    +'<button id="cod-fail" style="padding:9px 16px;background:#fff;border:0.5px solid #A32D2D;color:#A32D2D;border-radius:8px;font-size:13px;cursor:pointer">Mark incorrect</button>'
-    +'<button id="cod-sol-btn" style="padding:9px 16px;background:#fff;border:0.5px solid #ccc;color:#555;border-radius:8px;font-size:13px;cursor:pointer">'+(codSol[codCur]?'Hide solution':'Show solution')+'</button>'
-    +'</div>'
-    +'<div id="cod-grade-result" style="margin-top:10px"></div>'
-    +statusBox
-    +solBox
-    +'</div>';
-
-  document.getElementById('qview').innerHTML=html;
-
-  var hintB  = document.getElementById('cod-hint-btn');
-  var solB   = document.getElementById('cod-sol-btn');
-  var checkB = document.getElementById('cod-check');
-  var passB  = document.getElementById('cod-pass');
-  var failB  = document.getElementById('cod-fail');
-  var codeTA = document.getElementById('cod-code');
-  var outTA  = document.getElementById('cod-out');
-
-  if(hintB)  hintB.onclick  = function(){ codSave(); codHint[codCur]=!codHint[codCur]; codRender(); };
-  if(solB)   solB.onclick   = function(){ codSave(); codSol[codCur]=!codSol[codCur];   codRender(); };
-  if(checkB) checkB.onclick = codGrade;
-  if(passB)  passB.onclick  = function(){ codMark(true);  };
-  if(failB)  failB.onclick  = function(){ codMark(false); };
-  if(codeTA) codeTA.oninput = function(){ codCode[codCur]   = codeTA.value; };
-  if(outTA)  outTA.oninput  = function(){ codOutput[codCur] = outTA.value;  };
-
-  updateScore();
-}
-
-// Patch switchSection
-var _origSwitch = switchSection;
-switchSection = function(key){
-  if(curSec === 'cod') codSave();
-  if(key === 'cod'){
-    curSec = 'cod';
-    curQ   = 0;
-    codCur = 0;
-    buildSectionNav();
-    codRender();
-    return;
-  }
-  _origSwitch(key);
-};
-
-var _origGo = go;
-go = function(d){
-  if(curSec === 'cod'){
-    codSave();
-    codCur = Math.max(0, Math.min(COD_Q.length - 1, codCur + d));
-    codRender();
-    return;
-  }
-  _origGo(d);
-};
-
-buildSectionNav();
-updateScore();
-</script>
-
 </body>
 </html>
