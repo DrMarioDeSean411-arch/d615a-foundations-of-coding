@@ -741,8 +741,8 @@ misconception:'Students pick FROM thinking both FROM and WHERE are involved in "
 
 {sec:'c3',comp:'C3',topic:'SQL — ALTER TABLE',diff:'inter',
 stem:'Which statement adds a new column named Email to an existing Customer table?',
-opts:['Stapler, Notebook','Pen, Marker','Notebook, Stapler','Stapler, Notebook, Marker'],
-ans:0,
+opts:['INSERT INTO Customer (Email);','UPDATE Customer ADD Email VARCHAR(100);','ALTER TABLE Customer ADD Email VARCHAR(100);','CREATE TABLE Customer ADD Email VARCHAR(100);'],
+ans:2,
 rationale:'<strong>C is correct.</strong> ALTER TABLE modifies the structure of an existing table. CREATE TABLE creates a new table from scratch. UPDATE modifies data values; INSERT adds rows.',
 misconception:'Students pick CREATE TABLE because adding a column sounds like "creating." CREATE TABLE is for new tables only. ALTER TABLE modifies existing structures.'},
 
